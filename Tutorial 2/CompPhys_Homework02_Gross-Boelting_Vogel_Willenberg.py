@@ -64,7 +64,7 @@ def two_body_problem(body1,body2,G,R0,dt,N):
 
     return (s,w)
 
-v0 = 0.5*np.sqrt(1.*1./1.)
+v0 = np.sqrt(1.*1./1.)
 body1 = Body(1., np.array([1.,0.,0.]), np.array([0.,v0,0.]))
 body2 = Body(1., np.array([0.,0.,0.]), np.array([0.,0.,0.]))
 s, w = two_body_problem(body1, body2, 1., 1., 1e-3, 1e4)
@@ -75,35 +75,30 @@ LRL = laplace_runge_lenz(s,w)
 eccentricity = eccentricity(LRL)
 rel_error = relative_error(energy)
 
-# Plot the orbits
-fig, axs = plt.subplots(2,2)
+# Plot the results
+fig, axs = plt.subplots(2,2,figsize=(12,8), constrained_layout=True)
 fig.suptitle(r'Forward Euler Method: Numerical Simulation of the Two-Body Problem')
 
 axs[0,0].plot(s[:,0], s[:,1], 'b.', label='Body 1')
 axs[0,0].plot([0], [0], 'rx', label='Body 2')
 axs[0,0].set_title(r'Orbits')
-#ax[0,0].set_xlabel(r'$x$-axis'); ax.set_ylabel(r'$y$-axis')
-#axs[0,0].grid(); ax[0,0].legend(loc='best'); ax[0,0].axis('equal')
+axs[0,0].set_xlabel(r'$x$-axis'); axs[0,0].set_ylabel(r'$y$-axis')
+axs[0,0].axis('equal')
 
 axs[0,1].plot(range(0,len(eccentricity)), eccentricity, 'b.', label='Eccentricity')
-axs[0,1].set_title(r'Eccentricity')
-#ax[0,1].set_xlabel(r'Step $i$'); ax.set_ylabel(r'Eccentricity')
-#axs[0,1].grid(); ax[0,1].legend(loc='best')
+axs[0,1].set_title(r'Eccentricity $\vert\,\vec{e}_i\,\vert=\vert\,\vec{w}_i\times (\vec{s}_i\times\vec{w}_i)-\vec{s}_i\,\vert$ of the Orbit')
+axs[0,1].set_xlabel(r'time step $i$'); axs[0,1].set_ylabel(r'eccentricity $\vert\,\vec{e}_i\,\vert$')
 
 axs[1,0].plot(range(0,len(energy)), energy, 'b.', label='Total Energy')
-axs[1,0].set_title(r'Total Energy')
-#ax[1,0].set_xlabel(r'Step $i$'); ax.set_ylabel(r'Total Energy $E_i$')
-#axs[1,0].grid(); ax[1,0].legend(loc='best')
+axs[1,0].set_title(r'Total Energy $E_i=(w_i^2\,/\,2)-(1/s_i)$')
+axs[1,0].set_xlabel(r'time step $i$'); axs[1,0].set_ylabel(r'total energy $E_i$')
 
 axs[1,1].plot(range(0,len(rel_error)), rel_error, 'b.', label='Relative Error')
-axs[1,1].set_title(r'Relative Error in the Total Energy')
-#ax[1,1].set_xlabel(r'Step $i$'); ax.set_ylabel(r'Relative Error')
+axs[1,1].set_title(r'Relative Error $\epsilon_i(h)=\vert\,E_i-E_0\,\vert\,/\,\vert\,E_0\,\vert$ in the Total Energy $E_i$')
+axs[1,1].set_xlabel(r'time step $i$'); axs[1,1].set_ylabel(r'relative error $\epsilon_i$')
 
-for ax in axs.flat:
+for ax in fig.get_axes():
     ax.grid(); ax.legend(loc='best')
-    ax.set(xlabel='x-label', ylabel='y-label')
 
-
-fig.subplots_adjust(hspace=0.3)
-fig.savefig('figures/Two-Body-Problem.pdf', format='pdf')
+fig.savefig('figures/Two-Body-Problem.pdf', format='pdf', dpi=250)
 plt.show(); plt.clf(); plt.close()
