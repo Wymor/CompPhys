@@ -76,29 +76,34 @@ eccentricity = eccentricity(LRL)
 rel_error = relative_error(energy)
 
 # Plot the orbits
-fig, ax = plt.subplots(2,2)
+fig, axs = plt.subplots(2,2)
 fig.suptitle(r'Forward Euler Method: Numerical Simulation of the Two-Body Problem')
 
-ax[0,0].plot(s[:,0], s[:,1], 'b.', label='Body 1')
-ax[0,0].plot([0], [0], 'rx', label='Body 2')
-ax[0,0].set_title(r'Orbits')
+axs[0,0].plot(s[:,0], s[:,1], 'b.', label='Body 1')
+axs[0,0].plot([0], [0], 'rx', label='Body 2')
+axs[0,0].set_title(r'Orbits')
 #ax[0,0].set_xlabel(r'$x$-axis'); ax.set_ylabel(r'$y$-axis')
-#ax[0,0].grid(); ax[0,0].legend(loc='best'); ax[0,0].axis('equal')
+#axs[0,0].grid(); ax[0,0].legend(loc='best'); ax[0,0].axis('equal')
 
-ax[0,1].plot(range(0,len(eccentricity)), eccentricity, 'b.', label='Eccentricity')
-ax[0,1].set_title(r'Eccentricity')
+axs[0,1].plot(range(0,len(eccentricity)), eccentricity, 'b.', label='Eccentricity')
+axs[0,1].set_title(r'Eccentricity')
 #ax[0,1].set_xlabel(r'Step $i$'); ax.set_ylabel(r'Eccentricity')
-#ax[0,1].grid(); ax[0,1].legend(loc='best')
+#axs[0,1].grid(); ax[0,1].legend(loc='best')
 
-ax[1,0].plot(range(0,len(energy)), energy, 'b.', label='Total Energy')
-ax[1,0].set_title(r'Total Energy')
+axs[1,0].plot(range(0,len(energy)), energy, 'b.', label='Total Energy')
+axs[1,0].set_title(r'Total Energy')
 #ax[1,0].set_xlabel(r'Step $i$'); ax.set_ylabel(r'Total Energy $E_i$')
-#ax[1,0].grid(); ax[1,0].legend(loc='best')
+#axs[1,0].grid(); ax[1,0].legend(loc='best')
 
-ax[1,1].plot(range(0,len(rel_error)), rel_error, 'b.', label='Relative Error')
-ax[1,1].set_title(r'Relative Error in the Total Energy')
+axs[1,1].plot(range(0,len(rel_error)), rel_error, 'b.', label='Relative Error')
+axs[1,1].set_title(r'Relative Error in the Total Energy')
 #ax[1,1].set_xlabel(r'Step $i$'); ax.set_ylabel(r'Relative Error')
-#ax[1,1].grid(); ax[1,1].legend(loc='best')
 
+for ax in axs.flat:
+    ax.grid(); ax.legend(loc='best')
+    ax.set(xlabel='x-label', ylabel='y-label')
+
+
+fig.subplots_adjust(hspace=0.3)
 fig.savefig('figures/Two-Body-Problem.pdf', format='pdf')
 plt.show(); plt.clf(); plt.close()
