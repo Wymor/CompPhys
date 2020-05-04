@@ -64,7 +64,7 @@ def two_body_problem(body1,body2,G,R0,dt,N):
 
     return (s,w)
 
-v0 = np.sqrt(1.*1./1.)
+v0 = 0.5*np.sqrt(1.*1./1.)
 body1 = Body(1., np.array([1.,0.,0.]), np.array([0.,v0,0.]))
 body2 = Body(1., np.array([0.,0.,0.]), np.array([0.,0.,0.]))
 s, w = two_body_problem(body1, body2, 1., 1., 1e-3, 1e4)
@@ -76,37 +76,29 @@ eccentricity = eccentricity(LRL)
 rel_error = relative_error(energy)
 
 # Plot the orbits
-fig, ax = plt.subplots()
-ax.plot(s[:,0], s[:,1], 'b.', label='Body 1')
-ax.plot([0], [0], 'rx', label='Body 2')
-ax.set_title(r'Numerical Simulation of the 2-Body Problem (Euler Method)')
-ax.set_xlabel(r'$x$-axis'); ax.set_ylabel(r'$y$-axis')
-ax.grid(); ax.legend(loc='best'); ax.axis('equal')
+fig, ax = plt.subplots(2,2)
+fig.suptitle(r'Forward Euler Method: Numerical Simulation of the Two-Body Problem')
+
+ax[0,0].plot(s[:,0], s[:,1], 'b.', label='Body 1')
+ax[0,0].plot([0], [0], 'rx', label='Body 2')
+ax[0,0].set_title(r'Orbits')
+#ax[0,0].set_xlabel(r'$x$-axis'); ax.set_ylabel(r'$y$-axis')
+#ax[0,0].grid(); ax[0,0].legend(loc='best'); ax[0,0].axis('equal')
+
+ax[0,1].plot(range(0,len(eccentricity)), eccentricity, 'b.', label='Eccentricity')
+ax[0,1].set_title(r'Eccentricity')
+#ax[0,1].set_xlabel(r'Step $i$'); ax.set_ylabel(r'Eccentricity')
+#ax[0,1].grid(); ax[0,1].legend(loc='best')
+
+ax[1,0].plot(range(0,len(energy)), energy, 'b.', label='Total Energy')
+ax[1,0].set_title(r'Total Energy')
+#ax[1,0].set_xlabel(r'Step $i$'); ax.set_ylabel(r'Total Energy $E_i$')
+#ax[1,0].grid(); ax[1,0].legend(loc='best')
+
+ax[1,1].plot(range(0,len(rel_error)), rel_error, 'b.', label='Relative Error')
+ax[1,1].set_title(r'Relative Error in the Total Energy')
+#ax[1,1].set_xlabel(r'Step $i$'); ax.set_ylabel(r'Relative Error')
+#ax[1,1].grid(); ax[1,1].legend(loc='best')
+
 fig.savefig('figures/Two-Body-Problem.pdf', format='pdf')
-plt.draw()
-
-fig, ax = plt.subplots()
-ax.plot(range(0,len(energy)), energy, 'b.', label='Total Energy')
-ax.set_title(r'Total Energy')
-ax.set_xlabel(r'Step $i$'); ax.set_ylabel(r'Total Energy $E_i$')
-ax.grid(); ax.legend(loc='best');
-fig.savefig('figures/Total_Energy.pdf', format='pdf')
-plt.draw()
-
-fig, ax = plt.subplots()
-ax.plot(range(0,len(eccentricity)), eccentricity, 'b.', label='Eccentricity')
-ax.set_title(r'Eccentricity')
-ax.set_xlabel(r'Step $i$'); ax.set_ylabel(r'Eccentricity')
-ax.grid(); ax.legend(loc='best');
-fig.savefig('figures/Eccentricity.pdf', format='pdf')
-plt.draw()
-
-fig, ax = plt.subplots()
-ax.plot(range(0,len(rel_error)), rel_error, 'b.', label='Relative Error')
-ax.set_title(r'Relative Error in the Total Energy')
-ax.set_xlabel(r'Step $i$'); ax.set_ylabel(r'Relative Error')
-ax.grid(); ax.legend(loc='best');
-fig.savefig('figures/Relative_Error.pdf', format='pdf')
-plt.draw()
-
 plt.show(); plt.clf(); plt.close()
