@@ -26,13 +26,13 @@ def total_energy(s,w):
 def angular_momentum(s,w):
     angular_momentum = np.zeros((np.shape(s)[0],3))
     for i in range(0,np.shape(s)[0]):
-        angular_momentum[i] = np.dot(s[i],w[i])
+        angular_momentum[i] = np.cross(s[i],w[i])
     return angular_momentum
 
 def laplace_runge_lenz(s,w):
     LRL = np.zeros((np.shape(s)[0],3))
     for i in range(0,np.shape(s)[0]):
-        LRL[i] = np.dot(w[i], np.dot(s[i],w[i]))-s[i]
+        LRL[i] = np.cross(w[i], np.cross(s[i],w[i]))-s[i]
     return LRL
 
 def eccentricity(LRL):
