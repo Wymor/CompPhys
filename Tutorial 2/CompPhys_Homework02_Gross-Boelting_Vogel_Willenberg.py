@@ -79,21 +79,21 @@ rel_error = relative_error(energy)
 fig, axs = plt.subplots(2,2,figsize=(12,8), constrained_layout=True)
 fig.suptitle(r'Forward Euler Method: Numerical Simulation of the Two-Body Problem')
 
-axs[0,0].plot(s[:,0], s[:,1], 'b.', label='Body 1')
+axs[0,0].plot(s[:,0], s[:,1], 'b.', markersize = 1, label='Body 1')
 axs[0,0].plot([0], [0], 'rx', label='Body 2')
 axs[0,0].set_title(r'Orbits')
 axs[0,0].set_xlabel(r'$x$-axis'); axs[0,0].set_ylabel(r'$y$-axis')
 axs[0,0].axis('equal')
 
-axs[0,1].plot(range(0,len(eccentricity)), eccentricity, 'b.', label='Eccentricity')
+axs[0,1].plot(range(0,len(eccentricity)), eccentricity, 'b.', markersize = 1, label='Eccentricity')
 axs[0,1].set_title(r'Eccentricity $\vert\,\vec{e}_i\,\vert=\vert\,\vec{w}_i\times (\vec{s}_i\times\vec{w}_i)-\vec{s}_i\,\vert$ of the Orbit')
 axs[0,1].set_xlabel(r'time step $i$'); axs[0,1].set_ylabel(r'eccentricity $\vert\,\vec{e}_i\,\vert$')
 
-axs[1,0].plot(range(0,len(energy)), energy, 'b.', label='Total Energy')
+axs[1,0].plot(range(0,len(energy)), energy, 'b.', markersize = 1, label='Total Energy')
 axs[1,0].set_title(r'Total Energy $E_i=(w_i^2\,/\,2)-(1/s_i)$')
 axs[1,0].set_xlabel(r'time step $i$'); axs[1,0].set_ylabel(r'total energy $E_i$')
 
-axs[1,1].plot(range(0,len(rel_error)), rel_error, 'b.', label='Relative Error')
+axs[1,1].plot(range(0,len(rel_error)), rel_error, 'b.', markersize = 1, label='Relative Error')
 axs[1,1].set_title(r'Relative Error $\epsilon_i(h)=\vert\,E_i-E_0\,\vert\,/\,\vert\,E_0\,\vert$ in the Total Energy $E_i$')
 axs[1,1].set_xlabel(r'time step $i$'); axs[1,1].set_ylabel(r'relative error $\epsilon_i$')
 
