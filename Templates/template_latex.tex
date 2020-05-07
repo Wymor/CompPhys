@@ -1,0 +1,58 @@
+% Lines that start with a % are comments and are not included when the LaTeX file is converted to a pdf
+
+% Set up the document class - this can be changed if a different format is required 
+\documentclass[12pt,a4paper,twoside]{article}
+
+% Include packages that contain additional features, for example including special mathematical characters and images in your document
+\usepackage{amssymb,amsmath,graphicx}
+
+% The beginning of the document...
+\begin{document}
+
+% Please change the following accordingly...
+\centerline{\large Exercises: Week 135}\vspace{0.5em}
+\centerline{\large by Susy X and Simon Y}\vspace{2em}
+
+% Split the different exercises into different sections...
+\section*{Exercise 1}
+
+% To include a plot it must be in the same directory as the .tex file.
+Here are the plots:\\
+% Remove the "%" in the following line and change the "plot.png" to the name of the plot to include.
+%\includegraphics[width=14cm]{plot.ps}
+
+
+\section*{Exercise 2}
+The computer program we wrote in Fortran-90:
+
+% The  "verbatim" mode is used to get output exactly as it is inputted
+\begin{verbatim}
+program myprog
+  implicit none
+  real :: a
+  read(*,*) a 
+  ....
+  ....
+  ....
+end program
+\end{verbatim}
+
+The results for $a=5$ were:
+\begin{verbatim}
+5
+6
+7
+3
+2
+\end{verbatim}
+
+\section*{Exercise 2}
+The following equation was solved...
+
+% Equations can be written in the "equation" mode as follows
+\begin{equation}
+x^2+x+c=0
+\end{equation} 
+
+\end{document}
+
