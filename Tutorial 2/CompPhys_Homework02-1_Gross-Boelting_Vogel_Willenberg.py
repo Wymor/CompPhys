@@ -75,7 +75,7 @@ def two_body_problem(body1,body2,G,dt,N):
     return (s,w)
 
 
-v0 = np.sqrt(1.*2./1.)
+v0 = 1 #np.sqrt(1.*2./1.)
 body1 = Body(1., np.array([1.,0.,0.]), np.array([0.,v0,0.]))
 body2 = Body(1., np.array([0.,0.,0.]), np.array([0.,0.,0.]))
 s, w = two_body_problem(body1, body2, 1., 1e-3, 1e4)

@@ -18,13 +18,16 @@
   {°}{{$\degree$}}1
   {±}{{$\pm$}}1
 }
- 
+\usepackage{comment}
+
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \title{Introduction to Computational Physics  - Exercise 2}
 \author{Simon Groß-Bölting, Lorenz Vogel, Sebastian Willenberg}
 \date{8. April 2020}
+
+\setcounter{section}{1}
 
 % The beginning of the document...
 \begin{document}
@@ -42,6 +45,7 @@ class Body:
         self.velocity = velocity    # inital velocity vector
 \end{lstlisting}
 
+\begin{comment}
 \section{Numerical Simulation of the 2-Body Problem}
 \begin{itemize}
 	 \item The plot of the simulation looks like the following:
@@ -49,8 +53,13 @@ class Body:
  			%		   \centering
   			%		   \includegraphics[width=\linewidth]{figures/Two-Body-Problem.png}
 			%\end{figure}
-     \item The two bodies can rotate around each other in a circular fashion with a separation of $1$ when the velocity is equal to $v_0 = 2 \sqrt{\frac{G M_1}{R_0}} $.
-     \item If we choose the velocity to be equal to $\frac{v_0}{\sqrt{2}}$, the numerical model will... .
+     \item The two bodies can rotate around each other in a circular fashion with a separation of $1$ when the velocity is equal to $v_0 = 2 \sqrt{\frac{G M}{R_0}} $. The Plot of the motion looks like the following:
+			%\begin{figure}[H]
+ 			%		   \centering
+  			%		   \includegraphics[width=\linewidth]{figures/Two-Body-Problem.png}
+			%\end{figure}
+We can see that the motion of the second Body derives from a circle.  In the Euler Method we have a increase of energy over time.
+     \item If we choose the velocity to be equal to $\frac{v_0}{\sqrt{2}}$ the motion of the body diverges form the form of a circle.  The velocity is smaller than the one eneded to form 
 
 			%\begin{figure}[H]
  			%		   \centering
@@ -69,10 +78,12 @@ class Body:
 			%\end{figure}
 	\item If we choose the velocity to be equal to $\frac{v_0}{3}$ and experiement with decreasing the time step we noticed, that...
 \end{itemize}
+\end{comment}
+
 
 \section{Error Analysis of Euler Scheme }
 \begin{enumerate}[label=(\alph*)]
-    \item  We have varied the initial velocity ...
+    \item  After varying the inital velocity three times we can see that the duble logarithmic plot of the function is always a straight line with the same slope but different starting points. Therefore all the lines are parallel. This differs quite a lot from what we would expect. The law of conservation of energy predicts, that the energy in the system should remain constant. But we actually see that the 
 
 	\item Implementing the Leapfrog scheme...
 
