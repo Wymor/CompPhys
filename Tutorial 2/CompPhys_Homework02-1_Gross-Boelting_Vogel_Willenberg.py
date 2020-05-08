@@ -1,59 +1,11 @@
-\documentclass[11pt, a4paper, nottitlepage]{article}
+# -*- coding: utf-8 -*-
+"""
+Introduction to Computational Physics
+- Exercise 02:  Numerical Simulation of the Two-Body Problem
+                and Error Analysis of the Euler Scheme
+- Group: Simon Groß-Bölting, Lorenz Vogel, Sebastian Willenberg
+"""
 
-% Include packages 
-\usepackage[left=2.54cm,right=2.54cm,top=2.54cm,bottom=2.54cm]{geometry}
-\usepackage{float}
-\usepackage{graphicx}
-\usepackage{listings}
-\usepackage{gensymb}
-\usepackage{xcolor}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[ngerman]{babel}
-\usepackage{enumitem}
-\usepackage{tikz}
-\setlength{\parindent}{0em} 
-\lstset{literate=
-  {²}{{$^2$}}1
-  {η}{{$\eta$}}1
-  {°}{{$\degree$}}1
-  {±}{{$\pm$}}1
-}
-\usepackage{comment}
-
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-
-\lstdefinestyle{mystyle}
-    {backgroundcolor=\color{backcolour},   
-    commentstyle=\color{cyan},
-    keywordstyle=\color{orange},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{purple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=2}
-\lstset{style=mystyle}
-
-\title{Introduction to Computational Physics  - Exercise 2}
-\author{Simon Groß-Bölting, Lorenz Vogel, Sebastian Willenberg}
-\date{8. April 2020}
-
-\setcounter{section}{1}
-
-% The beginning of the document...
-\begin{document}
-\maketitle
-In the first exercise form the worksheet we woked on the following code. In the following exercise we will have a look at the errors of the euler scheme.
-\begin{lstlisting}[language=python]
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -161,33 +113,3 @@ for ax in fig.get_axes():
 
 fig.savefig('figures/Two-Body-Problem.pdf', format='pdf', dpi=250)
 plt.show(); plt.clf(); plt.close()
-\end{lstlisting}
-
-%Aufgabe 1 vorerst auskommentiert 
-\begin{comment}
-\section{Numerical Simulation of the 2-Body Problem}
-\begin{itemize}
-	 \item The plot of the simulation looks like the following:	
-     \item The two bodies can rotate around each other in a circular fashion with a separation of $1$ when the velocity is equal to $v_0 = 2 \sqrt{\frac{G M}{R_0}} $. The Plot of the motion looks like the following: We can see that the motion of the second Body derives from a circle.  In the Euler Method we have a increase of energy over time.
-     \item If we choose the velocity to be equal to $\frac{v_0}{\sqrt{2}}$ the motion of the body diverges form the form of a circle.  The velocity is smaller than the one eneded to form 
-	\item The eccentricity of the Runge-Lenz-Laplace Vector looks like the following:
-	\item If we choose the initial velocity to be larger to $\sqrt{2} v_0$, the numerical model will... .
-	\item If we choose the velocity to be equal to $\frac{v_0}{3}$ and experiement with decreasing the time step we noticed, that...
-\end{itemize}
-\end{comment}
-
-
-\section{Error Analysis of Euler Scheme }
-\begin{enumerate}[label=(\alph*)]
-    \item  After varying the inital velocity three times we can see that the duble logarithmic plot of the function is always a straight line with the same slope but different starting points. Therefore all the lines are parallel. This differs quite a lot from what we would expect. The law of conservation of energy predicts, that the energy in the system should remain constant. But we actually see that the energy in the system increases. 
-
-		    \begin{figure}[H]
- 					   \centering
-  					   \includegraphics[width=\linewidth]{figures/Euler-Scheme_Error-Analysis.pdf}
-			\end{figure}
-	\item After implementing the Leapfrog scheme we can see, that the energy remains constant for initial velocities that are smaller or equal to  $v_0 = 2 \sqrt{\frac{G M}{R_0}} $. This means that the conservation of enrgy applies here. If we pllot the motion in this case we can see that the circular remains equidistant to the center. But if we look at initial velocities that are greater than  $v_0 = 2 \sqrt{\frac{G M}{R_0}} $ we can see that the Leapfrog scheme also deviates from the constant energy. If we look at the plot we can see that it actually decreases.
-
-\end{enumerate}
-
-\end{document}
-
