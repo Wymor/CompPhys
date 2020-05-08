@@ -216,7 +216,7 @@ fig.savefig('figures/Two-Body-Problem_Euler-Method.pdf', format='pdf', dpi=100)
 
 \section{Error Analysis of Euler Scheme }
 \begin{enumerate}[label=(\alph*)]
-    \item  After varying the inital velocity three times we can see that the duble logarithmic plot of the function is always a straight line with the same slope but different starting points. Therefore all the lines are parallel. This differs quite a lot from what we would expect. The law of conservation of energy predicts, that the energy in the system should remain constant. But we actually see that the energy in the system increases. 
+    \item  After varying the inital velocity three times we can see that the duble logarithmic plot of the function is always a straight line with the same slope but different starting points. Therefore all the lines are parallel. This differs quite a lot from what we would expect. The law of conservation of energy predicts, that the energy in the system should remain constant. But we actually see that the energy in the system increases. This also becomes apparent in the plot with the relative motion. We can see that the path of the second body deviates slightly from the circular path it is supposed to take. That means that the distance between both bodies increases with each orbit. 
 
 \begin{lstlisting}[language=python]
 ## Error Analysis of the Euler and the Leapfrog Scheme
