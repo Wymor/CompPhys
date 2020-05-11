@@ -10,7 +10,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-
 def rk4_step(y0, x0, f, h, f_args = {}):
     ''' Simple python implementation for one RK4 step.
         Inputs:
@@ -116,20 +115,30 @@ body3 = Body(1., np.array([0.,0.]), np.array([0.93240737,0.86473146]))
 
 # numerical simulation of the gravitational three-body problem
 # using the Runge-Kutta-4 integrator
-yn, xn = rk4(initial_conditions(body1,body2,body3),0,three_body_problem,0.001,3000,
+yn, xn = rk4(initial_conditions(body1,body2,body3),0,three_body_problem,0.001,6320,
              {'G':G, 'm1':body1.mass, 'm2':body2.mass, 'm3':body3.mass})
 
 # plot the trajectories of the three bodies
 fig, ax = plt.subplots()
 
-def trajectories(i):
-    ax.clear()
-    ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem')
-    ax.set_xlabel(r'$x$-coordinates'); ax.set_ylabel(r'$y$-coordinates')
-    ax.plot(yn[:10*i,0], yn[:10*i,1], 'b.', label='Body 1')
-    ax.plot(yn[:10*i,4], yn[:10*i,5], 'r.', label='Body 2')
-    ax.plot(yn[:10*i,8], yn[:10*i,9], 'g.', label='Body 3')
-    ax.legend(loc='upper right'); ax.axis('equal')
+ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem')
+ax.set_xlabel(r'$x$-coordinates'); ax.set_ylabel(r'$y$-coordinates')
 
-animate = animation.FuncAnimation(fig, trajectories, interval=1)
+ax.plot(yn[:,0], yn[:,1], color='black', ls='-', lw=1)
+line1, = ax.plot([], [], 'b.', ms=40, label='Body 1')
+line2, = ax.plot([], [], 'r.', ms=40, label='Body 2')
+line3, = ax.plot([], [], 'g.', ms=40, label='Body 3')
+
+ax.legend(loc='upper right', markerscale=0.4)
+ax.set_xlim((-1.2,1.2)); ax.set_ylim((-1,1))
+
+def trajectories(i):
+    index = i*10
+    line1.set_data(yn[index-1:index,0], yn[index-1:index,1])
+    line2.set_data(yn[index-1:index,4], yn[index-1:index,5])
+    line3.set_data(yn[index-1:index,8], yn[index-1:index,9])
+    return (line1, line2, line3,)
+
+animate = animation.FuncAnimation(fig, trajectories, frames=631, interval=1,
+                                  repeat=True, blit=True)
 plt.show(); plt.clf(); plt.close()
