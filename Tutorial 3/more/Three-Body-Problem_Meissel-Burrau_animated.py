@@ -8,7 +8,7 @@ Introduction to Computational Physics
 
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.signal import argrelextrema
+import matplotlib.animation as animation
 
 def rk4_step(y0, x0, f, h, f_args = {}):
     ''' Simple python implementation for one RK4 step.
@@ -108,101 +108,32 @@ body1 = Body(3., np.array([1.,3.]))
 body2 = Body(4., np.array([-2.,-1.]))
 body3 = Body(5., np.array([1.,-1.]))
 
+
 # numerical simulation of the gravitational three-body problem
 # using the Runge-Kutta-4 integrator
 yn, xn = rk4(initial_conditions(body1,body2,body3),0,three_body_problem,2e-5,int(8*1e5),
              {'G':G, 'm1':body1.mass, 'm2':body2.mass, 'm3':body3.mass})
 
-
-def min_separation(yn,xn):
-    ''' Function to compute the separation between two bodies
-        and store this data in a file '''
-    separation = np.zeros((len(xn),4))
-    separation[:,0] = xn
-    separation[:,1] = np.sqrt((yn[:,0]-yn[:,4])**2+(yn[:,1]-yn[:,5])**2)
-    separation[:,2] = np.sqrt((yn[:,0]-yn[:,8])**2+(yn[:,1]-yn[:,9])**2)
-    separation[:,3] = np.sqrt((yn[:,4]-yn[:,8])**2+(yn[:,5]-yn[:,9])**2)
-
-    index_min_12 = argrelextrema(separation[:,1], np.less)[0]
-    index_min_13 = argrelextrema(separation[:,2], np.less)[0]
-    index_min_23 = argrelextrema(separation[:,3], np.less)[0]
-
-    min_separation_12 = np.array([separation[:,0][index_min_12],
-                                  separation[:,1][index_min_12]])
-    min_separation_13 = np.array([separation[:,0][index_min_13],
-                                  separation[:,2][index_min_13]])
-    min_separation_23 = np.array([separation[:,0][index_min_23],
-                                  separation[:,3][index_min_23]])
-
-    np.savetxt('data/separation.txt', separation, delimiter='\t')
-    np.savetxt('data/min_separation_12.txt', min_separation_12, delimiter='\t')
-    np.savetxt('data/min_separation_13.txt', min_separation_13, delimiter='\t')
-    np.savetxt('data/min_separation_23.txt', min_separation_23, delimiter='\t')
-
-def error_total_energy(G,body1,body2,body3,yn):
-    ''' Function to compute the relative error of the total energy
-        of the system compared to the initial value '''
-
-    # compute the total kinetic energy of the system
-    kin_energy = 0.5*(body1.mass*(yn[:,2]**2+yn[:,3]**2)
-                     +body2.mass*(yn[:,6]**2+yn[:,7]**2)
-                     +body3.mass*(yn[:,10]**2+yn[:,11]**2))
-
-    # compute the total potential energy of the system
-    r12 = np.sqrt((yn[:,0]-yn[:,4])**2+(yn[:,1]-yn[:,5])**2)
-    r13 = np.sqrt((yn[:,0]-yn[:,8])**2+(yn[:,1]-yn[:,9])**2)
-    r23 = np.sqrt((yn[:,4]-yn[:,8])**2+(yn[:,5]-yn[:,9])**2)
-    pot_energy = -G*((body1.mass*body2.mass/r12)
-                    +(body1.mass*body3.mass/r13)
-                    +(body2.mass*body3.mass/r23))
-
-    # compute the total energy of the system and the relative error
-    total_energy = kin_energy+pot_energy
-    relative_error = abs(total_energy-total_energy[0])/abs(total_energy[0])
-    return (total_energy, relative_error)
-
-
-min_separation(yn,xn)
-separation = np.loadtxt('data/separation.txt')
-min_sep_12 = np.loadtxt('data/min_separation_12.txt')
-min_sep_13 = np.loadtxt('data/min_separation_13.txt')
-min_sep_23 = np.loadtxt('data/min_separation_23.txt')
-total_energy, relative_error = error_total_energy(G,body1,body2,body3,yn)
-
-
+# plot the trajectories of the three bodies
 fig, ax = plt.subplots()
-ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem\n'+
-             'time evolution of the distance between two bodies')
-ax.set_xlabel('time'); ax.set_ylabel('distance')
-ax.plot(separation[:,0], separation[:,1], 'r.', markersize=2, label='Bodies 1 and 2')
-ax.plot(separation[:,0], separation[:,2], 'g.', markersize=2, label='Bodies 1 and 3')
-ax.plot(separation[:,0], separation[:,3], 'b.', markersize=2, label='Bodies 2 and 3')
-ax.grid(); ax.legend(loc='best'); ax.set_yscale('log')
 
+ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem (Meissel-Burrau Problem)')
+ax.set_xlabel(r'$x$-coordinates'); ax.set_ylabel(r'$y$-coordinates')
 
-fig, ax = plt.subplots()
-ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem\n'+
-             'time evolution of the minimum separation between two bodies')
-ax.set_xlabel('time'); ax.set_ylabel('distance')
-ax.plot(min_sep_12[0], min_sep_12[1], 'rx', label='Bodies 1 and 2')
-ax.plot(min_sep_13[0], min_sep_13[1], 'gx', label='Bodies 1 and 3')
-ax.plot(min_sep_23[0], min_sep_23[1], 'bx', label='Bodies 2 and 3')
-ax.grid(); ax.legend(loc='best'); ax.set_yscale('log')
+line1, = ax.plot([], [], 'r.', ms=30, label='Body 1')
+line2, = ax.plot([], [], 'g.', ms=30, label='Body 2')
+line3, = ax.plot([], [], 'b.', ms=30, label='Body 3')
 
+ax.legend(loc='upper right', markerscale=0.6)
+ax.set_xlim((-6,4)); ax.set_ylim((-20,20))
 
-fig, ax = plt.subplots()
-ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem\n'+
-             'time evolution of the total energy of the system')
-ax.set_xlabel('time'); ax.set_ylabel('relative error of the total energy')
-ax.plot(xn, total_energy, 'b.', markersize=2)
-ax.grid()
+def trajectories(i):
+    index = i*300
+    line1.set_data(yn[index-1:index,0], yn[index-1:index,1])
+    line2.set_data(yn[index-1:index,4], yn[index-1:index,5])
+    line3.set_data(yn[index-1:index,8], yn[index-1:index,9])
+    return (line1, line2, line3,)
 
-
-fig, ax = plt.subplots()
-ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem\n'+
-             'time evolution of the relative error of the total energy')
-ax.set_xlabel('time'); ax.set_ylabel('relative error of the total energy')
-ax.plot(xn, relative_error, 'b.', markersize=2)
-ax.grid(); ax.set_yscale('log')
-
+animate = animation.FuncAnimation(fig, trajectories, frames=int(8*1e5/300),
+                                  interval=1, repeat=True, blit=True)
 plt.show(); plt.clf(); plt.close()
