@@ -55,7 +55,6 @@ def rk4(y0, x0, f, h, n, f_args = {}):
 
     return(yn, xn)
 
-
 def three_body_problem(y,x,G,m1,m2,m3):
     ''' Twelve coupled ordinary differential equations of first order
         (converted into the standard form) '''
@@ -85,7 +84,6 @@ def three_body_problem(y,x,G,m1,m2,m3):
 
     return yn
 
-
 class Body:
     def __init__(self,mass,position,velocity=np.array([0.,0.])):
         self.mass = mass            # mass of the body
@@ -104,17 +102,29 @@ def initial_conditions(body1,body2,body3):
 
 G = 1.  # simplify the system by setting the gravitational constant to G=1
 # create the three bodies with their initial conditions
+
 body1 = Body(1., np.array([-0.97000436,0.24308753]), np.array([-0.46620368,-0.43236573]))
 body2 = Body(1., np.array([0.97000436,-0.24308753]), np.array([-0.46620368,-0.43236573]))
 body3 = Body(1., np.array([0.,0.]), np.array([0.93240737,0.86473146]))
 
+#body1 = Body(1., np.array([0.,0.]), np.array([0.,1.]))
+#body2 = Body(1., np.array([1.,0.]))
+#body3 = Body(1., np.array([-1.,0.]), np.array([0.,-1.]))
+
+#body1 = Body(3., np.array([1.,3.]))
+#body2 = Body(4., np.array([-2.,-1.]))
+#body3 = Body(5., np.array([1.,-1.]))
+
+#body1 = Body(3., np.array([3.,1.]))
+#body2 = Body(4., np.array([-2.,-1.]))
+#body3 = Body(5., np.array([1.,-1.]),np.array([0.1,0]))
 
 # numerical simulation of the gravitational three-body problem
 # using the Runge-Kutta-4 integrator
-yn, xn = rk4(initial_conditions(body1,body2,body3),0,three_body_problem,0.001,6320,
+yn, xn = rk4(initial_conditions(body1,body2,body3),0,three_body_problem,0.001,int(6320),
              {'G':G, 'm1':body1.mass, 'm2':body2.mass, 'm3':body3.mass})
 
-# plot the trajectories of the three bodies
+# plot the animated trajectories of the three bodies
 fig, ax = plt.subplots()
 
 ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem')
@@ -135,6 +145,6 @@ def trajectories(i):
     line3.set_data(yn[index-1:index,8], yn[index-1:index,9])
     return (line1, line2, line3,)
 
-animate = animation.FuncAnimation(fig, trajectories, frames=631, interval=1,
-                                  repeat=True, blit=True)
+animate = animation.FuncAnimation(fig, trajectories, frames=int(6320/10),
+                                  interval=1, repeat=True, blit=True)
 plt.show(); plt.clf(); plt.close()

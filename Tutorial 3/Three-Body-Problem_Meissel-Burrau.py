@@ -55,7 +55,6 @@ def rk4(y0, x0, f, h, n, f_args = {}):
 
     return(yn, xn)
 
-
 def three_body_problem(y,x,G,m1,m2,m3):
     ''' Twelve coupled ordinary differential equations of first order
         (converted into the standard form) '''
@@ -85,7 +84,6 @@ def three_body_problem(y,x,G,m1,m2,m3):
 
     return yn
 
-
 class Body:
     def __init__(self,mass,position,velocity=np.array([0.,0.])):
         self.mass = mass            # mass of the body
@@ -101,28 +99,17 @@ def initial_conditions(body1,body2,body3):
                      body3.position[0],body3.position[1],
                      body3.velocity[0],body3.velocity[1]])
 
-
-G = 1.  # simplify the system by setting the gravitational constant to G=1
-# create the three bodies with their initial conditions (Meissel-Burrau Problem)
-body1 = Body(3., np.array([1.,3.]))
-body2 = Body(4., np.array([-2.,-1.]))
-body3 = Body(5., np.array([1.,-1.]))
-
-# numerical simulation of the gravitational three-body problem
-# using the Runge-Kutta-4 integrator
-yn, xn = rk4(initial_conditions(body1,body2,body3),0,three_body_problem,2e-5,int(8*1e5),
-             {'G':G, 'm1':body1.mass, 'm2':body2.mass, 'm3':body3.mass})
-
-
 def min_separation(yn,xn):
     ''' Function to compute the separation between two bodies
         and store this data in a file '''
     separation = np.zeros((len(xn),4))
-    separation[:,0] = xn
+    separation[:,0] = xn    # time column
+    # compute the distance between two bodies
     separation[:,1] = np.sqrt((yn[:,0]-yn[:,4])**2+(yn[:,1]-yn[:,5])**2)
     separation[:,2] = np.sqrt((yn[:,0]-yn[:,8])**2+(yn[:,1]-yn[:,9])**2)
     separation[:,3] = np.sqrt((yn[:,4]-yn[:,8])**2+(yn[:,5]-yn[:,9])**2)
 
+    # find the minimum distances between two bodies
     index_min_12 = argrelextrema(separation[:,1], np.less)[0]
     index_min_13 = argrelextrema(separation[:,2], np.less)[0]
     index_min_23 = argrelextrema(separation[:,3], np.less)[0]
@@ -134,6 +121,7 @@ def min_separation(yn,xn):
     min_separation_23 = np.array([separation[:,0][index_min_23],
                                   separation[:,3][index_min_23]])
 
+    # store the results into txt-files
     np.savetxt('data/separation.txt', separation, delimiter='\t')
     np.savetxt('data/min_separation_12.txt', min_separation_12, delimiter='\t')
     np.savetxt('data/min_separation_13.txt', min_separation_13, delimiter='\t')
@@ -159,27 +147,56 @@ def error_total_energy(G,body1,body2,body3,yn):
     # compute the total energy of the system and the relative error
     total_energy = kin_energy+pot_energy
     relative_error = abs(total_energy-total_energy[0])/abs(total_energy[0])
-    return (total_energy, relative_error)
+    return relative_error
 
 
-min_separation(yn,xn)
-separation = np.loadtxt('data/separation.txt')
+G = 1.  # simplify the system by setting the gravitational constant to G=1
+# create the three bodies with their initial conditions:
+# Meissel-Burrau problem or Pythagorean problem
+body1 = Body(3., np.array([1.,3.]))
+body2 = Body(4., np.array([-2.,-1.]))
+body3 = Body(5., np.array([1.,-1.]))
+
+# numerical simulation of the gravitational three-body problem
+# using the Runge-Kutta-4 integrator
+yn, xn = rk4(initial_conditions(body1,body2,body3),0,three_body_problem,4e-5,int(5*1e5),
+             {'G':G, 'm1':body1.mass, 'm2':body2.mass, 'm3':body3.mass})
+
+
+min_separation(yn,xn) # compute the minimum separation
+separation = np.loadtxt('data/separation.txt')  # load distance data from files
 min_sep_12 = np.loadtxt('data/min_separation_12.txt')
 min_sep_13 = np.loadtxt('data/min_separation_13.txt')
 min_sep_23 = np.loadtxt('data/min_separation_23.txt')
-total_energy, relative_error = error_total_energy(G,body1,body2,body3,yn)
+
+# compute the total energy and the relative error of the total energy
+relative_error = error_total_energy(G,body1,body2,body3,yn)
 
 
+# plot the trajectories of the three bodies in the orbital plane
+fig, ax = plt.subplots()
+ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem\n'+
+             'trajectories of the three bodies in the orbital plane')
+ax.set_xlabel(r'$x$-coordinates'); ax.set_ylabel(r'$y$-coordinates')
+ax.plot(yn[:,0], yn[:,1], 'r.', markersize=1, label='Body 1')
+ax.plot(yn[:,4], yn[:,5], 'g.', markersize=1, label='Body 2')
+ax.plot(yn[:,8], yn[:,9], 'b.', markersize=1, label='Body 3')
+ax.set_xlim((-3.5,3.5)); ax.set_ylim((-3,4))
+ax.grid(); ax.legend(loc='best', markerscale=8)
+fig.savefig('figures/Meissel-Burrau_Trajectories.png', format='png')
+
+# plot the time evolution of the distance between two bodies
 fig, ax = plt.subplots()
 ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem\n'+
              'time evolution of the distance between two bodies')
 ax.set_xlabel('time'); ax.set_ylabel('distance')
-ax.plot(separation[:,0], separation[:,1], 'r.', markersize=2, label='Bodies 1 and 2')
-ax.plot(separation[:,0], separation[:,2], 'g.', markersize=2, label='Bodies 1 and 3')
-ax.plot(separation[:,0], separation[:,3], 'b.', markersize=2, label='Bodies 2 and 3')
-ax.grid(); ax.legend(loc='best'); ax.set_yscale('log')
+ax.plot(separation[:,0], separation[:,1], 'r.', markersize=1, label='Bodies 1 and 2')
+ax.plot(separation[:,0], separation[:,2], 'g.', markersize=1, label='Bodies 1 and 3')
+ax.plot(separation[:,0], separation[:,3], 'b.', markersize=1, label='Bodies 2 and 3')
+ax.grid(); ax.legend(loc='best', markerscale=8); ax.set_yscale('log')
+fig.savefig('figures/Meissel-Burrau_Distances.png', format='png')
 
-
+# plot the time evolution of the minimum separation between two bodies
 fig, ax = plt.subplots()
 ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem\n'+
              'time evolution of the minimum separation between two bodies')
@@ -188,21 +205,14 @@ ax.plot(min_sep_12[0], min_sep_12[1], 'rx', label='Bodies 1 and 2')
 ax.plot(min_sep_13[0], min_sep_13[1], 'gx', label='Bodies 1 and 3')
 ax.plot(min_sep_23[0], min_sep_23[1], 'bx', label='Bodies 2 and 3')
 ax.grid(); ax.legend(loc='best'); ax.set_yscale('log')
+fig.savefig('figures/Meissel-Burrau_Minimum-Separation.png', format='png')
 
-
-fig, ax = plt.subplots()
-ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem\n'+
-             'time evolution of the total energy of the system')
-ax.set_xlabel('time'); ax.set_ylabel('relative error of the total energy')
-ax.plot(xn, total_energy, 'b.', markersize=2)
-ax.grid()
-
-
+# plot the time evolution of the relative error of the total energy
 fig, ax = plt.subplots()
 ax.set_title('Numerical Simulation of the Gravitational Three-Body Problem\n'+
              'time evolution of the relative error of the total energy')
 ax.set_xlabel('time'); ax.set_ylabel('relative error of the total energy')
-ax.plot(xn, relative_error, 'b.', markersize=2)
-ax.grid(); ax.set_yscale('log')
+ax.plot(xn, relative_error, 'b.', markersize=1); ax.grid(); ax.set_yscale('log')
+fig.savefig('figures/Meissel-Burrau_Realtive-Error.png', format='png')
 
 plt.show(); plt.clf(); plt.close()
