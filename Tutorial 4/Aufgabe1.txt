@@ -1,0 +1,77 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+# Equasion: psi''(z) + 2m/h**2 (E-V(z)) * psi(z) = 0
+# V(z) = mz**2/2 => m*x**2*z0**2/2
+
+# Equasion: psi''(x) + (e - x)psi(x) = 0
+# mit e = E/(m*g)*(2*m^2*g/h_quer^2)^1/3
+h_quer = 1.054571*1e-34
+g = 9.18
+
+
+def numerov_step(k1,k2,k3,y1,y2,h):
+    # k1 = k_(n-1), k2 = k_n,  k3 = k_(n+1)
+    # y1 = y_(n-1), y2 = y_n
+    m = 2*(1-5/12*h**2*k2)*y2
+    n = (1+ 1/12*h**2*k1)*y1
+    o = (1+1/12*h**2*k3)
+    return (m-n)/o
+
+def numerov(x0,xE,N,n,a):
+    x, dx = np.linspace(x0,xE,N,retstep=True)
+    psi = np.ones(N)
+
+    e = n +0.5
+    k = 2*e-x**2
+    psi[0] = a
+    if (n%2 ==0):
+        psi[1] = psi[0] - dx**2*k[0]*psi[0]/2
+    else:
+        psi[1] = -a
+
+    for i in np.arange(2,N):
+        psi[i] = numerov_step(k[i-2],k[i-1],k[i],psi[i-2],psi[i-1],dx)
+    
+    psi = psi/max(psi)*max(hermite(x0,xE,N,n))
+    
+
+    return psi
+
+
+def hermite(x0,xE,N,n):
+    x = np.linspace(x0,xE,N)
+    psi = h_n(x,n)/(2**n*np.math.factorial(n)*np.sqrt(n))**0.5*np.exp(-x**2/2)
+    return psi
+    
+def h_n(x,n):
+    if(n == 0):
+        return 1
+    elif(n == 1):
+        return 2*x
+    else:
+        return 2*x*h_n(x,n-1)-2*(n-1)*h_n(x,n-2)
+
+
+x0 = -5
+xE = 5
+N = 1000
+a = 1
+n = 2
+
+
+x = np.linspace(x0,xE,N)
+for i in range(5):
+    n = i+1
+    plt.plot(x,numerov(x0,xE,N,n,a),label ='Numerov n = '+str(n))
+    plt.plot(x,hermite(x0,xE,N,n),'--',label ='Hermite n = '+str(n))
+
+# psi_result_numerov = numerov(x0,xE,N,n,a)
+# psi_hermite = hermite(x0,xE,N,n)
+
+
+# plt.plot(x,psi_result_numerov,label ='Numerov')
+# plt.plot(x,psi_hermite,label='hermit')
+plt.legend()
+plt.show()
