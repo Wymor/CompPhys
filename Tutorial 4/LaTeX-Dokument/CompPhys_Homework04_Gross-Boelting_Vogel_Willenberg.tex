@@ -1,0 +1,145 @@
+\documentclass[10pt, a4paper, nottitlepage]{article}
+
+% Include packages 
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+\usepackage{extarrows}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{fontawesome}
+\usepackage{marvosym}
+\usepackage{acronym}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage[locale=DE]{siunitx}
+\usepackage{icomma}
+\usepackage{bigdelim}
+\usepackage{isotope}
+\setlength{\parindent}{0em} 
+\lstset{literate=
+  {²}{{$^2$}}1
+  {η}{{$\eta$}}1
+  {°}{{$\degree$}}1
+  {±}{{$\pm$}}1
+  {ö}{{\"o}}1 
+  {ä}{{\"a}}1 
+  {Ä}{{\"A}}1 
+  {ü}{{\"u}}1 
+  {Ü}{{\"U}}1 
+  {ß}{{\ss}}1}
+\usepackage{comment}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}
+    {backgroundcolor=\color{backcolour},   
+    commentstyle=\color{cyan},
+    keywordstyle=\color{orange},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{purple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2}
+\lstset{style=mystyle}
+
+\title{Introduction to Computational Physics  -- Exercise 4}
+\author{Simon Groß-Bölting, Lorenz Vogel, Sebastian Willenberg}
+\date{May 22, 2020}
+
+\setcounter{section}{1}
+% The beginning of the document...
+\begin{document}
+\maketitle
+
+The Numerov algorithm is an efficient approach to numerically solve the time-independet
+Schrödinger equation. We want to use the Numerov algorithm to calculate the stationary states $\Psi(z)$ of neutrons in the gravitational field of the Earth.
+For small changes in the vertical amplitude $z$ the potential can be expressed as $V(z)=mgz$ for $z\geq 0$. By placing a perfectly reflecting horizontal mirror at $z=0$ the potential becomes $V(z)=\infty$ for $z<0$. Neutrons that fall onto the mirror are reflected upwards, and so we only seek solutions for $z\geq 0$.
+The stationary Schrödinger equation for this problem is given by 
+\begin{equation}
+\biggl\lbrace -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial z^2}+mgz\biggr\rbrace\Psi(z) = E\Psi(z)\quad\text{,}
+\end{equation}
+with $E$ being the energy eigenvalue of the Hamilton operator.
+We can rewrite this equation to:
+\begin{equation}
+\frac{\partial^2}{\partial z^2}\Psi(z) - \frac{2m}{\hbar^2}\left(E-mgz\right)\Psi(z) = 0
+\qquad\Longleftrightarrow\qquad
+\frac{\partial^2}{\partial z^2}\Psi(z) - \frac{2m^2g}{\hbar^2}\left(\frac{E}{mg}-z\right)\Psi(z) = 0
+\end{equation}
+By looking at the units of the factor in front of the bracket
+\begin{equation}
+\left[\frac{2m^2g}{\hbar^2}\right]
+= 	\frac{\si{\square\kilogram\meter\per\square\second}}{\left(\si{\joule\second}\right)^2}
+= 	\frac{\si{\kilogram\squared\meter}}{\si{\second\tothe{4}}}
+\left(\frac{\si{\kilogram\square\meter}}{\si{\second\squared}}\right)^{-2}
+=	\frac{\si{\kilogram\squared\meter}}{\si{\second\tothe{4}}}\:
+\frac{\si{\second\tothe{4}}}{\si{\square\kilogram\meter\tothe{4}}}
+=	\si{\per\cubic\meter}\quad\text{,}
+\end{equation}
+we find a suitable definition for the characteristic length scale $z_0$:
+\begin{equation}
+\frac{1}{z_0} := \left(\frac{2m^2g}{\hbar^2}\right)^{1/3}
+\end{equation}
+If we use the notation $x:=z/z_0$ and $\Psi(z):=\psi(x)/\sqrt{z_0}$, the second order partial derivative becomes:
+\begin{equation}
+\frac{\partial^2}{\partial z^2}\Psi(z)
+=	\frac{1}{\sqrt{z_0}}\,\frac{1}{z_0^2}\,\frac{\partial^2}{\partial x^2}\psi(x)
+=	\frac{1}{z_0^{5/2}}\,\frac{\partial^2}{\partial x^2}\psi(x)
+\end{equation}
+The differential equation then becomes:
+\begin{equation}
+\frac{1}{z_0^{5/2}}\,\frac{\partial^2}{\partial x^2}\psi(x) - 
+\frac{1}{z_0^3}\,\frac{1}{\sqrt{z_0}}\left(\frac{E}{mg}-z\right)\psi(x) = 0
+\qquad\Longleftrightarrow\qquad
+\frac{\partial^2}{\partial x^2}\psi(x) - 
+\frac{1}{z_0}\left(\frac{E}{mg}-z\right)\psi(x) = 0
+\end{equation}
+We now define the characteristic energy scale as $E_0:=mgz_0$.
+The unit of $E_0$ is then given by:
+\begin{equation}
+\left[E_0\right] = \left[mgz_0\right]
+=	\si{\kilogram\meter\per\square\second\meter}
+= 	\si{\kilogram\square\meter\per\square\second}
+=	\si{\joule}
+\end{equation}
+
+After this proper choice of length and energy units
+\begin{equation}
+x := \frac{z}{z_0} = z\left(\frac{2m^2g}{\hbar^2}\right)^{1/3}
+\qquad\text{and}\qquad
+\epsilon 	:= \frac{E}{E_0} = \frac{E}{mgz_0}
+=  \frac{E}{mg}\left(\frac{2m^2g}{\hbar^2}\right)^{1/3}
+\end{equation}
+the Schrödinger equation for neutrons in the gravitational field of the Earth can be rewritten as:
+\begin{equation}
+\frac{\partial^2}{\partial x^2}\psi(x)+(\epsilon-x)\psi(x)
+\qquad\Longleftrightarrow\qquad
+\psi^{\prime\prime}(x) + (\epsilon-x)\psi(x) = 0
+\end{equation}
+
+
+\end{document}
