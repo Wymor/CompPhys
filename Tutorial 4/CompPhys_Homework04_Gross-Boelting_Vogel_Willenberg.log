@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  22 MAY 2020 10:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  22 MAY 2020 10:54
 entering extended mode
 **./CompPhys_Homework04_Gross-Boelting_Vogel_Willenberg.tex
 (CompPhys_Homework04_Gross-Boelting_Vogel_Willenberg.tex
@@ -1443,7 +1443,8 @@ Package pdftex.def Info: figures/Eigenvalues_Probability-Amplitude.pdf  used on
 (pdftex.def)             Requested size: 223.07211pt x 167.30746pt.
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 196.
- (Numerov-Algorithm_Schroedinger-Equation.py
+
+(Numerov-Algorithm_Homework04_Gross-Boelting_Vogel_Willenberg.py
 LaTeX Font Info:    Try loading font information for OMS+lmr on input line 1.
 
 ("C:\Users\loren\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmr.fd"
@@ -1470,7 +1471,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
  ) 
 Here is how much of TeX's memory you used:
  35961 strings out of 492970
- 678823 string characters out of 3126593
+ 678886 string characters out of 3126593
  966919 words of memory out of 3000000
  39162 multiletter control sequences out of 15000+200000
  615605 words of font info for 86 fonts, out of 3000000 for 9000
