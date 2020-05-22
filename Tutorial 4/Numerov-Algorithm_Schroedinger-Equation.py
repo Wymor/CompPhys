@@ -15,7 +15,7 @@ class Particle:
         self.mass = mass        # mass [kg] of the particle
         self.energy = energy    # energy [eV] of the particle
 
-def calculate_wavefunction(particle,zrange,N):
+def calculate_wavefunction(particle,z,dz,N):
     ''' Function to compute the wavefunction for a particle in the
         gravitational field of the Earth using the Numerov algorithm
         Input:  particle of the class "Particle" with mass [kg] and energy [eV]
@@ -25,10 +25,10 @@ def calculate_wavefunction(particle,zrange,N):
     z0 = (const.hbar**2/(2*particle.mass**2*const.g))**(1/3)
 
     # compute the scaled length and energy units (dimensionless)
-    x = zrange/z0; epsilon = particle.energy*const.e/(particle.mass*const.g*z0)
+    x = z/z0; epsilon = particle.energy*const.e/(particle.mass*const.g*z0)
 
     k = epsilon-x
-    h_sq = (abs(max(x)-min(x))/N)**2    # squared step size
+    h_sq = (dz/z0)**2                   # squared step size
     psi = np.zeros(N)                   # empty array for the wavefunction
     psi[0] = 0; psi[1] = 1e-20          # set conditions at the mirror
 
@@ -37,17 +37,17 @@ def calculate_wavefunction(particle,zrange,N):
                 -(1.+(1./12.)*h_sq*k[i-2])*psi[i-2])/(1.+(1./12.)*h_sq*k[i])
     return (x,psi,epsilon)
 
-def find_eigenvalue(particle,energy_step,precision):
+def find_eigenvalue(particle,z,dz,N,energy_step,precision):
     ''' Function to compute the energy eigenvalues using sign changes
         of the asymptotic behavior for different trial energies
         Input:  particle of the class "Particle" with a trial energy [eV],
                 energy step size [eV] and precision [eV]
         Output: energy eigenvalue [eV] '''
-    psi1 = calculate_wavefunction(particle, z, N)[1][N-1]
+    psi1 = calculate_wavefunction(particle,z,dz,N)[1][N-1]
 
     while abs(energy_step) > precision:
         particle.energy += energy_step
-        psi2 = calculate_wavefunction(neutron, z, N)[1][N-1]
+        psi2 = calculate_wavefunction(neutron,z,dz,N)[1][N-1]
 
         if psi1*psi2<0: # check for sign change
             energy_step = -energy_step/2    # reduce energy step
@@ -56,10 +56,10 @@ def find_eigenvalue(particle,energy_step,precision):
 
 
 # Exercise 1: We use the Numerov algorithm to solve the differential equation
-N = int(2e4)                            # set number of iterations
-z = 1e-6*np.linspace(0,40,N)            # set z-range [0 to 50 micrometre]
-energy = 1e-12*np.array([2.4,2.5])      # set energy values
-color = ['blue','red']                  # set color of the graphs
+N = int(2e4)                                # set number of iterations
+z, dz = np.linspace(0,40e-6,N,retstep=True) # set z-range [0 to 40 micrometre]
+energy = 1e-12*np.array([2.4,2.5])          # set energy values
+color = ['blue','red']                      # set color of the graphs
 
 # plot the corresponding wavefunctions for two energy values:
 # one with positive and one with negative asymptotic behavior
@@ -71,7 +71,7 @@ ax.set_ylabel(r'solution $\psi(x)$')
 
 for i in range(0,len(energy)):
     neutron = Particle(const.neutron_mass, energy[i])
-    x, psi, eps = calculate_wavefunction(neutron, z, N)
+    x, psi, eps = calculate_wavefunction(neutron,z,dz,N)
     ax.plot(x[::6], psi[::6], '.', markersize=1, color=color[i],
             label=r'$\epsilon={eps}$, $E={e}\,\mathrm{{peV}}$'
             .format(e=round(neutron.energy*1e12,2),eps=round(eps,2)))
@@ -84,7 +84,7 @@ fig.savefig('figures/Asymptotic-Behavior.pdf',format='pdf')
 # Exercise 2: We compute the stationary states of neutrons in the gravitational
 # field of the Earth and the energy eigenvalues of the first three bound states
 N = int(2e4)                                # set number of iterations
-z = 1e-6*np.linspace(0,50,N)                # set z-range [0 to 50 micrometre]
+z, dz = np.linspace(0,50e-6,N,retstep=True) # set z-range [0 to 50 micrometre]
 trial_energy = 1e-12*np.array([1.,2.,3.])   # set trial energy values
 color = ['blue','green','red']              # set color of the graphs
 energy_step = 0.25e-12                      # set energy step
@@ -98,8 +98,8 @@ ax2.set_ylabel(r'probability amplitude $|\psi_n(x)|^2$')
 
 for i in range(0,len(trial_energy)):
     neutron = Particle(const.neutron_mass, trial_energy[i])
-    neutron.energy = find_eigenvalue(neutron,energy_step,precision)
-    x, psi, eps = calculate_wavefunction(neutron, z, N)
+    neutron.energy = find_eigenvalue(neutron,z,dz,N,energy_step,precision)
+    x, psi, eps = calculate_wavefunction(neutron,z,dz,N)
     ax1.plot(x[::6], psi[::6], '.', markersize=1, color=color[i],
              label=r'$n={n}$, $\epsilon={eps}$, $E_{n}={e}\,\mathrm{{peV}}$'
              .format(n=i+1,e=round(neutron.energy*1e12,2),eps=round(eps,2)))

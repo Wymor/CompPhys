@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  21 MAY 2020 19:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  22 MAY 2020 10:44
 entering extended mode
 **./CompPhys_Homework04_Gross-Boelting_Vogel_Willenberg.tex
 (CompPhys_Homework04_Gross-Boelting_Vogel_Willenberg.tex
@@ -1469,10 +1469,10 @@ lenberg.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
  ) 
 Here is how much of TeX's memory you used:
- 35960 strings out of 492970
- 679473 string characters out of 3126593
- 965919 words of memory out of 3000000
- 39161 multiletter control sequences out of 15000+200000
+ 35961 strings out of 492970
+ 678823 string characters out of 3126593
+ 966919 words of memory out of 3000000
+ 39162 multiletter control sequences out of 15000+200000
  615605 words of font info for 86 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,15n,63p,456b,2463s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1503,7 +1503,7 @@ n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy9.pfb><C:/Users/l
 oren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm
 10.pfb>
 Output written on CompPhys_Homework04_Gross-Boelting_Vogel_Willenberg.pdf (4 pa
-ges, 544966 bytes).
+ges, 545353 bytes).
 PDF statistics:
  458 PDF objects out of 1000 (max. 8388607)
  142 named destinations out of 1000 (max. 500000)
