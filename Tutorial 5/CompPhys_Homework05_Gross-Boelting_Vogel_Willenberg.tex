@@ -1,0 +1,105 @@
+\documentclass[10pt, a4paper, nottitlepage]{article}
+
+% Include packages 
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+\usepackage{extarrows}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{fontawesome}
+\usepackage{marvosym}
+\usepackage{acronym}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage{siunitx}
+\usepackage{icomma}
+\usepackage{bigdelim}
+\usepackage{isotope}
+\setlength{\parindent}{0em} 
+
+\renewcommand{\lstlistingname}{Python-Code}
+\lstset{
+	language=Python,
+	frame=single,
+	morekeywords={as,True,False},
+	basicstyle=\footnotesize,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{red},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	showspaces=false,
+	numbers=left,
+	extendedchars=true,
+	literate={ö}{{\"o}}1 {Ö}{{\"O}}1 {ä}{{\"a}}1 {Ä}{{\"A}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1}
+
+\title{Introduction to Computational Physics  -- Exercise 5}
+\author{Simon Groß-Bölting, Lorenz Vogel, Sebastian Willenberg}
+\date{May 29, 2020}
+
+\setcounter{section}{1}
+% The beginning of the document...
+\begin{document}
+\maketitle
+
+\section*{Numerical linear algebra methods: Tridiagonal matrices}
+We consider the following tridiagonal $N\times N$ matrix equation:
+\begin{equation}
+	\underbrace{
+	\begin{pmatrix}
+	b_1 	& c_1		& 0 		& \cdots 	& 0 		\\
+	a_2		& b_2 		& c_2		& \ddots 	& \vdots 	\\
+	0		& a_3		& \ddots	& \ddots 	& 0 		\\
+	\vdots 	& \ddots	& \ddots 	& \ddots	& c_{N-1} 	\\
+	0 		& \cdots 	& 0 		& a_N 		& b_N 		\\
+	\end{pmatrix}}_{\text{$=: M = (m_{ij})$}}
+	\underbrace{\begin{pmatrix}
+	x_1 \\ x_2 \\ x_3 \\ \vdots \\ x_{N-1} \\ x_N \\
+	\end{pmatrix}}_{\text{$=: \vec{x} = (x_j)$}}
+	=
+	\underbrace{\begin{pmatrix}
+	y_1 \\ y_2 \\ y_3 \\ \vdots \\ y_{N-1} \\ y_N \\
+	\end{pmatrix}}_{\text{$=: \vec{y} = (y_i)$}}
+\end{equation}
+Gauß elimination is the method of choice when one is interested in the solution $\vec{x}$ of the linear set of equations $M\vec{x}=\vec{y}$, but does not need the information about the inverse matrix $M^{-1}$ (Gauß-Jordan method).
+In this case, it is sufficient to convert the matrix $A$ into an upper (or lower) triangular
+matrix $M^\prime$
+\begin{equation}
+	M\vec{x} = \vec{y}
+	\qquad\xlongrightarrow[]{\text{Gauß elimination}}\qquad
+	M^\prime\vec{x} = \vec{y}^{\,\prime}
+\end{equation}
+Then we can obtain the solution vector $\vec{x}$ by back substitution.
+Let us assume, we have already obtained a system $M^\prime\vec{x}=\vec{y}^{\,\prime}$ with $M^\prime$ being in upper triangular form, i.e. $m^\prime_{ij}=0$ for $i>j$, then we can compute $\vec{x}$ as
+\begin{equation}
+	x_N = \frac{y^{\,\prime}_N}{m^\prime_{N,N}}
+	\qquad\qquad
+	x_{N-1} = \frac{1}{m^\prime_{N-1,N-1}}\left(y^{\,\prime}_{N-1}-m^\prime_{N-1,N-1}x_N\right)
+	\qquad\qquad
+	\cdots
+\end{equation}
+
+Thomas algorithm:
+\begin{equation}
+	m_{i+1,i} = m_{i+1,i}-m_{i,i}\,\frac{m_{i+1,i}}{}
+\end{equation}
+
+
+%\lstinputlisting[caption={Numerical solution of the Schrödinger equation using the Numerov method},label={py:code}]{Numerov-Algorithm_Homework04_Gross-Boelting_Vogel_Willenberg.py}
+ 
+\end{document}
