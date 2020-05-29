@@ -107,7 +107,6 @@ The \textbf{Thomas algorithm} is a simplified form of Gauß elimination that can
 	\end{aligned} 
 	\qquad\right\rbrace\qquad\text{for $i=1,\,\ldots,\,N$}
 \end{equation}
-<<<<<<< HEAD
 If we choose the parameters $a_i=-1$, $b_i=3$, $c_i=-1$ and $y_i=0.2$ $\forall i $ the solution vector beacomes the following:
 \begin{equation}
 	\vec{x}=
@@ -124,19 +123,29 @@ If we choose the parameters $a_i=-1$, $b_i=3$, $c_i=-1$ and $y_i=0.2$ $\forall i
 	0.12359551\\
 	\end{pmatrix}
 \end{equation}
-To verify the solution we have implemented the Thomas Algoithm. The solution is the same. The relative difference is calculated in the following way:
+To verify the solution we have implemented the Thomas Algoithm. The solution is the same. The relative error is calculated in the following way:
 \begin{equation}
-	  	\Bigg\vert \frac{M\cdot \vec{x}-\vec{y}}{\vec{y}} \Bigg\vert
+	  	\Delta\vec{y}=\Bigg\vert \frac{M\cdot \vec{x}-\vec{y}}{\vec{y}} \Bigg\vert
 \end{equation}
-We get the following relative difference from our solution to $\vec{y}$ :
+We get the following relative error:
 \begin{equation}
 	\Delta\vec{y}=
 	\begin{pmatrix}
+	0\\
+	2.77555756\\
+	2.77555756\\
+	2.77555756\\
+	0\\
+	0\\
+	2.77555756\\
+	0\\
+	4.16333634\\
+	0\\
 	
-	\end{pmatrix}
+\end{pmatrix}
+	\cdot 10^{-16}
 \end{equation}
-=======
->>>>>>> e8072d6944598ae07583da3938d8201761af1ac1
+We can see that the relative error is very small. That means that the solution is very near to the true value of the solution. The needed acccuracy depends on the  aplication of the algorithm. in most cases this algorithm would be sufficient.
 
 \newpage
 \lstinputlisting[caption={Numerical solution of a tridiagonal system of equations },label={py:code}]{Tridiagonal-Matrices_Homework05_Gross-Boelting_Vogel_Willenberg.py}
