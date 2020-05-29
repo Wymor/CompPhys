@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.5.4)  29 MAY 2020 11:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.5.4)  29 MAY 2020 11:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1088,9 +1088,9 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 59.
  [1
 
-{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 125.
+nput line 139.
 
 (./Tridiagonal-Matrices_Homework05_Gross-Boelting_Vogel_Willenberg.py
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
@@ -1098,26 +1098,26 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 
 (c:/texlive/2020/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [2]) [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 127.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 127.
+) [3]) [4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
 
 (./CompPhys_Homework05_Gross-Boelting_Vogel_Willenberg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 127.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 127.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
 Package rerunfilecheck Info: File `CompPhys_Homework05_Gross-Boelting_Vogel_Wil
 lenberg.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 127.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 141.
  ) 
 Here is how much of TeX's memory you used:
- 28120 strings out of 480682
- 518789 string characters out of 5908554
- 1007089 words of memory out of 5000000
+ 28124 strings out of 480682
+ 518833 string characters out of 5908554
+ 1006089 words of memory out of 5000000
  43287 multiletter control sequences out of 15000+600000
  605925 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,16n,60p,453b,2472s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,16n,60p,453b,2470s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{c:/texlive/2020/tex
 mf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{c:/texlive/2020/texmf-dist/fonts/enc/dvi
 ps/lm/lm-mathit.enc}{c:/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.en
@@ -1134,11 +1134,11 @@ lm/lmr17.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/tex
 live/2020/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2020/texmf-dist
 /fonts/type1/public/lm/lmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/publi
 c/lm/lmsy7.pfb>
-Output written on CompPhys_Homework05_Gross-Boelting_Vogel_Willenberg.pdf (3 pa
-ges, 250695 bytes).
+Output written on CompPhys_Homework05_Gross-Boelting_Vogel_Willenberg.pdf (4 pa
+ges, 253299 bytes).
 PDF statistics:
- 203 PDF objects out of 1000 (max. 8388607)
- 182 compressed objects within 2 object streams
- 95 named destinations out of 1000 (max. 500000)
+ 211 PDF objects out of 1000 (max. 8388607)
+ 189 compressed objects within 2 object streams
+ 99 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
