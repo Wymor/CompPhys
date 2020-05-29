@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  26 MAY 2020 17:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  29 MAY 2020 10:32
 entering extended mode
 **./CompPhys_Homework05_Gross-Boelting_Vogel_Willenberg.tex
 (CompPhys_Homework05_Gross-Boelting_Vogel_Willenberg.tex
@@ -1419,46 +1419,62 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 [1
 
 {C:/Users/loren/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 105.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 105.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 97.
 
-(CompPhys_Homework05_Gross-Boelting_Vogel_Willenberg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 105.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 105.
+(Tridiagonal-Matrices_Homework05_Gross-Boelting_Vogel_Willenberg.py
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 1.
+
+("C:\Users\loren\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmr.fd"
+File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 1.
+
+[2]) [3]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 99.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 99.
+ (CompPhys_Homework05_Gross-Boelting_Vogel_Willenberg.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 99.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 99.
 Package rerunfilecheck Info: File `CompPhys_Homework05_Gross-Boelting_Vogel_Wil
 lenberg.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 105.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 99.
  ) 
 Here is how much of TeX's memory you used:
- 35276 strings out of 492970
- 671583 string characters out of 3126593
- 893919 words of memory out of 3000000
- 38631 multiletter control sequences out of 15000+200000
- 596571 words of font info for 75 fonts, out of 3000000 for 9000
+ 35830 strings out of 492970
+ 676615 string characters out of 3126593
+ 952919 words of memory out of 3000000
+ 39090 multiletter control sequences out of 15000+200000
+ 605553 words of font info for 78 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,16n,63p,456b,778s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,16n,63p,456b,2461s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
-c}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathi
-t.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-m
-athsy.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
+c}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-maths
+y.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-m
+athit.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
 lm-rm.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
 lm-mathex.enc}<C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/lm/lmbx12.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/lm/lmex10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/lm/lmmi10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/lm/lmmi5.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/public/lm/lmmi7.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/loren/AppData/Local/Programs/Mi
-KTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/loren/AppData/Local/Programs
-/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Users/loren/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/loren/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb>
-Output written on CompPhys_Homework05_Gross-Boelting_Vogel_Willenberg.pdf (1 pa
-ge, 167567 bytes).
+lic/lm/lmbx10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/lm/lmbx12.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/lm/lmbx8.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/public/lm/lmex10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/lm/lmmi10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/lm/lmmi5.pfb><C:/Users/loren/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Users/loren/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/loren/AppData/Local/Program
+s/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/loren/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/loren/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Users/loren/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Users/loren/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/loren/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Users/loren/AppD
+ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
+Output written on CompPhys_Homework05_Gross-Boelting_Vogel_Willenberg.pdf (3 pa
+ges, 273769 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
- 7 named destinations out of 1000 (max. 500000)
+ 198 PDF objects out of 1000 (max. 8388607)
+ 92 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

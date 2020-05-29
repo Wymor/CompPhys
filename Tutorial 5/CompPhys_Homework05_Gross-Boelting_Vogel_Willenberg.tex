@@ -76,16 +76,15 @@ We consider the following tridiagonal $N\times N$ matrix equation:
 	y_1 \\ y_2 \\ y_3 \\ \vdots \\ y_{N-1} \\ y_N \\
 	\end{pmatrix}}_{\text{$=: \vec{y} = (y_i)$}}
 \end{equation}
-Gauß elimination is the method of choice when one is interested in the solution $\vec{x}$ of the linear set of equations $M\vec{x}=\vec{y}$, but does not need the information about the inverse matrix $M^{-1}$ (Gauß-Jordan method).
-In this case, it is sufficient to convert the matrix $A$ into an upper (or lower) triangular
-matrix $M^\prime$
+\textbf{Gauß elimination} is the method of choice when one is interested in the solution $\vec{x}$ of the linear set of equations $M\vec{x}=\vec{y}$, but does not need the information about the inverse matrix $M^{-1}$ (which we would get using the Gauß-Jordan method).
+In this case, it is sufficient to convert the matrix $M$ into an upper (or lower) triangular
+matrix $M^\prime$:
 \begin{equation}
 	M\vec{x} = \vec{y}
 	\qquad\xlongrightarrow[]{\text{Gauß elimination}}\qquad
 	M^\prime\vec{x} = \vec{y}^{\,\prime}
 \end{equation}
-Then we can obtain the solution vector $\vec{x}$ by back substitution.
-Let us assume, we have already obtained a system $M^\prime\vec{x}=\vec{y}^{\,\prime}$ with $M^\prime$ being in upper triangular form, i.e. $m^\prime_{ij}=0$ for $i>j$, then we can compute $\vec{x}$ as
+If we have obtained such a system $M^\prime\vec{x}=\vec{y}^{\,\prime}$ with $M^\prime$ being in upper triangular form, i.e. $m^\prime_{ij}=0$ for $i>j$, then we can compute the solution vector $\vec{x}$ by \textbf{back substitution}:
 \begin{equation}
 	x_N = \frac{y^{\,\prime}_N}{m^\prime_{N,N}}
 	\qquad\qquad
@@ -94,6 +93,7 @@ Let us assume, we have already obtained a system $M^\prime\vec{x}=\vec{y}^{\,\pr
 	\cdots
 \end{equation}
 
-%\lstinputlisting[caption={Numerical solution of the Schrödinger equation using the Numerov method},label={py:code}]{Numerov-Algorithm_Homework04_Gross-Boelting_Vogel_Willenberg.py}
+\newpage
+\lstinputlisting[caption={Numerical solution of a tridiagonal system of equations },label={py:code}]{Tridiagonal-Matrices_Homework05_Gross-Boelting_Vogel_Willenberg.py}
  
 \end{document}

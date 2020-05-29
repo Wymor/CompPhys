@@ -9,6 +9,7 @@ Introduction to Computational Physics
 import numpy as np; import matplotlib.pyplot as plt
 from scipy.sparse import diags; from copy import deepcopy
 
+
 def Gaussian_elimination(A,y):
     ''' Numerical subroutine for the iterative expression for
         Gaussian elimination without pivoting '''
