@@ -101,9 +101,9 @@ The \textbf{Thomas algorithm} is a simplified form of Gauß elimination that can
 \begin{equation}
 	\left.
 	\begin{aligned}
-		m_{i+1,i} 	&\quad\longrightarrow\quad m_{i+1,i}-m_{ii}\,\frac{m_{i+1,i}}{m_{ii}} \\
+		y_{i+1}		&\quad\longrightarrow\quad y_{i+1}-y_{i}\,\frac{m_{i+1,i}}{m_{ii}} \\
 		m_{i+1,i+1} &\quad\longrightarrow\quad m_{i+1,i+1}-m_{i,i+1}\,\frac{m_{i+1,i}}{m_{ii}} \\
-		y_{i+1}		&\quad\longrightarrow\quad y_{i+1}-y_{i}\,\frac{m_{i+1,i}}{m_{ii}}
+		m_{i+1,i} 	&\quad\longrightarrow\quad m_{i+1,i}-m_{ii}\,\frac{m_{i+1,i}}{m_{ii}}
 	\end{aligned} 
 	\qquad\right\rbrace\qquad\text{for $i=1,\,\ldots,\,N$}
 \end{equation}
