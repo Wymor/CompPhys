@@ -30,6 +30,7 @@ def Thomas_algorithm(A,y):
     a, b = deepcopy(A), deepcopy(y)
     N = np.shape(a)[0]
     for i in range(N-1):
+        print(i)
         factor = a[i+1,i]/a[i,i]
         a[i+1,i] -= factor*a[i,i]
         a[i+1,i+1] -= factor*a[i,i+1]

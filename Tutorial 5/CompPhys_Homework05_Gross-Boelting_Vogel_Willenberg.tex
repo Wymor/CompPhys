@@ -121,6 +121,25 @@ We get the following relative difference from our solution to $\vec{y}$ :
 	
 	\end{pmatrix}
 \end{equation}
+<<<<<<< HEAD
+=======
+Or in general:
+\begin{equation}
+	x_i = \frac{1}{m^\prime_{ii}}\left(y^{\,\prime}_{i}-\sum_{j>i}m^\prime_{ij}x_j\right)
+\end{equation}
+
+The \textbf{Thomas algorithm} is a simplified form of Gauß elimination that can be used to solve tridiagonal systems of equation by creating a upper triangular form $M^\prime$ of the matrix $M=(m_{ij})$:
+\begin{equation}
+	\left.
+	\begin{aligned}
+		y_{i+1}		&\quad\longrightarrow\quad y_{i+1}-y_{i}\,\frac{m_{i+1,i}}{m_{ii}} \\
+		m_{i+1,i+1} &\quad\longrightarrow\quad m_{i+1,i+1}-m_{i,i+1}\,\frac{m_{i+1,i}}{m_{ii}} \\
+		m_{i+1,i} 	&\quad\longrightarrow\quad m_{i+1,i}-m_{ii}\,\frac{m_{i+1,i}}{m_{ii}}
+	\end{aligned} 
+	\qquad\right\rbrace\qquad\text{for $i=1,\,\ldots,\,N$}
+\end{equation}
+
+>>>>>>> e8072d6944598ae07583da3938d8201761af1ac1
 \newpage
 \lstinputlisting[caption={Numerical solution of a tridiagonal system of equations },label={py:code}]{Tridiagonal-Matrices_Homework05_Gross-Boelting_Vogel_Willenberg.py}
  
