@@ -153,7 +153,7 @@ By defining the dimensionless parameter $D := rA/B$, we can further simplify the
 \begin{equation}
 	\frac{\mathrm{d}n}{\mathrm{d}\tau}
 	= Dn - \frac{DA}{K}\,n^2 - \frac{1}{1+n^{-2}}
-	\qquad\text{with}\qquad
+	\qquad\quad\text{with}\qquad\quad
 	D := \frac{rA}{B}
 \end{equation}
 
@@ -173,8 +173,28 @@ By defining the dimensionless parameter $D := rA/B$, we can further simplify the
 \begin{equation}
 	\text{$n=n^*$ stationary point of $n=n(\tau)$}
 	\qquad\quad\Longleftrightarrow\quad\qquad
-	\frac{\mathrm{d}n}{\mathrm{d}\tau}\Big\vert_{n=n^*} = 0	
+	\frac{\mathrm{d}n}{\mathrm{d}\tau} = 0	
 \end{equation}
+
+
+\begin{align}
+	&& 0\enspace &\overset{\text{!}}{=}\enspace Dn - \frac{DA}{K}\,n^2 - \frac{1}{1+n^{-2}}
+	&&\big\vert\:\:\cdot (1+n^{-2}) \\
+	&\Leftrightarrow& &=\enspace D(1+n^{-2})n - \frac{DA}{K}\,(1+n^{-2})n^2 - 1 \\
+	&\Leftrightarrow& &=\enspace D(n+n^{-1}) - \frac{DA}{K}\,(n^2+1) - 1 \\
+	&\Leftrightarrow& &=\enspace D\left(\frac{n^2+1}{n}\right) - \frac{DA}{K}\,(n^2+1) - 1
+	&&\big\vert\:\:\cdot n \\
+	&\Leftrightarrow& &=\enspace D(n^2+1) - \frac{DA}{K}\,(n^3+n) - n \\
+	&\Leftrightarrow& &=\enspace -\frac{DA}{K}\,n^3 + Dn^2 - \frac{DA}{K}\,n - n + D \\
+	&\Leftrightarrow& &=\enspace -\frac{DA}{K}\,n^3 + Dn^2 - \left(\frac{DA}{K}+1\right)n + D
+\end{align}
+Finally, we multiply the entire equation by $-K/(DA)$.
+So we get that for $n\neq 0$ the stationary points $n^*$ are solutions of a cubic equation:
+\begin{equation}
+	0 \enspace\overset{\text{!}}{=}\enspace 
+	n^3 - \frac{K}{A}\,n^2 + \left(1+\frac{1}{D}\frac{K}{A}\right)n - \frac{K}{A}
+\end{equation}
+If we set $K/A=\num{7.3}$ as required in the task, the cubic equation above only depends on $n$ and the remaining free parameter $D=rA/B$.
 
 %\lstinputlisting[caption={Numerical solution of the Schrödinger equation using the Numerov method},label={py:code}]{Numerov-Algorithm_Homework04_Gross-Boelting_Vogel_Willenberg.py}
  
