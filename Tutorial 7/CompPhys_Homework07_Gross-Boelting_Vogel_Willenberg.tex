@@ -58,7 +58,9 @@
 \maketitle
 
 \section*{Population dynamics}
-In this exercise we study the following equation for population dynamics:
+The simple equation of growth of a population, as proposed by Malthus (1798), has been improved by Verhulst (1836) including a growth limiting term, which represents the finite amount of
+resources available.
+In this exercise we study a modified form of Verhulst's equation for population dynamics:
 \begin{equation}
 	\frac{\mathrm{d}N}{\mathrm{d}t} = rN(1-N/K)-\frac{BN^2}{A^2+N^2}
 \end{equation}
@@ -67,21 +69,108 @@ the growth behaviour depends on whether $N$ is smaller or larger than a critical
 size $A$.
 
 \subsection*{Dimensional analysis}
-Determine the dimension of the parameters and rewrite the equation in dimensionless form. Note that there are different possibilities.
-Please formulate a dimensionless time $\tau$ that is not defined on the basis of $r$.
-Use $n=N/A$ as the dimensionless version of $N$.
+\begin{description}
+	\item[Task:] Determine the dimension of the parameters and rewrite the equation in dimensionless form. Note that there are different possibilities.
+	Please formulate a dimensionless time $\tau$ that is not defined on the basis of $r$.
+	Use $n=N/A$ as the dimensionless version of $N$.
+\end{description}
+
+\begin{table}[h!]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\caption{Dimension of the parameters}
+	\vspace{-0.2cm}
+	\begin{tabular}{rcl}
+		\toprule
+		description & 
+		parameter &
+		dimension \\
+		\midrule
+		time & $t$ & $[t] = \si{\second}$ \\
+		population number & $N$ & $[N] = 1$ \\
+		growth rate & $r$ & $[r] = \si{\per\second}$ \\
+		growth limiting number & $K$ & $[K] = 1$ \\
+		critical population size & $A$ & $[A] = 1$ \\
+		--- & $B$ & $[B] = \si{\per\second}$ \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:energy-eigenvalues}
+\end{table}
+
+
+By dimensional analysis we can renormalize the variables, such that the above equation for population dynamics becomes dimensionless: The steps required for this are well described in the Wikipedia article ``\href{https://en.wikipedia.org/wiki/Nondimensionalization}{Nondimensionalization}''.
+First of all we have to identify all the independent and dependent variables in the given equation:
+\begin{equation}
+	\frac{\mathrm{d}N}{\mathrm{d}t} 
+	= rN\left(1-\frac{N}{K}\right)-\frac{BN^2}{A^2+N^2}
+	= rN - \frac{rN^2}{K}-\frac{BN^2}{A^2+N^2}
+\end{equation}
+In this equation the independent variable is $t$ (time) and the dependent variable is $N = N(t)$ (population number).
+Now we replace each of the two variables with the product of a dimensionless variable ($\tau$ and $n$) and a characteristic unit ($N_\mathrm{c}$ and $t_\mathrm{c}$):
+\begin{equation}
+	N := N_\mathrm{c}n \quad\Leftrightarrow\quad n := N/N_\mathrm{c}
+	\qquad\qquad\text{and}\qquad\qquad
+	t := t_\mathrm{c}\tau \quad\Leftrightarrow\quad \tau := t/t_\mathrm{c}
+\end{equation}
+
+The subscripted ``$\mathrm{c}$'' added to a variable-name is used to denote the characteristic unit used to scale that variable.
+As required in the task, we set $N_\mathrm{c}:=A$, so that we use $n:=N/A$ as the dimensionless version of the population number $N$.
+Then we obtain the following equation:
+\begin{equation}
+	\frac{A}{t_\mathrm{c}}\,\frac{\mathrm{d}n}{\mathrm{d}\tau}
+	= rAn - \frac{rA^2}{K}\,n^2 - \frac{BA^2n^2}{A^2+A^2n^2} 
+	= rAn - \frac{rA^2}{K}\,n^2 - B\,\frac{n^2}{1+n^2}
+\end{equation}
+
+Dividing the entire equation by the coefficient $A/t_\mathrm{c}$ in front of the first derivative term and using the relation
+\begin{equation}
+	\frac{n^2}{1+n^2}
+	= \left[\frac{1+n^2}{n^2}\right]^{-1}
+	= \left[1+\frac{1}{n^2}\right]^{-1}
+	= \left[1+n^{-2}\right]^{-1}
+	= \frac{1}{1+n^{-2}}
+\end{equation}
+gives us:
+\begin{equation}
+	\frac{\mathrm{d}n}{\mathrm{d}\tau}
+	= t_\mathrm{c}rn - \frac{t_\mathrm{c}rA}{K}\,n^2 - \frac{t_\mathrm{c}B}{A}\,\frac{1}{1+n^{-2}}
+\end{equation}
+
+Now the characteristic unit for each variable can be defined, such that the coefficients of as many terms as possible become $1$.
+Since we have already determined the dimensionless version of $N$, we only have to define the characteristic unit $t_\mathrm{c}$ of the time $t$.
+
+\begin{equation}
+	\frac{t_\mathrm{c}B}{A} \overset{\text{!}}{=} 1
+	\qquad\Longrightarrow\qquad
+	t_\mathrm{c} = \frac{A}{B}
+\end{equation}
+Now we can rewrite the given equation for population dynamics in its dimensionless form:
+\begin{equation}
+	\frac{\mathrm{d}n}{\mathrm{d}\tau}
+	= \frac{rA}{B}\,n - \frac{rA^2}{BK}\,n^2 - \frac{1}{1+n^{-2}}
+	=: Dn - \frac{DA}{K}\,n^2 - \frac{1}{1+n^{-2}}
+	\qquad\text{with}\qquad
+	D := \frac{rA}{B}
+\end{equation}
 
 \subsection*{Stationary points}
-Determine the stationary points $n^*$ for $K/A=\num{7.3}$. Note that for $n^*\neq 0$
-these values are solutions of a cubic equation; it depends on $n$ and the remaining free
-parameter. The cubic equation should be derived by yourself analytically; its zero
-points you can obtain numerically / graphically by using e.g. Mathematica.
-When do one or three real solutions exist as a function of the remaining free parameter?
-(Hint: we do not ask for some analytical formula here! It is enough to vary the free
-parameter and check using Mathematica which three solutions for the stationary
-points you get; as stationary points only real solutions are valid. Only one digit
-after the comma is enough, in other words you vary the free parameter by about
-$\num{0.05}$.). Which of the stationary points is stable and unstable?
+\begin{description}
+	\item[Task:] Determine the stationary points $n^*$ for $K/A=\num{7.3}$. Note that for $n^*\neq 0$ these values are solutions of a cubic equation; it depends on $n$ and the remaining free parameter. The cubic equation should be derived by yourself analytically; its zero points you can obtain numerically / graphically by using e.g. Mathematica. When do one or three real solutions exist as a function of the remaining free parameter?
+	(Hint: we do not ask for some analytical formula here! It is enough to vary the free parameter and check using Mathematica which three solutions for the stationary points you get; as stationary points only real solutions are valid. Only one digit after the comma is enough, in other words you vary the free parameter by about $\num{0.05}$.).\\
+	Which of the stationary points is stable and unstable?
+\end{description}
+
+
+
+\begin{description}
+	\item[Definition:]  A fixed point (FP) or stationary point of a differentiable function of one variable is a point on the graph of the function where the function's derivative is zero.
+\end{description}
+
+\begin{equation}
+	\text{$n=n^*$ stationary point of $n=n(\tau)$}
+	\qquad\quad\Longleftrightarrow\quad\qquad
+	\frac{\mathrm{d}n}{\mathrm{d}\tau}\Big\vert_{n=n^*} = 0	
+\end{equation}
 
 %\lstinputlisting[caption={Numerical solution of the Schrödinger equation using the Numerov method},label={py:code}]{Numerov-Algorithm_Homework04_Gross-Boelting_Vogel_Willenberg.py}
  
