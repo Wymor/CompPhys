@@ -1,0 +1,88 @@
+\documentclass[10pt, a4paper, nottitlepage]{article}
+
+% Include packages 
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+\usepackage{extarrows}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{fontawesome}
+\usepackage{marvosym}
+\usepackage{acronym}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage{siunitx}
+\usepackage{icomma}
+\usepackage{bigdelim}
+\usepackage{isotope}
+\setlength{\parindent}{0em} 
+
+\renewcommand{\lstlistingname}{Python-Code}
+\lstset{
+	language=Python,
+	frame=single,
+	morekeywords={as,True,False},
+	basicstyle=\footnotesize,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{red},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	showspaces=false,
+	numbers=left,
+	extendedchars=true,
+	literate={ö}{{\"o}}1 {Ö}{{\"O}}1 {ä}{{\"a}}1 {Ä}{{\"A}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1}
+
+\title{Introduction to Computational Physics  -- Exercise 7}
+\author{Simon Groß-Bölting, Lorenz Vogel, Sebastian Willenberg}
+\date{June 12, 2020}
+
+\setcounter{section}{1}
+% The beginning of the document...
+\begin{document}
+\maketitle
+
+\section*{Population dynamics}
+In this exercise we study the following equation for population dynamics:
+\begin{equation}
+	\frac{\mathrm{d}N}{\mathrm{d}t} = rN(1-N/K)-\frac{BN^2}{A^2+N^2}
+\end{equation}
+where all parameters $r$, $K$, $A$ and $B$ are positive. It is a more complex example, in which
+the growth behaviour depends on whether $N$ is smaller or larger than a critical populations
+size $A$.
+
+\subsection*{Dimensional analysis}
+Determine the dimension of the parameters and rewrite the equation in dimensionless form. Note that there are different possibilities.
+Please formulate a dimensionless time $\tau$ that is not defined on the basis of $r$.
+Use $n=N/A$ as the dimensionless version of $N$.
+
+\subsection*{Stationary points}
+Determine the stationary points $n^*$ for $K/A=\num{7.3}$. Note that for $n^*\neq 0$
+these values are solutions of a cubic equation; it depends on $n$ and the remaining free
+parameter. The cubic equation should be derived by yourself analytically; its zero
+points you can obtain numerically / graphically by using e.g. Mathematica.
+When do one or three real solutions exist as a function of the remaining free parameter?
+(Hint: we do not ask for some analytical formula here! It is enough to vary the free
+parameter and check using Mathematica which three solutions for the stationary
+points you get; as stationary points only real solutions are valid. Only one digit
+after the comma is enough, in other words you vary the free parameter by about
+$\num{0.05}$.). Which of the stationary points is stable and unstable?
+
+%\lstinputlisting[caption={Numerical solution of the Schrödinger equation using the Numerov method},label={py:code}]{Numerov-Algorithm_Homework04_Gross-Boelting_Vogel_Willenberg.py}
+ 
+\end{document}
