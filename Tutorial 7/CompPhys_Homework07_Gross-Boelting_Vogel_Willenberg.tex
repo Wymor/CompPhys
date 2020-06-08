@@ -138,17 +138,21 @@ gives us:
 
 Now the characteristic unit for each variable can be defined, such that the coefficients of as many terms as possible become $1$.
 Since we have already determined the dimensionless version of $N$, we only have to define the characteristic unit $t_\mathrm{c}$ of the time $t$.
-
+Because we are supposed to formulate a dimensionless time $\tau = t/t_\mathrm{c}$ that is not defined on the basis of the growth rate $r$, we have to use the coefficient in front of the last term:
 \begin{equation}
 	\frac{t_\mathrm{c}B}{A} \overset{\text{!}}{=} 1
 	\qquad\Longrightarrow\qquad
-	t_\mathrm{c} = \frac{A}{B}
+	t_\mathrm{c} := \frac{A}{B}
 \end{equation}
 Now we can rewrite the given equation for population dynamics in its dimensionless form:
 \begin{equation}
 	\frac{\mathrm{d}n}{\mathrm{d}\tau}
 	= \frac{rA}{B}\,n - \frac{rA^2}{BK}\,n^2 - \frac{1}{1+n^{-2}}
-	=: Dn - \frac{DA}{K}\,n^2 - \frac{1}{1+n^{-2}}
+\end{equation}
+By defining the dimensionless parameter $D := rA/B$, we can further simplify the dimensionless equation:
+\begin{equation}
+	\frac{\mathrm{d}n}{\mathrm{d}\tau}
+	= Dn - \frac{DA}{K}\,n^2 - \frac{1}{1+n^{-2}}
 	\qquad\text{with}\qquad
 	D := \frac{rA}{B}
 \end{equation}
