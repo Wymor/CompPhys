@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  9 JUN 2020 18:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  12 JUN 2020 00:41
 entering extended mode
 **./CompPhys_Homework07_Gross-Boelting_Vogel_Willenberg.tex
 (CompPhys_Homework07_Gross-Boelting_Vogel_Willenberg.tex
@@ -1419,45 +1419,74 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 [1
 
 {C:/Users/loren/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 215.
+
+
+("C:\Users\loren\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 217.
+
+
+("C:\Users\loren\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmr.fd"
+File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 217.
+
 [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 205.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 205.
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 226.
+ (Homework07_Population-Dynamics_Gross-Boelting_Vogel_Willenberg.py
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 1.
+ [4])
+[5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 228.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 228.
  (CompPhys_Homework07_Gross-Boelting_Vogel_Willenberg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 205.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 205.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 228.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 228.
 Package rerunfilecheck Info: File `CompPhys_Homework07_Gross-Boelting_Vogel_Wil
 lenberg.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 205.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 228.
  ) 
 Here is how much of TeX's memory you used:
- 35306 strings out of 492970
- 671413 string characters out of 3126593
- 899919 words of memory out of 3000000
- 38640 multiletter control sequences out of 15000+200000
- 602564 words of font info for 77 fonts, out of 3000000 for 9000
+ 35943 strings out of 492970
+ 678234 string characters out of 3126593
+ 954917 words of memory out of 3000000
+ 39150 multiletter control sequences out of 15000+200000
+ 613133 words of font info for 81 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,21n,63p,531b,1000s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,21n,63p,540b,2457s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
-c}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathe
-x.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-m
-athsy.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
-lm-rm.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
-lm-mathit.enc}<C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+c}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-maths
+y.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-m
+athit.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
+lm-mathex.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips
+/lm/lm-rm.enc}<C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
 lic/lm/lmbx10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /public/lm/lmbx12.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/lm/lmex10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/lm/lmmi10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/public/lm/lmr10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/loren/AppData/Local/Programs/MiKT
-eX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/loren/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Users/loren/AppData/Local/Programs
-/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/loren/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb>
-Output written on CompPhys_Homework07_Gross-Boelting_Vogel_Willenberg.pdf (3 pa
-ges, 189509 bytes).
+ype1/public/lm/lmbx8.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/public/lm/lmex10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/lm/lmmi10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Users/loren/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/loren/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/loren/AppData/Local/Program
+s/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/loren/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Users/loren/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Users/loren/AppData/Local/
+Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/loren/AppData/Lo
+cal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/loren/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb><C:/Users/loren/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Users/loren/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Users/lor
+en/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb>
+Output written on CompPhys_Homework07_Gross-Boelting_Vogel_Willenberg.pdf (5 pa
+ges, 326811 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
+ 279 PDF objects out of 1000 (max. 8388607)
+ 140 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

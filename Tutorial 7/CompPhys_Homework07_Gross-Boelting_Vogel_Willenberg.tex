@@ -94,7 +94,7 @@ size $A$.
 		--- & $B$ & $[B] = \si{\per\second}$ \\
 		\bottomrule
 	\end{tabular}
-	\label{tab:energy-eigenvalues}
+	\label{tab:dimensional-analysis}
 \end{table}
 
 
@@ -155,28 +155,35 @@ By defining the dimensionless parameter $D := rA/B$, we can further simplify the
 	= Dn - \frac{DA}{K}\,n^2 - \frac{1}{1+n^{-2}}
 	\qquad\quad\text{with}\qquad\quad
 	D := \frac{rA}{B}
+	\label{eq:dimensionless-equation}
 \end{equation}
 
 \subsection*{Stationary points}
 \begin{description}
-	\item[Task:] Determine the stationary points $n^*$ for $K/A=\num{7.3}$. Note that for $n^*\neq 0$ these values are solutions of a cubic equation; it depends on $n$ and the remaining free parameter. The cubic equation should be derived by yourself analytically; its zero points you can obtain numerically / graphically by using e.g. Mathematica. When do one or three real solutions exist as a function of the remaining free parameter?
-	(Hint: we do not ask for some analytical formula here! It is enough to vary the free parameter and check using Mathematica which three solutions for the stationary points you get; as stationary points only real solutions are valid. Only one digit after the comma is enough, in other words you vary the free parameter by about $\num{0.05}$.).\\
+	\item[Task:] Determine the stationary points $n^*$ for $K/A=\num{7.3}$. Note that for $n^*\neq 0$ these values are solutions of a cubic equation; it depends on $n$ and the remaining free parameter. The cubic equation should be derived by yourself analytically; its zero points you can obtain numerically / graphically by using e.g. \textit{Mathematica}. When do one or three real solutions exist as a function of the remaining free parameter?
+	(Hint: we do not ask for some analytical formula here! It is enough to vary the free parameter and check using \textit{Mathematica} which three solutions for the stationary points you get; as stationary points only real solutions are valid. Only one digit after the comma is enough, in other words you vary the free parameter by about $\num{0.05}$.).\\
 	Which of the stationary points is stable and unstable?
 \end{description}
-
-
-
 \begin{description}
 	\item[Definition:]  A fixed point (FP) or stationary point of a differentiable function of one variable is a point on the graph of the function where the function's derivative is zero.
 \end{description}
 
+According to the definition for stationary points
 \begin{equation}
 	\text{$n=n^*$ stationary point of $n=n(\tau)$}
 	\qquad\quad\Longleftrightarrow\quad\qquad
+	\frac{\mathrm{d}n}{\mathrm{d}\tau}\Big\vert_{n=n^*} = 0
+\end{equation}
+we have to determine the zero points of the dimensionless equation for population dynamics:
+\begin{equation}
 	\frac{\mathrm{d}n}{\mathrm{d}\tau} = 0	
+	\quad\qquad\xLongleftrightarrow{\text{\:\:Eq. \eqref{eq:dimensionless-equation}\:\:}}\quad\qquad
+	0 = Dn - \frac{DA}{K}\,n^2 - \frac{1}{1+n^{-2}}
+	\qquad\text{with}\qquad
+	D := \frac{rA}{B}
 \end{equation}
 
-
+For $n\neq 0$ we can transform the above equation into a cubic equation:
 \begin{align}
 	&& 0\enspace &\overset{\text{!}}{=}\enspace Dn - \frac{DA}{K}\,n^2 - \frac{1}{1+n^{-2}}
 	&&\big\vert\:\:\cdot (1+n^{-2}) \\
@@ -200,6 +207,22 @@ If we set $K/A=\num{7.3}$ as required in the task, the cubic equation above only
 	n^3 - 7.3\,n^2 + \left(1+\frac{7.3}{D}\right)n - 7.3
 \end{equation}
 
-%\lstinputlisting[caption={Numerical solution of the Schrödinger equation using the Numerov method},label={py:code}]{Numerov-Algorithm_Homework04_Gross-Boelting_Vogel_Willenberg.py}
+Let's have a look at the asymptotic behavior of the function:
+\begin{align}
+	\lim\limits_{n\rightarrow -\infty}\left[n^3 - 7.3\,n^2 + \left(1+\frac{7.3}{D}\right)n - 7.3\right] = -\infty \\
+	\lim\limits_{n\rightarrow +\infty}\left[n^3 - 7.3\,n^2 + \left(1+\frac{7.3}{D}\right)n - 7.3\right] = +\infty
+\end{align}
+Due to the sign change in the asymptotic behavior for $n\rightarrow\pm\infty$, the function has at least one real zero point for every value of the parameter $D=rA/B$. We use the following procedure to determine the zeros numerically using \texttt{Python}:
+\begin{itemize}
+	\item We first determine a zero point using the \texttt{SciPy} function \texttt{brentq}. The \texttt{brentq} method finds a zero point of a given function in a bracketing interval using Brent's method.
+	\item If we know a zero point of the cubic equation, we can use polynomial division to transform the cubic equation into a quadratic equation.
+	\item The zero points of the quadratic equation can now be calculated using the quadratic formula.
+\end{itemize}
+Using the quadratic formula and the coefficients of the quadratic equation, we can directly determine the number of real zero points. 
+This allows us to vary the free parameter $D$ and to see for which values of $D$ one or three real solutions to the function exist (see Python-Code \ref{py:code}).
+
+
+\newpage
+\lstinputlisting[caption={Numerical determination of the stationary points},label={py:code}]{Homework07_Population-Dynamics_Gross-Boelting_Vogel_Willenberg.py}
  
 \end{document}
