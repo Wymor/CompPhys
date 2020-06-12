@@ -28,7 +28,7 @@
 \usepackage{pdflscape}
 \usepackage{listings}
 \usepackage{siunitx}
-\usepackage{icomma}
+%\usepackage{icomma}
 \usepackage{bigdelim}
 \usepackage{isotope}
 \setlength{\parindent}{0em} 
@@ -157,6 +157,7 @@ By defining the dimensionless parameter $D := rA/B$, we can further simplify the
 	D := \frac{rA}{B}
 	\label{eq:dimensionless-equation}
 \end{equation}
+Because $r$, $A$ and $B$ should be positive, the dimensionless parameter $D$ must also be positive.
 
 \subsection*{Stationary points}
 \begin{description}
@@ -172,15 +173,15 @@ According to the definition for stationary points
 \begin{equation}
 	\text{$n=n^*$ stationary point of $n=n(\tau)$}
 	\qquad\quad\Longleftrightarrow\quad\qquad
-	\frac{\mathrm{d}n}{\mathrm{d}\tau}\Big\vert_{n=n^*} = 0
+	f(n^*) := \frac{\mathrm{d}n}{\mathrm{d}\tau}\Big\vert_{n=n^*} = 0
 \end{equation}
 we have to determine the zero points of the dimensionless equation for population dynamics:
 \begin{equation}
-	\frac{\mathrm{d}n}{\mathrm{d}\tau} = 0	
-	\quad\qquad\xLongleftrightarrow{\text{\:\:Eq. \eqref{eq:dimensionless-equation}\:\:}}\quad\qquad
+	f(n) = \frac{\mathrm{d}n}{\mathrm{d}\tau} = 0	
+	\qquad\xLongleftrightarrow{\text{\:\:Eq. \eqref{eq:dimensionless-equation}\:\:}}\qquad
 	0 = Dn - \frac{DA}{K}\,n^2 - \frac{1}{1+n^{-2}}
 	\qquad\text{with}\qquad
-	D := \frac{rA}{B}
+	D := \frac{rA}{B} > 0
 \end{equation}
 
 For $n\neq 0$ we can transform the above equation into a cubic equation:
@@ -188,7 +189,7 @@ For $n\neq 0$ we can transform the above equation into a cubic equation:
 	&& 0\enspace &\overset{\text{!}}{=}\enspace Dn - \frac{DA}{K}\,n^2 - \frac{1}{1+n^{-2}}
 	&&\big\vert\:\:\cdot (1+n^{-2}) \\
 	&\Leftrightarrow& &=\enspace D(1+n^{-2})n - \frac{DA}{K}\,(1+n^{-2})n^2 - 1 \\
-	&\Leftrightarrow& &=\enspace D(n+n^{-1}) - \frac{DA}{K}\,(n^2+1) - 1 \\
+	%&\Leftrightarrow& &=\enspace D(n+n^{-1}) - \frac{DA}{K}\,(n^2+1) - 1 \\
 	&\Leftrightarrow& &=\enspace D\left(\frac{n^2+1}{n}\right) - \frac{DA}{K}\,(n^2+1) - 1
 	&&\big\vert\:\:\cdot n \\
 	&\Leftrightarrow& &=\enspace D(n^2+1) - \frac{DA}{K}\,(n^3+n) - n \\
@@ -198,6 +199,8 @@ For $n\neq 0$ we can transform the above equation into a cubic equation:
 Finally, we multiply the entire equation by $-K/(DA)$.
 So we get that for $n\neq 0$ the stationary points $n^*$ are solutions of a cubic equation:
 \begin{equation}
+	f(n) = 0
+	\qquad\Longleftrightarrow\qquad
 	0 \enspace\overset{\text{!}}{=}\enspace 
 	n^3 - \frac{K}{A}\,n^2 + \left(1+\frac{1}{D}\frac{K}{A}\right)n - \frac{K}{A}
 \end{equation}
@@ -205,24 +208,92 @@ If we set $K/A=\num{7.3}$ as required in the task, the cubic equation above only
 \begin{equation}
 	0 \enspace\overset{\text{!}}{=}\enspace 
 	n^3 - 7.3\,n^2 + \left(1+\frac{7.3}{D}\right)n - 7.3
+	\label{eq:cubic-equation}
 \end{equation}
 
 Let's have a look at the asymptotic behavior of the function:
 \begin{align}
+	\lim\limits_{n\rightarrow -\infty}f(n) =
 	\lim\limits_{n\rightarrow -\infty}\left[n^3 - 7.3\,n^2 + \left(1+\frac{7.3}{D}\right)n - 7.3\right] = -\infty \\
+	\lim\limits_{n\rightarrow +\infty}f(n) =
 	\lim\limits_{n\rightarrow +\infty}\left[n^3 - 7.3\,n^2 + \left(1+\frac{7.3}{D}\right)n - 7.3\right] = +\infty
 \end{align}
-Due to the sign change in the asymptotic behavior for $n\rightarrow\pm\infty$, the function has at least one real zero point for every value of the parameter $D=rA/B$. We use the following procedure to determine the zeros numerically using \texttt{Python}:
+Due to the sign change in the asymptotic behavior for $n\rightarrow\pm\infty$, the function $f(n)$ has at least one real zero point $n^*$ for every value of the parameter $D=rA/B$. We use the following procedure to determine the zeros numerically using \texttt{Python}:
 \begin{itemize}
 	\item We first determine a zero point using the \texttt{SciPy} function \texttt{brentq}. The \texttt{brentq} method finds a zero point of a given function in a bracketing interval using Brent's method.
 	\item If we know a zero point of the cubic equation, we can use polynomial division to transform the cubic equation into a quadratic equation.
 	\item The zero points of the quadratic equation can now be calculated using the quadratic formula.
 \end{itemize}
-Using the quadratic formula and the coefficients of the quadratic equation, we can directly determine the number of real zero points. 
-This allows us to vary the free parameter $D$ and to see for which values of $D$ one or three real solutions to the function exist (see Python-Code \ref{py:code}).
+Using the quadratic formula and the coefficients of the quadratic equation, we can directly determine the number of real zero points $n^*$. 
+This allows us to vary the free parameter $D$ (starting at the value $D=0.01$, step size $\num{d-4}$) and to see for which values of $D$ one or three real solutions to the function exist (see Python-Code \ref{py:code}).
+That's how we find out:
+\begin{itemize}
+	\item For $D\in\left[0.507,\,0.589\right]$, the cubic equation in Eq. \eqref{eq:cubic-equation} has exactly three real solutions.
+	\item For $0<D<0.507$ or $D>0.589$, the cubic equation in Eq. \eqref{eq:cubic-equation} has one real solution.
+\end{itemize}
+This means that we get three stationary points $n^*$ for $D\in\left[0.507,\,0.589\right]$ and one stationary point $n^*$ for $0<D<0.507$ or $D>0.589$.
+Fig. \ref{fig:cubic-function_different-D} shows the cubic functions for different values of the free paramter $D=rA/B>0$. The respective stationary points $n^*$ are shown in Table \ref{tab:stationary-points}.
 
+\begin{figure}[t!]
+	\centering
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/Stationary-Points-01.pdf}
+		\caption{Cubic functions with $D\in\left[0.507,\,0.589\right]$ and three stationary points $n^*$. $D=0.548$ is the mean of the two interval limits.}
+		\label{fig:three-zero-points}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/Stationary-Points-02.pdf}
+		\caption{Cubic function with one stationary point $n^*$ for a small and a large value of the free parameter $D$.}
+		\label{fig:small-large-D}
+	\end{subfigure}
+	\caption{Cubic functions for different values of the free parameter $D=rA/B>0$}
+	\label{fig:cubic-function_different-D}
+\end{figure}
 
+\begin{table}[h!]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\caption{Stationary points and their stability for different values of the free parameter}
+	\vspace{-0.2cm}
+	\begin{tabular}{crrr}
+		\toprule
+		free paramter $D$ & 
+		\multicolumn{3}{c}{stationary points $n^*$} \\
+		\midrule
+		$\num{0.1}$ 	& $\num{0.1}$ (unstable) & & \\
+		$\num{0.507}$ 	& $\num{0.663}$ (unstable) & $\num{3.261}$ (stable) & $\num{3.376}$ (unstable) \\
+		$\num{0.548}$ 	& $\num{0.799}$ (unstable) & $\num{2.055}$ (stable) & $\num{4.446}$ (unstable) \\
+		$\num{0.589}$ 	& $\num{1.207}$ (unstable) & $\num{1.248}$ (stable) & $\num{4.845}$ (unstable) \\
+		$\num{10.0}$ 	& $\num{7.201}$ (unstable) & & \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:stationary-points}
+\end{table}
+
+In order to check the stability of the stationary points $n^*$, we have to look at the first derivative $f^\prime(n)$ of the function $f(n)$:
+\begin{equation}
+	f^\prime(n) = \frac{\mathrm{d}f(n)}{\mathrm{d}n}
+	= 3n^2 - 2\,\frac{K}{A}\,n + \left(1+\frac{1}{D}\frac{K}{A}\right)
+\end{equation}
+If we use $K/A=\num{7.3}$ again, we get:
+\begin{equation}
+	f^\prime(n) = \frac{\mathrm{d}f(n)}{\mathrm{d}n}
+	= 3n^2 - 14.6\,n + \left(1+\frac{7.3}{D}\right)
+\end{equation}
+Now we can determine the stability of the stationary points $n^*$ shown in Table \ref{tab:stationary-points}. According to the definition from the lecture we get:
+\begin{align}
+	f^\prime(n^*) < 0
+	\qquad\Longrightarrow\qquad 
+	&\text{the stationary point $n^*$ is stable} \\
+	f^\prime(n^*) > 0
+	\qquad\Longrightarrow\qquad 
+	&\text{the stationary point $n^*$ is unstable}
+\end{align}
+We noted the stability of the individual stationary points $n^*$ in Table \ref{tab:stationary-points}.
+Based on the results, we assume that in the case of three stationary points $n^*$, the middle stationary point is always stable and the other two are each unstable.
 \newpage
 \lstinputlisting[caption={Numerical determination of the stationary points},label={py:code}]{Homework07_Population-Dynamics_Gross-Boelting_Vogel_Willenberg.py}
- 
 \end{document}
