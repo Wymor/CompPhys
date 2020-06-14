@@ -1,0 +1,111 @@
+\documentclass[10pt, a4paper, nottitlepage]{article}
+
+% Include packages 
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+\usepackage{extarrows}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{fontawesome}
+\usepackage{marvosym}
+\usepackage{acronym}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage{siunitx}
+%\usepackage{icomma}
+\usepackage{bigdelim}
+\usepackage{isotope}
+\setlength{\parindent}{0em} 
+
+\renewcommand{\lstlistingname}{Python-Code}
+\lstset{
+	language=Python,
+	frame=single,
+	morekeywords={as,True,False},
+	basicstyle=\footnotesize,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{red},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	showspaces=false,
+	numbers=left,
+	extendedchars=true,
+	literate={ö}{{\"o}}1 {Ö}{{\"O}}1 {ä}{{\"a}}1 {Ä}{{\"A}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1}
+
+\title{Introduction to Computational Physics  -- Exercise 8}
+\author{Simon Groß-Bölting, Lorenz Vogel, Sebastian Willenberg}
+\date{June 19, 2020}
+
+\setcounter{section}{1}
+% The beginning of the document...
+\begin{document}
+\maketitle
+
+
+\section*{Stability Analysis of Many Species Population Dynamics}
+In this exercise we study the evolution of $6$ populations according to the following equations for population dynamics: $3$ predator- ($P_i$) and $3$ prey-species ($N_i$), all parameters positive, always $i,j=1,\,\dots,\,3$:
+\begin{equation}
+	\frac{\mathrm{d}N_i}{\mathrm{d}t} = N_i\left(a_i-N_i-\sum_{j}b_{ij}P_j\right)
+	\qquad\quad\text{and}\quad\qquad
+	\frac{\mathrm{d}P_i}{\mathrm{d}t} = P_i\left(\sum_{j}c_{ij}N_j-d_i\right)
+\end{equation}
+The parameters chosen are $a_1=56$, $a_2=12$, $a_3=35$, $d_1=85$, $d_2=9$ and $d_3=35$; the parameters $b_{ij}$ and $c_{ij}$ are given in matrix form here:
+\begin{equation}
+	b_{ij} = \begin{pmatrix}20&30&5\\1&3&7\\4&10&20\end{pmatrix}
+	\qquad\quad\text{and}\quad\qquad
+	c_{ij} = \begin{pmatrix}20&30&35\\3&3&3\\7&8&20\end{pmatrix}
+\end{equation}
+\begin{description}
+	\item[Notices:] The unusual feature here in the equations is that the prey populations $N_i$ have a Verhulst style growth limiting factor in their equations, which limits their growth even if there is no predator (model for limited resources even in absence of predators).
+	\begin{itemize}
+		\item Please do not try to make the equations dimensionless, just use the numbers given here.
+		\item In this mathematical example the solutions can become negative in some cases, which is unphysical for population dynamics. Nevertheless let us please use this case to show the mathematical features.
+	\end{itemize}
+\end{description}
+
+
+
+\begin{description}
+	\item[Task:] What are the fixed points (FP) for the system of equations given above? \textit{Hint 1:} No complicated computations are necessary, the idea is that you should guess the fixed points very easily. Compare our previous examples.
+	\textit{Hint 2:}  This time there are three fixed points! In addition to our ``usual'' ones, there is a third one related to the Verhulst growth limiting factor in the first three equations.
+\end{description}
+
+
+\begin{description}
+	\item[Task:] What is the Jacobi matrix $\mathbf{A}$ at the non-trivial fixed point? (non-trivial FP means here that \textit{all} elements are unequal to zero. There is only one FP with this property)
+\end{description}
+
+
+\begin{description}
+	\item[Task:] Determine the eigenvalues and eigenvectors $\lambda_i$ and $\mathbf{v}_i$ ($i=1,\,\dots,\,6$) of $\mathbf{A}$ for this fixed point. Choose an initial state
+	\begin{equation}
+		\mathbf{n} = \sum_{i=1}^{6} c_i\mathbf{v}_i
+		\qquad\text{with}\qquad
+		c_1 = c_2 = 3\,,\quad
+		c_3 = c_4 = 1\,,\quad
+		c_5 = -5\,,\quad
+		c_6 = 0.1
+	\end{equation}
+	Plot and discuss the time dependent evolution of the six populations (given by this linear
+	model); in particular what about oscillations, growth or decay?
+\end{description}
+
+%\newpage
+%\lstinputlisting[caption={Numerical determination of the stationary points},label={py:code}]{Homework07_Population-Dynamics_Gross-Boelting_Vogel_Willenberg.py}
+\end{document}
