@@ -61,9 +61,9 @@
 \section*{Stability Analysis of Many Species Population Dynamics}
 In this exercise we study the evolution of $6$ populations according to the following equations for population dynamics: $3$ predator- ($P_i$) and $3$ prey-species ($N_i$), all parameters positive, always $i,j=1,\,\dots,\,3$:
 \begin{equation}
-	\frac{\mathrm{d}N_i}{\mathrm{d}t} = N_i\left(a_i-N_i-\sum_{j}b_{ij}P_j\right)
+	\frac{\mathrm{d}N_i}{\mathrm{d}t} = N_i\biggl(a_i-N_i-\sum_{j}b_{ij}P_j\biggr)
 	\qquad\quad\text{and}\quad\qquad
-	\frac{\mathrm{d}P_i}{\mathrm{d}t} = P_i\left(\sum_{j}c_{ij}N_j-d_i\right)
+	\frac{\mathrm{d}P_i}{\mathrm{d}t} = P_i\biggl(\sum_{j}c_{ij}N_j-d_i\biggr)
 \end{equation}
 The parameters chosen are $a_1=56$, $a_2=12$, $a_3=35$, $d_1=85$, $d_2=9$ and $d_3=35$; the parameters $b_{ij}$ and $c_{ij}$ are given in matrix form here:
 \begin{equation}
@@ -86,6 +86,181 @@ The parameters chosen are $a_1=56$, $a_2=12$, $a_3=35$, $d_1=85$, $d_2=9$ and $d
 	\textit{Hint 2:}  This time there are three fixed points! In addition to our ``usual'' ones, there is a third one related to the Verhulst growth limiting factor in the first three equations.
 \end{description}
 
+condition for fixed points (FP) in the case of interacting populations:
+\begin{equation}
+	\text{$n=n^*$ stationary point of the system}
+	\qquad\quad\Longleftrightarrow\quad\qquad
+	f(n^*) := \frac{\mathrm{d}n}{\mathrm{d}\tau}\Big\vert_{n=n^*} = 0
+\end{equation}
+stability analysis in the multi-dimensional case: analogous to one-dimensional, but vector form:
+\begin{equation}
+	\vec{f}(\vec{N},\,\vec{P}) =
+	\begin{pmatrix}
+		\dot{\vec{N}} \\
+		\dot{\vec{P}}
+	\end{pmatrix}
+\end{equation}
+with
+\begin{equation}
+	\dot{\vec{N}} 
+	= \frac{\mathrm{d}\vec{N}}{\mathrm{d}t} =
+	\begin{pmatrix}
+		\dot{N_1}\\\dot{N_2}\\\dot{N_3}
+	\end{pmatrix} =
+	\begin{pmatrix}
+	n_1(N_1,\,\vec{P}) \\
+	n_2(N_2,\,\vec{P}) \\
+	n_3(N_3,\,\vec{P})
+	\end{pmatrix}
+	\qquad\text{and}\qquad
+	\dot{\vec{P}} 
+	= \frac{\mathrm{d}\vec{P}}{\mathrm{d}t} =
+	\begin{pmatrix}
+		\dot{P_1}\\\dot{P_2}\\\dot{P_3}
+	\end{pmatrix} =
+	\begin{pmatrix}
+		p_1(P_1,\,\vec{N}) \\
+		p_2(P_2,\,\vec{N}) \\
+		p_3(P_3,\,\vec{N})
+	\end{pmatrix}
+\end{equation}
+
+\begin{align}
+	n_i(N_i,\,\vec{P}) 
+	&:= \frac{\mathrm{d}N_i}{\mathrm{d}t} 
+	= N_i\left(a_i-N_i-\sum_{j}b_{ij}P_j\right) \\
+	p_i(P_i,\,\vec{N})
+	&:= \frac{\mathrm{d}P_i}{\mathrm{d}t} 
+	= P_i\left(\sum_{j}c_{ij}N_j-d_i\right)
+\end{align}
+
+
+\begin{align}
+	\left\{\begin{array}{l}
+		\dot{N_1} = N_1\left(56-N_1-20P_1-30P_2-5P_3\right) \\
+		\dot{N_2} = N_2\left(12-N_2-P_1-3P_2-7P_3\right) \\
+		\dot{N_3} = N_3\left(35-N_3-4P_1-10P_2-20P_3\right) \\
+		\dot{P_1} = P_1\left(20N_1+30N_2+35N_3-85\right) \\
+		\dot{P_2} = P_2\left(3N_1+3N_2+3N_3-9\right) \\
+		\dot{P_3} = P_3\left(7N_1+8N_2+10N_3-35\right) 
+	\end{array}\right.
+\end{align}
+\begin{align}
+	d_i = \sum_{j}c_{ij}N_j^*
+	\quad\Longrightarrow\quad
+	\left\{\begin{array}{l}
+		85 = 20N_1^*+30N_2^*+35N_3^* \\
+		9 = 3N_1^*+3N_2^*+3N_3^* \\
+		35 = 7N_1^*+8N_2^*+10N_3^*
+	\end{array}\right\}
+	\quad\Longrightarrow\quad
+	N_i^* = 1
+\end{align}
+\begin{align}
+	N_i^* = a_i - \sum_{j}b_{ij}P_j^*
+	\quad\xLongrightarrow[]{\text{\,$N_i^*=1$\:\:}}\quad
+	\left\{\begin{array}{l}
+		1 = 56-\left(20P_1^*+30P_2^*+5P_3^*\right) \\
+		1 = 12-\left(P_1^*+3P_2^*+7P_3^*\right) \\
+		1 = 35-\left(4P_1^*+10P_2^*+20P_3^*\right)
+	\end{array}\right\}
+	\quad\Longrightarrow\quad
+	P_i^* = 1
+\end{align}
+\begin{equation}
+	\vec{P}^* = \begin{pmatrix}P_1^*\\P_2^*\\P_3^*\end{pmatrix}
+	= \begin{pmatrix}0\\0\\0\end{pmatrix}
+	\quad\Longrightarrow\quad
+	N_i^* = a_i - \sum_{j}b_{ij}P_j^* = a_i
+	\quad\Longrightarrow\quad
+	\vec{N}^* = \begin{pmatrix}N_1^*\\N_2^*\\N_3^*\end{pmatrix} 
+	= \begin{pmatrix}56\\12\\35\end{pmatrix}
+\end{equation}
+
+``usual'' fixed points:
+\begin{equation}
+	N_i^* = P_i^* = 0
+	\qquad\quad\text{and}\qquad\quad
+	N_i^* = P_i^* = 1
+\end{equation}
+third fixed point:
+\begin{equation}
+	P_i^* = 0 
+	\qquad\quad\text{and}\qquad\quad
+	N_i^* = a_i
+\end{equation}
+\begin{equation}
+	\text{$\begin{pmatrix}\vec{N}^*\\\vec{P}^*\end{pmatrix}$ fixed point}
+	\qquad\quad\Longleftrightarrow\quad\qquad
+	\vec{f}(\vec{N}^*,\,\vec{P}^*) = \vec{0}
+\end{equation}
+Jacobi matrix:
+\begin{equation}
+	\mathrm{D}\vec{f} =
+	\begin{pmatrix}
+	\frac{\partial n_1}{\partial N_1}&0&0&
+	\frac{\partial n_1}{\partial P_1}&
+	\frac{\partial n_1}{\partial P_2}&
+	\frac{\partial n_1}{\partial P_3} \\
+	0&\frac{\partial n_2}{\partial N_2}&0&
+	\frac{\partial n_2}{\partial P_1}&
+	\frac{\partial n_2}{\partial P_2}&
+	\frac{\partial n_2}{\partial P_3} \\
+	0&0&\frac{\partial n_3}{\partial N_3}&
+	\frac{\partial n_3}{\partial P_1}&
+	\frac{\partial n_3}{\partial P_2}&
+	\frac{\partial n_3}{\partial P_3} \\
+	\frac{\partial p_1}{\partial N_1}&
+	\frac{\partial p_1}{\partial N_2}&
+	\frac{\partial p_1}{\partial N_3}&
+	\frac{\partial p_1}{\partial P_1}&0&0 \\
+	\frac{\partial p_2}{\partial N_1}&
+	\frac{\partial p_2}{\partial N_2}&
+	\frac{\partial p_2}{\partial N_3}&
+	0&\frac{\partial p_2}{\partial P_2}&0 \\
+	\frac{\partial p_3}{\partial N_1}&
+	\frac{\partial p_3}{\partial N_2}&
+	\frac{\partial p_3}{\partial N_3}&
+	0&0&\frac{\partial p_3}{\partial P_3} \\
+	\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+	\frac{\partial n_i}{\partial N_i}
+	= \frac{\partial}{\partial N_i}
+		\Biggl[N_i\biggl(a_i-N_i-\sum_{j}b_{ij}P_j\biggr)\Biggr]
+	= \biggl(a_i-N_i-\sum_{j}b_{ij}P_j\biggr)-N_i
+\end{equation}
+\begin{equation}
+	\frac{\partial p_i}{\partial P_i}
+	= \frac{\partial}{\partial P_i}
+	\Biggl[P_i\biggl(\sum_{j}c_{ij}N_j-d_i\biggr)\Biggr]
+	= \sum_{j}c_{ij}N_j-d_i
+\end{equation}
+\begin{equation}
+	\frac{\partial n_i}{\partial P_j}
+	= \frac{\partial}{\partial P_j}
+	\Biggl[N_i\biggl(a_i-N_i-\sum_{j}b_{ij}P_j\biggr)\Biggr]
+	= -N_ib_{ij}
+\end{equation}
+\begin{equation}
+	\frac{\partial p_i}{\partial N_j}
+	= \frac{\partial}{\partial N_j}
+	\Biggl[P_i\biggl(\sum_{j}c_{ij}N_j-d_i\biggr)\Biggr]
+	= P_ic_{ij}
+\end{equation}
+
+\begin{equation}
+	\mathbf{A} := \mathrm{D}\vec{f}(N_i^*=P_i^*=1) =
+	\begin{pmatrix}
+		-1&0&0&-20&-30&-5 \\
+		0&-1&0&-1&-3&-7 \\
+		0&0&-1&-4&-10&-20 \\
+		20&30&35&0&0&0 \\
+		3&3&3&0&0&0 \\
+		7&8&20&0&0&0 \\
+	\end{pmatrix}
+\end{equation}
 
 \begin{description}
 	\item[Task:] What is the Jacobi matrix $\mathbf{A}$ at the non-trivial fixed point? (non-trivial FP means here that \textit{all} elements are unequal to zero. There is only one FP with this property)

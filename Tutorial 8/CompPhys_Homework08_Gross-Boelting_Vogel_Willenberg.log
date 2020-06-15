@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  14 JUN 2020 13:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  15 JUN 2020 12:10
 entering extended mode
 **./CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.tex
 (CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.tex
@@ -1422,47 +1422,51 @@ LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
 
 [1
 
-{C:/Users/loren/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 111.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 111.
-
-(CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 111.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 111.
+{C:/Users/loren/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+[3]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 286.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 286.
+ (CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 286.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 286.
 Package rerunfilecheck Info: File `CompPhys_Homework08_Gross-Boelting_Vogel_Wil
 lenberg.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 111.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 286.
  ) 
 Here is how much of TeX's memory you used:
- 35296 strings out of 492970
- 671282 string characters out of 3126593
- 892849 words of memory out of 3000000
+ 35316 strings out of 492970
+ 671522 string characters out of 3126593
+ 906849 words of memory out of 3000000
  38647 multiletter control sequences out of 15000+200000
  612650 words of font info for 80 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,6n,63p,456b,778s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,19n,63p,456b,883s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.en
-c}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
-c}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-maths
-y.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-m
-athex.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
-lm-mathit.enc}<C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+c}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathi
+t.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-m
+athsy.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
+lm-ec.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
+lm-mathex.enc}<C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
 lic/lm/lmbx10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /public/lm/lmbx12.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/t
 ype1/public/lm/lmex10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/lm/lmmi10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/public/lm/lmmi7.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/loren/AppData/Local/Programs/MiKT
-eX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/loren/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/loren/AppData/Local/Program
-s/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Users/loren/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/loren/AppData/Local/P
-rograms/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.pdf (1 pa
-ge, 193181 bytes).
+/fonts/type1/public/lm/lmmi5.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Users/loren/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/loren/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/loren/AppData/Local/Program
+s/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/loren/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/lm/lmr5.pfb><C:/Users/loren/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Users/loren/AppData/Local/
+Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/loren/AppData/Lo
+cal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/loren/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb><C:/Users/loren/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb>
+Output written on CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.pdf (3 pa
+ges, 236548 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 6 named destinations out of 1000 (max. 500000)
+ 118 PDF objects out of 1000 (max. 8388607)
+ 26 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
