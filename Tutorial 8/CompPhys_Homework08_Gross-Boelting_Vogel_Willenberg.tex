@@ -32,6 +32,7 @@
 \usepackage{bigdelim}
 \usepackage{isotope}
 \setlength{\parindent}{0em} 
+\newcommand{\IU}{\mathrm{i}} 
 
 \renewcommand{\lstlistingname}{Python-Code}
 \lstset{
@@ -268,9 +269,9 @@ Jacobi matrix:
 
 
 \begin{description}
-	\item[Task:] Determine the eigenvalues and eigenvectors $\lambda_i$ and $\mathbf{v}_i$ ($i=1,\,\dots,\,6$) of $\mathbf{A}$ for this fixed point. Choose an initial state
+	\item[Task:] Determine the eigenvalues $\lambda_i$ and eigenvectors $\mathbf{v}_i$ ($i=1,\,\dots,\,6$) of $\mathbf{A}$ for this fixed point. Choose an initial state
 	\begin{equation}
-		\mathbf{n} = \sum_{i=1}^{6} c_i\mathbf{v}_i
+		\mathbf{n}_0 = \sum_{i=1}^{6} c_i\mathbf{v}_i
 		\qquad\text{with}\qquad
 		c_1 = c_2 = 3\,,\quad
 		c_3 = c_4 = 1\,,\quad
@@ -280,6 +281,43 @@ Jacobi matrix:
 	Plot and discuss the time dependent evolution of the six populations (given by this linear
 	model); in particular what about oscillations, growth or decay?
 \end{description}
+
+\begin{table}[h!]
+	\centering
+	\renewcommand{\arraystretch}{1.2}
+	\caption{Eigenvalues and eigenvectors}
+	\vspace{-0.2cm}
+	\begin{tabular}{ll}
+		\toprule
+		eigenvalues $\lambda_i$ & eigenvectors $\mathbf{v}_i$ \\
+		\midrule
+		$-0.5+33.626\IU$ & \\
+		$-0.5-33.626\IU$ & \\
+		$-0.5+7.679\IU$ & \\
+		$-0.5-7.679\IU$ & \\
+		$-1.136$ & \\
+		$+0.136$ & \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:stationary-points}
+\end{table}
+
+If $\lambda_i$ is an eigenvalue of $\mathbf{A}$ with the eigenvector $\mathbf{v}_i$, then
+$\exp(\lambda_i t)$ is eigenvalue of $\exp(\mathbf{A}t)$.
+
+\begin{equation}
+	\mathbf{n}(t) = \exp(\mathbf{A}t)\mathbf{n}_0
+	\qquad\text{with}\qquad
+	\mathbf{A} = \mathrm{D}\vec{f}
+\end{equation}
+$\mathbf{n}_0$ is our initial condition. 
+\begin{equation}
+	\mathbf{n}(t)
+	= \exp(\mathbf{A}t)\sum_{i=1}^{6}c_i\mathbf{v}_i
+	= \sum_{i=1}^{6}c_i\exp(\mathbf{A}t)\mathbf{v}_i
+	= \sum_{i=1}^{6}c_i\exp(\lambda_i t)\mathbf{v}_i
+\end{equation}
+We have an oscillating solution.
 
 %\newpage
 %\lstinputlisting[caption={Numerical determination of the stationary points},label={py:code}]{Homework07_Population-Dynamics_Gross-Boelting_Vogel_Willenberg.py}
