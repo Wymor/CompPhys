@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  18 JUN 2020 21:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  18 JUN 2020 23:15
 entering extended mode
 **./CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.tex
 (CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.tex
@@ -1429,8 +1429,6 @@ File: figures/Population-Time-Evolution-01.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/Population-Time-Evolution-01.pdf  used on inpu
 t line 327.
 (pdftex.def)             Requested size: 223.07211pt x 167.30746pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 328.
 <figures/Population-Time-Evolution-02.pdf, id=54, 462.52798pt x 346.89601pt>
 File: figures/Population-Time-Evolution-02.pdf Graphic file (type pdf)
 <use figures/Population-Time-Evolution-02.pdf>
@@ -1472,11 +1470,11 @@ lenberg.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 350.
  ) 
 Here is how much of TeX's memory you used:
- 35921 strings out of 492970
- 678184 string characters out of 3126593
- 933855 words of memory out of 3000000
- 39152 multiletter control sequences out of 15000+200000
- 637512 words of font info for 93 fonts, out of 3000000 for 9000
+ 35912 strings out of 492970
+ 678102 string characters out of 3126593
+ 935855 words of memory out of 3000000
+ 39145 multiletter control sequences out of 15000+200000
+ 627516 words of font info for 85 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,19n,63p,456b,2462s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
@@ -1492,24 +1490,22 @@ s/type1/public/lm/lmex10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/
 fonts/type1/public/lm/lmmi10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 
 2.9/fonts/type1/public/lm/lmmi5.pfb><C:/Users/loren/AppData/Local/Programs/MiKT
 eX 2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Users/loren/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/lm/lmmi9.pfb><C:/Users/loren/AppData/Local/Program
-s/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/loren/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/loren/AppData/Local/P
-rograms/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/loren/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr5.pfb><C:/Users/loren/AppData/Lo
-cal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Users/loren/AppData/
-Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Users/loren/AppDat
-a/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Users/loren/AppD
-ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/loren/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/lore
-n/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/
-loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb><C:/Use
-rs/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/
-Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
+iKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/loren/AppData/Local/Program
+s/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/loren/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/loren/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/lm/lmr5.pfb><C:/Users/loren/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Users/loren/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Users/loren/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/loren/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/loren/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/loren
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb><C:/Users/lo
+ren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Users
+/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
 Output written on CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.pdf (5 pa
-ges, 453934 bytes).
+ges, 420155 bytes).
 PDF statistics:
- 379 PDF objects out of 1000 (max. 8388607)
- 107 named destinations out of 1000 (max. 500000)
+ 378 PDF objects out of 1000 (max. 8388607)
+ 111 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

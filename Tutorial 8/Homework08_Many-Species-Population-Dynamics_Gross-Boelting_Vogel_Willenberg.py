@@ -46,29 +46,33 @@ c = np.array([3,3,1,1,-5,0.1])
 print(initial_state(c,eigenvectors))
 
 # compute and plot the time-dependent evolution of the six populations
-t = np.linspace(0,10,10000) # time
+t = np.linspace(0,40,10000) # time
 time_evolution = time_evolution(t,c,eigenvalues,eigenvectors)
 
+#
+predator = time_evolution[:,3]+time_evolution[:,4]+time_evolution[:,5]
+prey = time_evolution[:,0]+time_evolution[:,1]+time_evolution[:,2]
 
 fig1, ax1 = plt.subplots()
-ax1.plot(t,time_evolution[:,3], 'b-', linewidth=1, label=r'Predator $P_1$')
-ax1.plot(t,time_evolution[:,0], 'r-', linewidth=1, label=r'Prey $N_1$')
-ax1.set_xlim((0,8)); ax1.set_ylim((-3,7.5)); ax1.legend(loc='upper right')
+ax1.plot(t,predator, 'b-', linewidth=1, label=r'Predator $P_1+P_2+P_3$')
+ax1.plot(t,prey, 'r-', linewidth=1, label=r'Prey $N_1+N_2+N_3$')
+ax1.set_xlim((0,40)); ax1.set_ylim((-6,8.5))
 
 fig2, ax2 = plt.subplots()
-ax2.plot(t,time_evolution[:,4], 'b-', linewidth=1, label=r'Predator $P_2$')
-ax2.plot(t,time_evolution[:,1], 'r-', linewidth=1, label=r'Prey $N_2$')
-ax2.set_xlim((0,8)); ax2.set_ylim((-3,0.5)); ax2.legend(loc='lower right')
+ax2.plot(t,predator, 'b-', linewidth=1, label=r'Predator $P_1+P_2+P_3$')
+ax2.plot(t,prey, 'r-', linewidth=1, label=r'Prey $N_1+N_2+N_3$')
+ax2.set_xlim((0,10)); ax2.set_ylim((-6,8.5))
 
 fig3, ax3 = plt.subplots()
-ax3.plot(t,time_evolution[:,5], 'b-', linewidth=1, label=r'Predator $P_3$')
-ax3.plot(t,time_evolution[:,2], 'r-', linewidth=1, label=r'Prey $N_3$')
-ax3.set_xlim((0,8)); ax3.set_ylim((-2.5,3)); ax3.legend(loc='upper right')
+ax3.plot(t,predator, 'b-', linewidth=1, label=r'Predator $P_1+P_2+P_3$')
+ax3.plot(t,prey, 'r-', linewidth=1, label=r'Prey $N_1+N_2+N_3$')
+ax3.set_xlim((4.5,5.5)); ax3.set_ylim((-1,1))
 
 for ax in [ax1,ax2,ax3]:
-    ax.set_title('Many Species Population Dynamics'); ax.grid()
+    ax.set_title('Many Species Population Dynamics')
     ax.set_xlabel(r'time $t$'); ax.set_ylabel(r'population number')
+    ax.grid(); ax.legend(loc='upper right')
 fig1.savefig('figures/Population-Time-Evolution-01.pdf', format='pdf')
 fig2.savefig('figures/Population-Time-Evolution-02.pdf', format='pdf')
-fig3.savefig('figures/Population-Time-Evolution-03.pdf', format='pdf')
+fig3.savefig('figures/Population-Time-Evolution-02.pdf', format='pdf')
 plt.show(); plt.clf(); plt.close()
