@@ -43,7 +43,7 @@ for i in range(0,len(eigenvalues)):
 
 # set the initial state with the given coefficients
 c = np.array([3,3,1,1,-5,0.1])
-print(initial_state(c,eigenvectors))
+print('Initial state: {}'.format(initial_state(c,eigenvectors)))
 
 # compute and plot the time-dependent evolution of the six populations
 t = np.linspace(0,40,10000) # time

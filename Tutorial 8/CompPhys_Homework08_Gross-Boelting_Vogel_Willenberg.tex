@@ -69,9 +69,9 @@ In this exercise we study the evolution of $6$ populations according to the foll
 \end{equation}
 The parameters chosen are $a_1=56$, $a_2=12$, $a_3=35$, $d_1=85$, $d_2=9$ and $d_3=35$; the parameters $b_{ij}$ and $c_{ij}$ are given in matrix form here:
 \begin{equation}
-	b_{ij} = \begin{pmatrix}20&30&5\\1&3&7\\4&10&20\end{pmatrix}
+	b_{ij} = \left(\begin{array}{ccc}20&30&5\\1&3&7\\4&10&20\end{array}\right)
 	\qquad\quad\text{and}\quad\qquad
-	c_{ij} = \begin{pmatrix}20&30&35\\3&3&3\\7&8&20\end{pmatrix}
+	c_{ij} = \left(\begin{array}{ccc}20&30&35\\3&3&3\\7&8&20\end{array}\right)
 \end{equation}
 \begin{description}
 	\item[Notices:] The unusual feature here in the equations is that the prey populations $N_i$ have a Verhulst style growth limiting factor in their equations, which limits their growth even if there is no predator (model for limited resources even in absence of predators).
@@ -94,31 +94,31 @@ First of all, we abbreviate the functions occurring in Eq. \eqref{eq:population-
 	n_i(N_i,\,\vec{P}) 
 	&:= \frac{\mathrm{d}N_i}{\mathrm{d}t} 
 	= N_i\biggl(a_i-N_i-\sum_{j}b_{ij}P_j\biggr)
-	&&\text{with}
-	&\vec{P}=\begin{pmatrix}P_1&P_2&P_3\end{pmatrix}^T \\
+	&&\text{with}\qquad
+	\vec{P}=\begin{pmatrix}P_1&P_2&P_3\end{pmatrix}^T \\
 	p_i(P_i,\,\vec{N})
 	&:= \frac{\mathrm{d}P_i}{\mathrm{d}t} 
 	= P_i\biggl(\sum_{j}c_{ij}N_j-d_i\biggr)
-	&&\text{with}
-	&\vec{N}=\begin{pmatrix}N_1&N_2&N_3\end{pmatrix}^T
+	&&\text{with}\qquad
+	\vec{N}=\begin{pmatrix}N_1&N_2&N_3\end{pmatrix}^T
 \end{align}
 We now define the vectorial function $\vec{f}(\vec{N},\,\vec{P})$ for arguments 
 $\vec{N}$ (prey-species) and $\vec{P}$ (predator-species):
 \begin{equation}
 	\vec{f}(\vec{N},\,\vec{P}) =
 	\begin{pmatrix}\dot{\vec{N}}\\\dot{\vec{P}}\end{pmatrix}
-	\qquad\text{with}\qquad
+	\quad\text{with}\quad
 	\dot{\vec{N}} 
 	= \frac{\mathrm{d}\vec{N}}{\mathrm{d}t}
-	= 	\begin{pmatrix} 
+	= 	\left(\begin{array}{c} 
 			n_1(N_1,\,\vec{P}) \\ n_2(N_2,\,\vec{P}) \\ n_3(N_3,\,\vec{P})
-		\end{pmatrix}
+		\end{array}\right)
 	\quad\text{and}\quad
 	\dot{\vec{P}} 
 	= \frac{\mathrm{d}\vec{P}}{\mathrm{d}t}
-	=	\begin{pmatrix}
+	=	\left(\begin{array}{l}
 			p_1(P_1,\,\vec{N}) \\ p_2(P_2,\,\vec{N}) \\ p_3(P_3,\,\vec{N})
-		\end{pmatrix}
+		\end{array}\right)
 \end{equation}
 The condition for fixed points (FP) in the case of interacting populations (multi-dimensional case) is more or less analogous to the one-dimensional case, but in vector form:
 \begin{equation}
@@ -210,11 +210,18 @@ Our result for the \textbf{third fixed point} is:
 \begin{description}
 	\item[Task:] What is the Jacobi matrix $\mathbf{A}$ at the non-trivial fixed point? (non-trivial FP means here that \textit{all} elements are unequal to zero. There is only one FP with this property)
 \end{description}
-
-Jacobi matrix:
+Because of
+\begin{equation}
+	\frac{\partial n_i}{\partial N_j} = 0
+	\qquad\text{and}\qquad
+	\frac{\partial p_i}{\partial P_j} = 0
+	\qquad\text{for}\qquad
+	i \neq j
+\end{equation}
+we get for the Jacobi matrix of the given system of equations for population dynamics:
 \begin{equation}
 	\mathrm{D}\vec{f} =
-	\begin{pmatrix}
+	\left(\begin{array}{cccccc}
 		\frac{\partial n_1}{\partial N_1}&0&0&
 		\frac{\partial n_1}{\partial P_1}&
 		\frac{\partial n_1}{\partial P_2}&
@@ -239,44 +246,51 @@ Jacobi matrix:
 		\frac{\partial p_3}{\partial N_2}&
 		\frac{\partial p_3}{\partial N_3}&
 		0&0&\frac{\partial p_3}{\partial P_3} \\
-	\end{pmatrix}
+	\end{array}\right)
 \end{equation}
-
+In this case, the entries on the main diagonal are given by:
 \begin{equation}
 	\frac{\partial n_i}{\partial N_i}
 	= \frac{\partial}{\partial N_i}
 	\Biggl[N_i\biggl(a_i-N_i-\sum_{j}b_{ij}P_j\biggr)\Biggr]
 	= \biggl(a_i-N_i-\sum_{j}b_{ij}P_j\biggr)-N_i
 \end{equation}
-\begin{equation}
+and
+\begin{align}
 	\frac{\partial p_i}{\partial P_i}
-	= \frac{\partial}{\partial P_i}
+	&= \frac{\partial}{\partial P_i}
 	\Biggl[P_i\biggl(\sum_{j}c_{ij}N_j-d_i\biggr)\Biggr]
-	= \sum_{j}c_{ij}N_j-d_i
-\end{equation}
-\begin{equation}
+	= \sum_{j}c_{ij}N_j-d_i \\
+	\intertext{We receive the following values for the remaining entries:}
 	\frac{\partial n_i}{\partial P_j}
-	= \frac{\partial}{\partial P_j}
+	&= \frac{\partial}{\partial P_j}
 	\Biggl[N_i\biggl(a_i-N_i-\sum_{j}b_{ij}P_j\biggr)\Biggr]
-	= -N_ib_{ij}
-\end{equation}
-\begin{equation}
+	= -N_ib_{ij} \\
+	\intertext{and}
 	\frac{\partial p_i}{\partial N_j}
-	= \frac{\partial}{\partial N_j}
+	&= \frac{\partial}{\partial N_j}
 	\Biggl[P_i\biggl(\sum_{j}c_{ij}N_j-d_i\biggr)\Biggr]
 	= P_ic_{ij}
-\end{equation}
-
+\end{align}
+The only non-trivial fixed point (\textit{all} elements are unequal to zero) of this system is:
+\begin{equation}
+	N_i^* = P_i^* = 1
+	\qquad\Longleftrightarrow\qquad
+	\begin{pmatrix}\vec{N}^*&\vec{P}^*\end{pmatrix}^T
+	= \begin{pmatrix}1&1&1&1&1&1\end{pmatrix}^T
+	\end{equation}
+The Jacobi matrix $\mathbf{A}$ at the non-trivial fixed point therefore is:
 \begin{equation}
 	\mathbf{A} := \mathrm{D}\vec{f}(N_i^*=P_i^*=1) =
-	\begin{pmatrix}
+	\left(\begin{array}{cccccc}
 		-1&0&0&-20&-30&-5 \\
 		0&-1&0&-1&-3&-7 \\
 		0&0&-1&-4&-10&-20 \\
 		20&30&35&0&0&0 \\
 		3&3&3&0&0&0 \\
 		7&8&20&0&0&0 \\
-	\end{pmatrix}
+	\end{array}\right)
+	\label{eq:Jacobi-matrix}
 \end{equation}
 
 
@@ -294,43 +308,77 @@ Jacobi matrix:
 	Plot and discuss the time-dependent evolution of the six populations (given by this linear
 	model); in particular what about oscillations, growth or decay?
 \end{description}
+From the previous task we know that the Jacobi matrix $\mathbf{A}$ at the non-trivial fixed point is given by the expression in Eq. \eqref{eq:Jacobi-matrix}.
+We can numerically determine the eigenvalues $\lambda_i$ and eigenvectors $\mathbf{v}_i$ of the matrix $\mathbf{A}$ using the \texttt{SciPy} function \texttt{linalg.eig} (see Python-Code \ref{py:code}). The results are shown in Table \ref{tab:eigenvalues-eigenvectors}.
 
 \begin{table}[h!]
 	\centering
 	\renewcommand{\arraystretch}{1.2}
-	\caption{Eigenvalues and eigenvectors}
+	\caption{Numerically determined eigenvalues and eigenvectors}
 	\vspace{-0.2cm}
 	\begin{tabular}{ll}
 		\toprule
-		eigenvalues $\lambda_i$ & eigenvectors $\mathbf{v}_i$ \\
+		eigenvalues $\lambda_i$ & eigenvectors $\mathbf{v}_i^T$ \\
 		\midrule
-		$-0.5+33.626\IU$ & \\
-		$-0.5-33.626\IU$ & \\
-		$-0.5+7.679\IU$ & \\
-		$-0.5-7.679\IU$ & \\
-		$-1.136$ & \\
-		$+0.136$ & \\
+		$-0.5+33.626\IU$ &
+		$\bigl(\!\!\begin{array}{cccccc}
+		-0.008+0.543\IU&-0.001+0.093\IU&-0.004+0.294\IU&0.712&0.083&0.310
+		\end{array}\!\!\bigr)$ \\
+		$-0.5-33.626\IU$ &
+		$\bigl(\!\!\begin{array}{cccccc}
+		-0.008-0.543\IU&-0.001-0.093\IU&-0.004-0.294\IU&0.712&0.083&0.310
+		\end{array}\!\!\bigr)$ \\
+		$-0.5+7.679\IU$ &
+		$\bigl(\!\!\begin{array}{cccccc}
+		-0.869&0.138&0.342&0.011+0.167\IU&0.010+0.151\IU&-0.016-0.240\IU
+		\end{array}\!\!\bigr)$ \\
+		$-0.5-7.679\IU$ &
+		$\bigl(\!\!\begin{array}{cccccc}
+		-0.869&0.138&0.342&0.011-0.167\IU&0.010-0.151\IU&-0.016+0.240\IU
+		\end{array}\!\!\bigr)$ \\
+		$-1.136$ &
+		$\bigl(\!\!\begin{array}{cccccc}
+		-0.538&0.295&0.075&-0.644&0.442&-0.092
+		\end{array}\!\!\bigr)$ \\
+		$+0.136$ &
+		$\bigl(\!\!\begin{array}{cccccc}
+		0.081&-0.045&-0.011&-0.815&0.560&-0.116
+		\end{array}\!\!\bigr)$ \\
 		\bottomrule
 	\end{tabular}
-	\label{tab:stationary-points}
+	\label{tab:eigenvalues-eigenvectors}
 \end{table}
 
-If $\lambda_i$ is an eigenvalue of $\mathbf{A}$ with the eigenvector $\mathbf{v}_i$, then
-$\exp(\lambda_i t)$ is eigenvalue of $\exp(\mathbf{A}t)$.
-
+We now choose the initial state:
+\begin{equation}
+	\mathbf{n}_0 := \mathbf{n}(t=0) = \sum_{i=1}^{6} c_i\mathbf{v}_i
+	\qquad\text{with}\qquad
+	c_1 = c_2 = 3\,,\quad
+	c_3 = c_4 = 1\,,\quad
+	c_5 = -5\,,\quad
+	c_6 = 0.1
+\end{equation}
+By inserting the numerically determined eigenvectors $\mathbf{v}_i$ (see Table \ref{tab:eigenvalues-eigenvectors}) we get:
+\begin{equation}
+	\mathbf{n}_0
+	= \begin{pmatrix}
+	0.909&-1.210&0.278&7.431&-1.637&2.275
+	\end{pmatrix}^T
+\end{equation}
+The time-dependent evolution $\mathbf{n}(t)$ of our initial condition $\mathbf{n}_0$ is given by: 
 \begin{equation}
 	\mathbf{n}(t) = \exp(\mathbf{A}t)\mathbf{n}_0
 	\qquad\text{with}\qquad
-	\mathbf{A} = \mathrm{D}\vec{f}
+	\mathbf{A} = \mathrm{D}\vec{f}(N_i^*=P_i^*=1)
 \end{equation}
-$\mathbf{n}_0$ is our initial condition. 
+We know that, if $\lambda_i$ is an eigenvalue of $\mathbf{A}$ with the eigenvector $\mathbf{v}_i$, then $\exp(\lambda_i t)$ is an eigenvalue of $\exp(\mathbf{A}t)$.
+With this we get for the time-dependent evolution $\mathbf{n}(t)$ of $\mathbf{n}_0$:
 \begin{equation}
 	\mathbf{n}(t)
 	= \exp(\mathbf{A}t)\sum_{i=1}^{6}c_i\mathbf{v}_i
 	= \sum_{i=1}^{6}c_i\exp(\mathbf{A}t)\mathbf{v}_i
 	= \sum_{i=1}^{6}c_i\exp(\lambda_i t)\mathbf{v}_i
 \end{equation}
-We have an oscillating solution.
 
 
 \begin{figure}[t!]
@@ -354,10 +402,20 @@ We have an oscillating solution.
 		\caption{}
 		\label{fig:species-3}
 	\end{subfigure}
-	\caption{Time-dependent evolution of the six populations}
+	\caption{Time-dependent evolution of the six populations in different time intervals. We have plotted the sum of the three predator species and the sum of the three prey species against the time $t$.}
 	\label{fig:time-evolution}
 \end{figure}
 
-\newpage
+The time-dependent evolution of the six populations given by this linear model is shown in Fig. \ref{fig:time-evolution}.
+Both populations of the predators and the prey fluctuate around zero in a damped harmonic pattern.
+The oscillating behavior occurs because some of the eigenvalues $\lambda_i$ are complex. In both cases the fluctuation decreases over time. After about $t=10$ both populations arrive at zero.\\
+Both populations fluctuate because they are influencing each other. If the prey population is at a maximum there is more food for the predators and therefore the predator population will rise and the prey population will fall. Because the prey population is now falling there are more predators than prey and therefore the predator population will fall again. 
+This causes the prey population to increase because of less predators and the cycle continues.\\
+This fluctuation pattern is caused by influence of the prey (or predator) population in the predator (or prey) defining function. That causes the prey (or predator) population to depend on the predator (or prey) population.
+The fact that the population numbers become negative is unphysical for population dynamics and caused by the model we use.
+The next thing we notice is that both populations decrease over time. This is due to limited resources which are introduced by the prey population depending on its own population and causing it to decrease. In reality this is always the case because limited resources cause the population to reach a limit and therefore stop growing.\\
+Shortly after $t=10$ the prey population begins to rise exponentially and the predator population begins to fall exponentially. This effect has no physical meaning because the predator population is decreasing to negative infinity which is not possible and the prey population is rising to positive infinity. This effect is caused by the predator population having no positive extremum at some point ($t=0$) and therefore increasing the prey population. This causes the predator population to decrease even more because of the way its derivative is defined. 
+
+\vspace{1cm}
 \lstinputlisting[caption={Numerical determination of the time-dependent evolution of the six populations for a given initial state using the eigenvalues and the eigenvectors},label={py:code}]{Homework08_Many-Species-Population-Dynamics_Gross-Boelting_Vogel_Willenberg.py}
 \end{document}

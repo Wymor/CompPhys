@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  19 JUN 2020 10:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  19 JUN 2020 12:36
 entering extended mode
 **./CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.tex
 (CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.tex
@@ -1423,34 +1423,33 @@ LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
 [1
 
 {C:/Users/loren/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-<figures/Population-Time-Evolution-01.pdf, id=52, 462.52798pt x 346.89601pt>
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 312.
+
+
+("C:\Users\loren\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+[3]
+<figures/Population-Time-Evolution-01.pdf, id=71, 462.52798pt x 346.89601pt>
 File: figures/Population-Time-Evolution-01.pdf Graphic file (type pdf)
 <use figures/Population-Time-Evolution-01.pdf>
 Package pdftex.def Info: figures/Population-Time-Evolution-01.pdf  used on inpu
-t line 340.
+t line 388.
 (pdftex.def)             Requested size: 223.07211pt x 167.30746pt.
-<figures/Population-Time-Evolution-02.pdf, id=53, 462.52798pt x 346.89601pt>
+<figures/Population-Time-Evolution-02.pdf, id=72, 462.52798pt x 346.89601pt>
 File: figures/Population-Time-Evolution-02.pdf Graphic file (type pdf)
 <use figures/Population-Time-Evolution-02.pdf>
 Package pdftex.def Info: figures/Population-Time-Evolution-02.pdf  used on inpu
-t line 346.
+t line 394.
 (pdftex.def)             Requested size: 223.07211pt x 167.30746pt.
-<figures/Population-Time-Evolution-03.pdf, id=54, 462.52798pt x 346.89601pt>
+<figures/Population-Time-Evolution-03.pdf, id=73, 462.52798pt x 346.89601pt>
 File: figures/Population-Time-Evolution-03.pdf Graphic file (type pdf)
 <use figures/Population-Time-Evolution-03.pdf>
 Package pdftex.def Info: figures/Population-Time-Evolution-03.pdf  used on inpu
-t line 353.
+t line 401.
 (pdftex.def)             Requested size: 223.07211pt x 167.30746pt.
-
-[3]
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 362.
-
-(Homework08_Many-Species-Population-Dynamics_Gross-Boelting_Vogel_Willenberg.py
-LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 1.
-[4 <./figures/Population-Time-Evolution-01.pdf> <./figures/Population-Time-Evol
-ution-02.pdf
+ [4 <./figures/Population-Time-Evolution-01.pdf> <./figures/Population-Time-Evo
+lution-02.pdf
 
 pdfTeX warning: pdflatex.exe (file ./figures/Population-Time-Evolution-02.pdf):
  PDF inclusion: multiple pdfs with page group included in a single page
@@ -1458,25 +1457,32 @@ pdfTeX warning: pdflatex.exe (file ./figures/Population-Time-Evolution-02.pdf):
 
 pdfTeX warning: pdflatex.exe (file ./figures/Population-Time-Evolution-03.pdf):
  PDF inclusion: multiple pdfs with page group included in a single page
->]) [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 363.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 363.
+>]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 420.
+
+(Homework08_Many-Species-Population-Dynamics_Gross-Boelting_Vogel_Willenberg.py
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 1.
+[5]) [6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 421.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 421.
  (CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 363.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 363.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 421.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 421.
 Package rerunfilecheck Info: File `CompPhys_Homework08_Gross-Boelting_Vogel_Wil
 lenberg.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 363.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 421.
  ) 
 Here is how much of TeX's memory you used:
- 35913 strings out of 492970
- 678140 string characters out of 3126593
- 935855 words of memory out of 3000000
- 39147 multiletter control sequences out of 15000+200000
- 627516 words of font info for 85 fonts, out of 3000000 for 9000
+ 35954 strings out of 492970
+ 678814 string characters out of 3126593
+ 941855 words of memory out of 3000000
+ 39179 multiletter control sequences out of 15000+200000
+ 627835 words of font info for 86 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,19n,63p,456b,2462s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,19n,63p,619b,2458s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
 c}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-maths
 y.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-r
@@ -1501,11 +1507,12 @@ ocal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/loren/AppData
 Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/loren
 /AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy5.pfb><C:/Users/lo
 ren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Users
-/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb>
-Output written on CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.pdf (5 pa
-ges, 425438 bytes).
+/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Us
+ers/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb>
+Output written on CompPhys_Homework08_Gross-Boelting_Vogel_Willenberg.pdf (6 pa
+ges, 454307 bytes).
 PDF statistics:
- 380 PDF objects out of 1000 (max. 8388607)
- 110 named destinations out of 1000 (max. 500000)
+ 398 PDF objects out of 1000 (max. 8388607)
+ 115 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
