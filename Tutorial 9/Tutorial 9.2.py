@@ -17,7 +17,7 @@ def dz(x,y,z,b):
     return x*y-b*z
 
 def rk4_step(x0, y0, z0, f1, f2, f3, h, f1_args = {}, f2_args = {}, f3_args = {}):
-    ''' Simple python implementation for one RK4 step. 
+    ''' Simple python implementation for one RK4 step.
         Inputs:
             x_0     - M x 1 numpy array specifying all variables of the first ODE at the current time step
             y_0     - M x 1 numpy array specifying all variables of the second ODE at the current time step
@@ -52,7 +52,7 @@ def rk4_step(x0, y0, z0, f1, f2, f3, h, f1_args = {}, f2_args = {}, f3_args = {}
     xp1 = x0 + 1./6.*(k1 + 2.*k2 + 2.*k3 + k4)
     yp1 = y0 + 1./6.*(l1 + 2.*l2 + 2.*l3 + l4)
     zp1 = z0 + 1./6.*(m1 + 2.*m2 + 2.*m3 + m4)
-    
+
     return(xp1, yp1, zp1)
 
 def rk4(x0, y0, z0, f1, f2, f3, h, n, f1_args = {}, f2_args = {}, f3_args = {}):
@@ -79,7 +79,7 @@ def rk4(x0, y0, z0, f1, f2, f3, h, n, f1_args = {}, f2_args = {}, f3_args = {}):
     xn[0] = x0
     yn[0] = y0
     zn[0] = z0
-    
+
     for n in np.arange(1,n+1,1):
         xn[n], yn[n], zn[n], = rk4_step(x0 = xn[n-1], y0 = yn[n-1], z0 = zn[n-1], f1 = f1, f2 = f2, f3 = f3, h = h, f1_args = f1_args, f2_args = f2_args, f3_args = f3_args)
     return(xn, yn, zn)
