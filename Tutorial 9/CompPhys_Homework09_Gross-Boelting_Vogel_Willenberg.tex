@@ -58,4 +58,33 @@
 \begin{document}
 \maketitle
 
+
+\section*{The Lorenz Attractor}
+The Lorenz attractor problem is given by the following coupled set of differential equations:
+\begin{align}
+	\dot{x} &= -\sigma(x-y) \\
+	\dot{y} &= rx-y-xz \\
+	\dot{z} &= xy-bz
+\end{align}
+As discussed in the lecture, the fixed points are $\begin{pmatrix}0&0&0\end{pmatrix}$ for all $r$, and (for $r>1$) the points $C_{\pm}=\begin{pmatrix}\pm a_0&\pm a_0&r-1\end{pmatrix}$ with $a_0=\sqrt{b(r-1)}$. For the entire exercise, please use $\sigma=10$ and $b=8/3$.
+The value of $r$ can be experimented with. When you create numerical solutions you can make plots in 2-D projection (e.g. in the $(x,y)$- or $(x,z)$-plane). You can also try a full 3-D plot.
+\begin{description}
+	\item[Task:] Solve numerically, using \texttt{rk4}, the above coupled set of equations for the values $r=0.5$, $1.17$, $1.3456$, $25.0$ and $29.0$. Choose the initial conditions near one of the fixed points: $C_{\pm}$ for $r>1$ and $\begin{pmatrix}0&0&0\end{pmatrix}$ for $r<1$. Explain the behavior, as much as possible, with the stability properties of the fixed points.
+\end{description}
+
+\begin{description}
+	\item[Task:]  Determine the sequence $z_k$ for $r=26.5$, where $z_k$ is a local maximum in $z$
+	on the solution curve after $k$ periods. Plot $z_{k+1}$ as a function of $z_k$.
+	When sufficient points are there, connect the points. The resulting function $z_{k+1}=f(z_k)$ has an intersection with the diagonal $z_{k+1}=z_k$. It is a fixed point of the function $f(z_k)$. Is the slope $m$ of this function $>1$, $<-1$ or between $-1$ and $+1$?
+	Notice: The theory of discrete maps says that there is no periodic solution if $|m|>1$. 
+	So, in such a case we can deduce that this solution of the Lorenz system is not periodic.
+\end{description}
+
+
+
+%\vspace{1cm}
+%\lstinputlisting[caption={Title},label={py:code}]{Homework09_Lorenz-Attractor_Gross-Boelting_Vogel_Willenberg.py}
 \end{document}
+=======
+\end{document}
+>>>>>>> e35b505317551e8d7b136ef6a86a98350e518195
