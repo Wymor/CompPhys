@@ -58,16 +58,18 @@
 \begin{document}
 \maketitle
 
-<<<<<<< HEAD
 
 \section*{The Lorenz Attractor}
-
-
-
-
-
+The Lorenz attractor problem is given by the following coupled set of differential equations:
+\begin{align}
+	\dot{x} &= -\sigma(x-y) \\
+	\dot{y} &= rx-y-xz \\
+	\dot{z} &= xy-bz
+\end{align}
+As discussed in the lecture, the fixed points are $\begin{pmatrix}0&0&0\end{pmatrix}$ for all $r$, and (for $r>1$) the points $C_{\pm}=\begin{pmatrix}\pm a_0&\pm a_0&r-1\end{pmatrix}$ with $a_0=\sqrt{b(r-1)}$. For the entire exercise, please use $\sigma=10$ and $b=8/3$.
+The value of $r$ can be experimented with. When you create numerical solutions you can make plots in 2-D projection (e.g. in the $(x,y)$- or $(x,z)$-plane). You can also try a full 3-D plot.
 \begin{description}
-	\item[Task:] Solve numerically, using \texttt{rk4}, the above coupled set of equations for the values\\ $r\in\lbrace0.5,\,1.17,\,1.3456,\,25.0,\,29.0\rbrace$. Choose the initial conditions near one of the fixed points: $C_{\pm}$ for $r>1$ and $\begin{pmatrix}0&0&0\end{pmatrix}$ for $r<1$. Explain the behavior, as much as possible, with the stability properties of the fixed points.
+	\item[Task:] Solve numerically, using \texttt{rk4}, the above coupled set of equations for the values $r=0.5$, $1.17$, $1.3456$, $25.0$ and $29.0$. Choose the initial conditions near one of the fixed points: $C_{\pm}$ for $r>1$ and $\begin{pmatrix}0&0&0\end{pmatrix}$ for $r<1$. Explain the behavior, as much as possible, with the stability properties of the fixed points.
 \end{description}
 
 \begin{description}
