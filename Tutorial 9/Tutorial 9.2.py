@@ -1,12 +1,13 @@
 import numpy as np
+import cmath
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
 
 #Initial Values
 sig = 10
 b = 8/3
-r = np.array([1.17, 1.3456, 25.0, 29.0])
-a0 = np.sqrt(b*(r-1))
+r = np.array([0.5,1.17, 1.3456, 25.0, 29.0])
+a0 = np.sqrt(b*(r.astype('complex')-1))
 
 #Lorenz System
 def dx(x,y,z,sig):
@@ -73,12 +74,9 @@ def rk4(x0, y0, z0, f1, f2, f3, h, n, f1_args = {}, f2_args = {}, f3_args = {}):
             yn - N+1 x M numpy array with the results of the integration for every time step (includes y0)
             xn - N+1 x 1 numpy array with the time step value (includes start x0)
     '''
-    xn = np.zeros(n+1)
-    yn = np.zeros(n+1)
-    zn = np.zeros(n+1)
-    xn[0] = x0
-    yn[0] = y0
-    zn[0] = z0
+    xn = np.zeros(n+1); xn[0] = x0
+    yn = np.zeros(n+1); yn[0] = y0
+    zn = np.zeros(n+1); zn[0] = z0
     
     for n in np.arange(1,n+1,1):
         xn[n], yn[n], zn[n], = rk4_step(x0 = xn[n-1], y0 = yn[n-1], z0 = zn[n-1], f1 = f1, f2 = f2, f3 = f3, h = h, f1_args = f1_args, f2_args = f2_args, f3_args = f3_args)
@@ -87,6 +85,6 @@ def rk4(x0, y0, z0, f1, f2, f3, h, n, f1_args = {}, f2_args = {}, f3_args = {}):
 plt.figure()
 ax = plt.axes(projection="3d")
 for i in range(0,len(r)):
-    ax.scatter3D(*rk4(x0=np.ones(1), y0=np.ones(1), z0=np.ones(1), f1=dx, f2=dy, f3=dz, h=0.01, n=10000, f1_args={'sig':sig}, f2_args={'r':r[i]}, f3_args={'b':b}), s=1, label='r={}'.format(r[i]))
+    ax.scatter3D(*rk4(x0=a0[i], y0=a0[i], z0=r[i]-1, f1=dx, f2=dy, f3=dz, h=0.01, n=10000, f1_args={'sig':sig}, f2_args={'r':r[i]}, f3_args={'b':b}), s=1, label='r={}'.format(r[i]))
 plt.legend()
 plt.show()
