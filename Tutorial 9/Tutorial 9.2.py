@@ -84,7 +84,10 @@ def rk4(x0, y0, z0, f1, f2, f3, h, n, f1_args = {}, f2_args = {}, f3_args = {}):
 
 plt.figure()
 ax = plt.axes(projection="3d")
-for i in range(0,len(r)):
-    ax.scatter3D(*rk4(x0=a0[i], y0=a0[i], z0=r[i]-1, f1=dx, f2=dy, f3=dz, h=0.01, n=10000, f1_args={'sig':sig}, f2_args={'r':r[i]}, f3_args={'b':b}), s=1, label='r={}'.format(r[i]))
+for i in range(0,1):
+    if r[i] <= 1:
+        ax.scatter3D(*rk4(x0=0, y0=0, z0=1, f1=dx, f2=dy, f3=dz, h=0.01, n=10000, f1_args={'sig':sig}, f2_args={'r':r[i]}, f3_args={'b':b}), s=1, label='r={}'.format(r[i]))
+    else:
+        ax.scatter3D(*rk4(x0=a0[i]+1, y0=a0[i]+1, z0=r[i], f1=dx, f2=dy, f3=dz, h=0.01, n=1000, f1_args={'sig':sig}, f2_args={'r':r[i]}, f3_args={'b':b}), s=1, label='r={}'.format(r[i]))
 plt.legend()
 plt.show()
