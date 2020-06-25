@@ -1,0 +1,84 @@
+\documentclass[10pt, a4paper, nottitlepage]{article}
+
+% Include packages 
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+\usepackage{extarrows}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{fontawesome}
+\usepackage{marvosym}
+\usepackage{acronym}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage{siunitx}
+%\usepackage{icomma}
+\usepackage{bigdelim}
+\usepackage{isotope}
+\setlength{\parindent}{0em} 
+\newcommand{\IU}{\mathrm{i}} 
+
+\renewcommand{\lstlistingname}{Python-Code}
+\lstset{
+	language=Python,
+	frame=single,
+	morekeywords={as,True,False},
+	basicstyle=\footnotesize,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{red},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	showspaces=false,
+	numbers=left,
+	extendedchars=true,
+	literate={ö}{{\"o}}1 {Ö}{{\"O}}1 {ä}{{\"a}}1 {Ä}{{\"A}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1}
+
+\title{Introduction to Computational Physics  -- Exercise 9}
+\author{Simon Groß-Bölting, Lorenz Vogel, Sebastian Willenberg}
+\date{June 26, 2020}
+
+\setcounter{section}{1}
+% The beginning of the document...
+\begin{document}
+\maketitle
+
+
+\section*{The Lorenz Attractor}
+
+
+
+
+
+\begin{description}
+	\item[Task:] Solve numerically, using \texttt{rk4}, the above coupled set of equations for the values\\ $r\in\lbrace0.5,\,1.17,\,1.3456,\,25.0,\,29.0\rbrace$. Choose the initial conditions near one of the fixed points: $C_{\pm}$ for $r>1$ and $\begin{pmatrix}0&0&0\end{pmatrix}$ for $r<1$. Explain the behavior, as much as possible, with the stability properties of the fixed points.
+\end{description}
+
+\begin{description}
+	\item[Task:]  Determine the sequence $z_k$ for $r=26.5$, where $z_k$ is a local maximum in $z$
+	on the solution curve after $k$ periods. Plot $z_{k+1}$ as a function of $z_k$.
+	When sufficient points are there, connect the points. The resulting function $z_{k+1}=f(z_k)$ has an intersection with the diagonal $z_{k+1}=z_k$. It is a fixed point of the function $f(z_k)$. Is the slope $m$ of this function $>1$, $<-1$ or between $-1$ and $+1$?
+	Notice: The theory of discrete maps says that there is no periodic solution if $|m|>1$. 
+	So, in such a case we can deduce that this solution of the Lorenz system is not periodic.
+\end{description}
+
+
+
+%\vspace{1cm}
+%\lstinputlisting[caption={Title},label={py:code}]{Homework09_Lorenz-Attractor_Gross-Boelting_Vogel_Willenberg.py}
+\end{document}
