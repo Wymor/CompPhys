@@ -87,31 +87,6 @@ The \texttt{rk4\_step} function looks as follows:
 The only thing that is left to get the results is to plot our values:
 \lstinputlisting[linerange={78-103}]{Homework09_Lorenz-Attractor_Gross-Boelting_Vogel_Willenberg.py}
 
-It is important to note here that our initial conditions were set to $(x_0\,,\,y_0\,,\,z_0)=(1\,,\,1\,,\,1)$ in the case that $r<1$. That means that our initial conditons are always real.
-
-\end{figure}
-We can see that our imaginary partice begins at its the beginning point $(1,1,1)$ and directly moves towards our fixpoint at $(0,0,0)$ and stays there. If we tweak the initial values such that the initial state is allways near our fixed point we will see the same behaviour. As the distance of the initial conditions from the fixed point start to increase we will see that the graph begins to spiral. As soon as the distance becomes too big we see that the graph will stay in its starting point. If we set the initial point to be in our fixed point, wee will see that the particle doesnt moove as well. If we take a look at the real part of the Eigenvalues we can see that they stay negative. That means that our fixed point is stable. \newline
-If we set $r=1.17$ we get the following plot:
-\begin{figure}
-
-\end{figure}
-Note that our starting position from here on is set around our other fixed point at $(\pm a_0, \pm a_0, r-1)$. We can observe the same behaviour as in the last plot. All the real parts of the Eigenvallues are negative and therefore wehave get a stable fixed point.\newline
-If we set $r=1.3456$ we get the following plot:
-\begin{figure}
-
-\end{figure}
-
-Two of
-If we set $r=25.0$ we get the following plot:
-\begin{figure}
-
-\end{figure}
-
-If we set $r=29.0$ we get the following plot:
-\begin{figure}
-
-\end{figure}
-
 
 \begin{figure}[t!]
 	\centering
@@ -140,7 +115,7 @@ If we set $r=29.0$ we get the following plot:
 		\caption{$r=\num{25.0}$}
 		\label{fig:r=25.0}
 	\end{subfigure}
-
+	
 	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figures/3D-Plot_Lorenz-Attractor-5.pdf}
@@ -150,6 +125,12 @@ If we set $r=29.0$ we get the following plot:
 	\caption{Lorenz attractor for different values of $r$. The green marked points are the initial values and the red marked points are the fixed points.}
 	\label{fig:Lorenz-attractor}
 \end{figure}
+
+
+\begin{description}
+	\item[For $r=0.5$ (see Fig. \ref{fig:r=0.5}):] It is important to note here that our initial conditions were set to $(1\,,\,1\,,\,1)$ in the case that $r<1$. That means that our initial conditons are always real. We can see that our imaginary partice begins at its the beginning point $(1\,,\,1\,,\,1)$ and directly moves towards our fixpoint at $(0\,,\,0\,,\,0)$ and stays there. If we tweak the initial values such that the initial state is allways near our fixed point we will see the same behaviour. As the distance of the initial conditions from the fixed point start to increase we will see that the graph begins to spiral. As soon as the distance becomes too big we see that the graph will stay in its starting point. If we set the initial point to be in our fixed point, wee will see that the particle doesnt moove as well. If we take a look at the real part of the Eigenvalues we can see that they stay negative. That means that our fixed point is stable.
+	\item[For $r=1.17$ (see Fig. \ref{fig:r=1.17}):] Note that our starting position from here on is set around our other fixed point at $(\pm a_0\,,\,\pm a_0\,,\,r-1)$. We can observe the same behaviour as in the last plot. All the real parts of the Eigenvalues are negative and therefore we have get a stable fixed point.
+\end{description}
 
 
 %\begin{description}
