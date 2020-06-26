@@ -1,5 +1,4 @@
 import numpy as np
-import cmath
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
 
@@ -94,12 +93,10 @@ def rk4(x0, y0, z0, f1, f2, f3, h, n, f1_args = {}, f2_args = {}, f3_args = {}):
 
 plt.figure()
 ax = plt.axes(projection="3d")
-ax.scatter3D(0,0,0,s=10,color='red')
-ax.scatter3D(3,3,3,s=10,color='green')
-for i in range(0,1):
+for i in range(3,4):
     if r[i] <= 1:
-        ax.scatter3D(*rk4(x0=3, y0=3, z0=3, f1=dx, f2=dy, f3=dz, h=0.01, n=10000, f1_args={'sig':sig}, f2_args={'r':r[i]}, f3_args={'b':b}), s=1, label='r={}'.format(r[i]))
+        ax.scatter3D(*rk4(x0=1, y0=1, z0=1, f1=dx, f2=dy, f3=dz, h=0.1, n=100000, f1_args={'sig':sig}, f2_args={'r':r[i]}, f3_args={'b':b}), s=1, label='r={}'.format(r[i]))
     else:
-        ax.scatter3D(*rk4(x0=a0[i]+1, y0=a0[i]+1, z0=r[i], f1=dx, f2=dy, f3=dz, h=0.01, n=1000, f1_args={'sig':sig}, f2_args={'r':r[i]}, f3_args={'b':b}), s=1, label='r={}'.format(r[i]))
+        ax.scatter3D(*rk4(x0=a0[i]+20, y0=a0[i]+20, z0=r[i]+19, f1=dx, f2=dy, f3=dz, h=0.01, n=1000, f1_args={'sig':sig}, f2_args={'r':r[i]}, f3_args={'b':b}), s=1, label='r={}'.format(r[i]))
 plt.legend()
 plt.show()
