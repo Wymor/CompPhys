@@ -73,7 +73,7 @@ def rk4(x0, y0, z0, f1, f2, f3, h, n, f1_args = {}, f2_args = {}, f3_args = {}):
             yn - N+1 x M numpy array with the results of the integration for every time step (includes y0)
             xn - N+1 x 1 numpy array with the time step value (includes start x0)
     '''
-<<<<<<< HEAD
+
     xn = np.zeros(n+1)
     yn = np.zeros(n+1)
     zn = np.zeros(n+1)
@@ -81,12 +81,10 @@ def rk4(x0, y0, z0, f1, f2, f3, h, n, f1_args = {}, f2_args = {}, f3_args = {}):
     yn[0] = y0
     zn[0] = z0
 
-=======
     xn = np.zeros(n+1); xn[0] = x0
     yn = np.zeros(n+1); yn[0] = y0
     zn = np.zeros(n+1); zn[0] = z0
-    
->>>>>>> 6d97ec93d2ecac30c938a56777c01267bf83b7e8
+
     for n in np.arange(1,n+1,1):
         xn[n], yn[n], zn[n], = rk4_step(x0 = xn[n-1], y0 = yn[n-1], z0 = zn[n-1], f1 = f1, f2 = f2, f3 = f3, h = h, f1_args = f1_args, f2_args = f2_args, f3_args = f3_args)
     return(xn, yn, zn)
