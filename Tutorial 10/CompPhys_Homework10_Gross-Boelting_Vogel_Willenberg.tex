@@ -1,0 +1,83 @@
+\documentclass[10pt, a4paper, nottitlepage]{article}
+
+% Include packages 
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{float}
+\usepackage{gensymb}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{pdfpages}
+\usepackage{extarrows}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{fontawesome}
+\usepackage{marvosym}
+\usepackage{acronym}
+\usepackage{enumitem}
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage{siunitx}
+%\usepackage{icomma}
+\usepackage{bigdelim}
+\usepackage{isotope}
+\setlength{\parindent}{0em} 
+\newcommand{\IU}{\mathrm{i}} 
+
+\renewcommand{\lstlistingname}{Python-Code}
+\lstset{
+	language=Python,
+	frame=single,
+	morekeywords={as,True,False},
+	basicstyle=\footnotesize,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{red},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	showspaces=false,
+	numbers=left,
+	extendedchars=true,
+	literate={ö}{{\"o}}1 {Ö}{{\"O}}1 {ä}{{\"a}}1 {Ä}{{\"A}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1}
+
+\title{Introduction to Computational Physics  -- Exercise 10}
+\author{Simon Groß-Bölting, Lorenz Vogel, Sebastian Willenberg}
+\date{July 3, 2020}
+
+\setcounter{section}{1}
+% The beginning of the document...
+\begin{document}
+\maketitle
+
+\section*{Probability Distribution Functions}
+Consider a probability distribution function $p(x)$ given in the domain $[0,\,a\rangle$ by
+\begin{equation}
+	p(x) = bx
+	\label{eq:probability-distribution}
+\end{equation}
+Assume that $\{r_i\}$ is a random set of numbers, distributed uniformly between $0$ and $1$.
+
+\begin{description}
+	\item[Task:] Give the proper value of $b$ as a function of $a$ such that the probability distribution function is properly normalized.
+	\item[Task:] Use the rejection method to make a set $\{x_i\}$ that obeys Eq. \eqref{eq:probability-distribution} for $a=0.5$.
+	\item[Task:] Make a histogram of the resulting numbers and check that the histogram indeed follows Eq. \eqref{eq:probability-distribution}, i.e. overplot Eq. \eqref{eq:probability-distribution}. Experiment with the size of the set (the number of random numbers drawn), to find out how large you have to make it to get (by eye) a reasonable fit.
+\end{description}
+
+\section*{Determination of $\pi$ with Random Numbers}
+\begin{description}
+	\item[Task:] Compute the number $\pi$ using a rejection method with the function $f(x)=\sqrt{1-x^2}$, for $0\leq x\leq 1$. 
+	\textit{Hint:} It is enough to use only one quadrant $x$, $f(x)>0$. Vary the number of
+	random numbers (RNs) widely (orders of magnitude) and plot the accuracy of the result as a function of the
+	number of RNs. Use logarithmic variables for the plot.
+\end{description}
+
+\end{document}
