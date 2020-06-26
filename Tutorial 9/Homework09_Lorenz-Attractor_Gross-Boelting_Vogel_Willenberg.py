@@ -74,25 +74,30 @@ def dy(x,y,z,r):
 def dz(x,y,z,b):
     return x*y-b*z
 
-N = 10000   # number of steps
-h = 0.001   # step size
 
 for i in range(0,len(r)):
+    # plot the solution (3-D plot)
+    fig = plt.figure(); ax = fig.add_subplot(111, projection='3d')
+    ax.set_title(r'Lorenz Attractor for $r=${}'.format(r[i]))
+
     # choose the initial conditions near one of the fixed points
-    if r[i] < 1: x0 = 1. ; y0 = 1. ; z0 = 1.
+    if (r[i]<1): x0 = 1. ; y0 = 1. ; z0 = 1.
     else: x0 = a0[i-1]+1.; y0 = a0[i-1]+1. ; z0 = (r[i]-1.)+1.
+
+    # choose number of steps and step size
+    if (r[i]==25 or r[i]==29): N = int(1e4); h = 1e-2
+    else: N = int(1e4); h = 1e-3
 
     # solve numerically the above coupled set of equations (using Runge-Kutta-4)
     xn, yn, zn = rk4(x0=x0, y0=y0, z0=z0, fx=dx, fy=dy, fz=dz, h=h, n=N,
                      fx_args={'sigma':sigma}, fy_args={'r':r[i]}, fz_args={'b':b})
 
-    # plot the solution (3-D plot)
-    fig = plt.figure(); ax = fig.add_subplot(111, projection='3d')
-    ax.set_title(r'Lorenz Attractor for $r=${}'.format(r[i]))
     ax.scatter(xn,yn,zn, marker='.', s=1, c='blue')
-    ax.scatter([x0],[y0],[z0], marker='x', s=25, c='green')
-    ax.scatter([x0-1.],[y0-1.],[z0-1.], marker='x', s=25, c='red')
+    ax.scatter([x0],[y0],[z0], marker='x', s=30, c='green')
+    ax.scatter([x0-1.],[y0-1.],[z0-1.], marker='x', s=30, c='red')
+    if (r[i]==25 or r[i]==29):
+         ax.scatter([-a0[i-1]],[-a0[i-1]],[r[i]-1.], marker='x', s=30, c='red')
     ax.set_xlabel(r'$x$-axis'); ax.set_ylabel(r'$y$-axis'); ax.set_zlabel(r'$z$-axis')
-    fig.savefig('figures/3D-Plot_Lorenz-Attractor_r={}.pdf'.format(r[i]), format='pdf')
+    fig.savefig('figures/3D-Plot_Lorenz-Attractor-{}.pdf'.format(i+1), format='pdf')
 
 plt.show(); plt.clf(); plt.close()

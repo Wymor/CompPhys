@@ -87,9 +87,49 @@ The \texttt{rk4\_step} function looks as follows:
 \lstinputlisting[linerange={11-60}]{Homework09_Lorenz-Attractor_Gross-Boelting_Vogel_Willenberg.py}
 
 The only thing that is left to get the results is to plot our values:
-\lstinputlisting[linerange={77-98}]{Homework09_Lorenz-Attractor_Gross-Boelting_Vogel_Willenberg.py}
+\lstinputlisting[linerange={78-103}]{Homework09_Lorenz-Attractor_Gross-Boelting_Vogel_Willenberg.py}
 
 It is important to note here that our initial conditions were set to $(x_0\,,\,y_0\,,\,z_0)=(1\,,\,1\,,\,1)$ in the case that $r<1$. That means that our initial conditons are always real.
+
+
+
+\begin{figure}[t!]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/3D-Plot_Lorenz-Attractor-1.pdf}
+		\caption{$r=\num{0.5}$}
+		\label{fig:r=0.5}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/3D-Plot_Lorenz-Attractor-2.pdf}
+		\caption{$r=\num{1.17}$}
+		\label{fig:r=1.17}
+	\end{subfigure}
+	
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/3D-Plot_Lorenz-Attractor-3.pdf}
+		\caption{$r=\num{1.3456}$}
+		\label{fig:r=1.3456}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/3D-Plot_Lorenz-Attractor-4.pdf}
+		\caption{$r=\num{25.0}$}
+		\label{fig:r=25.0}
+	\end{subfigure}
+
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/3D-Plot_Lorenz-Attractor-5.pdf}
+		\caption{$r=\num{29.0}$}
+		\label{fig:r=29.0}
+	\end{subfigure}
+	\caption{Lorenz attractor for different values of $r$. The green marked points are the initial values and the red marked points are the fixed points.}
+	\label{fig:Lorenz-attractor}
+\end{figure}
 
 
 \begin{description}
