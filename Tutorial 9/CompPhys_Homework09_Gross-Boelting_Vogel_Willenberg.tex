@@ -58,7 +58,6 @@
 \begin{document}
 \maketitle
 
-
 \section*{The Lorenz Attractor}
 The Lorenz attractor problem is given by the following coupled set of differential equations:
 \begin{align}
@@ -71,7 +70,6 @@ As discussed in the lecture, the fixed points are $(0\,,\,0\,,\,0)$ for all $r$,
 	\item[Task:] Solve numerically, using \texttt{rk4}, the above coupled set of equations for the values $r=0.5$, $1.17$, $1.3456$, $25.0$ and $29.0$. Choose the initial conditions near one of the fixed points: $C_{\pm}$ for $r>1$ and $(0\,,\,0\,,\,0)$ for $r<1$. Explain the behavior, as much as possible, with the stability properties of the fixed points.
 \end{description}
 
-<<<<<<< HEAD
 To solve the problem numerically we can use the Runge-Kutta Algorithm to approximate the functions $x$, $y$ and $z$. It is important to note that $x(t)$, $y(t)$ and $z(t)$ are time dependant. We will start by importing the packages that we will need for this exercise:
 \begin{lstlisting}
 import numpy as np
@@ -220,7 +218,7 @@ The \texttt{rk4\_step} function looks as follows:
 \lstinputlisting[linerange={11-60}]{Homework09_Lorenz-Attractor_Gross-Boelting_Vogel_Willenberg.py}
 
 The only thing that is left to get the results is to plot our values:
-\lstinputlisting[linerange={77-98}]{Homework09_Lorenz-Attractor_Gross-Boelting_Vogel_Willenberg.py}
+\lstinputlisting[linerange={78-103}]{Homework09_Lorenz-Attractor_Gross-Boelting_Vogel_Willenberg.py}
 
 It is important to note here that our initial conditions were set to $(x_0\,,\,y_0\,,\,z_0)=(1\,,\,1\,,\,1)$ in the case that $r<1$. That means that our initial conditons are always real.
 
@@ -247,12 +245,52 @@ If we set $r=29.0$ we get the following plot:
 
 \end{figure}
 
-\begin{description}
-	\item[Task:]  Determine the sequence $z_k$ for $r=26.5$, where $z_k$ is a local maximum in $z$
-	on the solution curve after $k$ periods. Plot $z_{k+1}$ as a function of $z_k$.
-	When sufficient points are there, connect the points. The resulting function $z_{k+1}=f(z_k)$ has an intersection with the diagonal $z_{k+1}=z_k$. It is a fixed point of the function $f(z_k)$. Is the slope $m$ of this function $>1$, $<-1$ or between $-1$ and $+1$?
-	Notice: The theory of discrete maps says that there is no periodic solution if $|m|>1$. 
-	So, in such a case we can deduce that this solution of the Lorenz system is not periodic.
-\end{description}
+
+\begin{figure}[t!]
+	\centering
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/3D-Plot_Lorenz-Attractor-1.pdf}
+		\caption{$r=\num{0.5}$}
+		\label{fig:r=0.5}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/3D-Plot_Lorenz-Attractor-2.pdf}
+		\caption{$r=\num{1.17}$}
+		\label{fig:r=1.17}
+	\end{subfigure}
+	
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/3D-Plot_Lorenz-Attractor-3.pdf}
+		\caption{$r=\num{1.3456}$}
+		\label{fig:r=1.3456}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/3D-Plot_Lorenz-Attractor-4.pdf}
+		\caption{$r=\num{25.0}$}
+		\label{fig:r=25.0}
+	\end{subfigure}
+
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/3D-Plot_Lorenz-Attractor-5.pdf}
+		\caption{$r=\num{29.0}$}
+		\label{fig:r=29.0}
+	\end{subfigure}
+	\caption{Lorenz attractor for different values of $r$. The green marked points are the initial values and the red marked points are the fixed points.}
+	\label{fig:Lorenz-attractor}
+\end{figure}
+
+
+%\begin{description}
+%	\item[Task:]  Determine the sequence $z_k$ for $r=26.5$, where $z_k$ is a local maximum in $z$
+%	on the solution curve after $k$ periods. Plot $z_{k+1}$ as a function of $z_k$.
+%	When sufficient points are there, connect the points. The resulting function $z_{k+1}=f(z_k)$ has an intersection with the diagonal $z_{k+1}=z_k$. It is a fixed point of the function $f(z_k)$. Is the slope $m$ of this function $>1$, $<-1$ or between $-1$ and $+1$?
+%	Notice: The theory of discrete maps says that there is no periodic solution if $|m|>1$. 
+%	So, in such a case we can deduce that this solution of the Lorenz system is not periodic.
+%\end{description}
 \end{document}
 
