@@ -97,7 +97,7 @@ def dy(x,y,z,r):
 def dz(x,y,z,b):
     return x*y-b*z
 \end{lstlisting}
-All the differential equations in our lorenz system are dependant of the functions \verb+x+, \verb+y+ and \verb+z+ and a variable $\sigma$, $r$ or $b$. That means that we have to rewrite our \verb+rk4+ algorithm in such a way that we will iterate over  \verb+x+, \verb+y+ and \verb+z+ instead of iterating over \verb+y+ and \verb+t+ (or rather \verb+x+). The \verb+rky_step+ function looks as follows:
+All the differential equations in our lorenz system are dependant of the functions \verb+x+, \verb+y+ and \verb+z+ and a variable $\sigma$, $r$ or $b$. That means that we have to rewrite our \verb+rk4+ algorithm in such a way that we will iterate over  \verb+x+, \verb+y+ and \verb+z+ instead of iterating over \verb+y+ and \verb+t+ (or rather \verb+x+). The \verb+rk4_step+ function looks as follows:
 \begin{lstlisting}
 def rk4_step(x0, y0, z0, f1, f2, f3, h, f1_args = {}, f2_args = {}, f3_args = {}):
     ''' Simple python implementation for one RK4 step. 
@@ -187,7 +187,7 @@ ax.scatter3D(0,0,0,s=10,color='red')
 ax.scatter3D(3,3,3,s=10,color='green')
 for i in range(0,1):
     if r[i] <= 1:
-        ax.scatter3D(*rk4(x0=3, y0=3, z0=3, 
+        ax.scatter3D(*rk4(x0=1, y0=1, z0=1, 
         f1=dx, f2=dy, f3=dz, h=0.01, n=10000, 
         f1_args={'sig':sig}, f2_args={'r':r[i]}, f3_args={'b':b}), s=1, 
         label='r={}'.format(r[i]))
@@ -199,8 +199,33 @@ for i in range(0,1):
 plt.legend()
 plt.show()
 \end{lstlisting}
-It is important to note here that our initial conditions were set to \verb+x0, y0, z0 = 0, 0, 0+ in the case that $r<1$. That means that our initial conditons are always real.
+It is important to note here that our initial conditions were set to \verb+x0, y0, z0 = 0, 0, 0+ in the case that $r<1$. That means that our initial conditons are always real. \newline
+Eventhough \verb+x+, \verb+y+ and \verb+z+ actually represent the amplitude of the fourier transformations, we will be using the analogy of a particle moving through three dimentional space in time. \newline
+In the case were $r=0.5$ we get the following plot:
+\begin{figure}
 
+\end{figure}
+We can see that our imaginary partice begins at its the beginning point $(1,1,1)$ and directly moves towards our fixpoint at $(0,0,0)$ and stays there. If we tweak the initial values such that the initial state is allways near our fixed point we will see the same behaviour. As the distance of the initial conditions from the fixed point start to increase we will see that the graph begins to spiral. As soon as the distance becomes too big we see that the graph will stay in its starting point. If we set the initial point to be in our fixed point, wee will see that the particle doesnt moove as well. If we take a look at the real part of the Eigenvalues we can see that they stay negative. That means that our fixed point is stable. \newline
+If we set $r=1.17$ we get the following plot:
+\begin{figure}
+
+\end{figure}
+Note that our starting position from here on is set around our other fixed point at $(\pm a_0, \pm a_0, r-1)$. We can observe the same behaviour as in the last plot. All the real parts of the Eigenvallues are negative and therefore wehave get a stable fixed point.\newline
+If we set $r=1.3456$ we get the following plot:
+\begin{figure}
+
+\end{figure}
+
+Two of
+If we set $r=25.0$ we get the following plot:
+\begin{figure}
+
+\end{figure}
+
+If we set $r=29.0$ we get the following plot:
+\begin{figure}
+
+\end{figure}
 
 \begin{description}
 	\item[Task:]  Determine the sequence $z_k$ for $r=26.5$, where $z_k$ is a local maximum in $z$
