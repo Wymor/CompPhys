@@ -11,12 +11,13 @@ from mpl_toolkits.mplot3d import Axes3D
 def rk4_step(x0, y0, z0, fx, fy, fz, h, fx_args={}, fy_args={}, fz_args={}):
     ''' Simple python implementation for one RK4 step.
         Inputs: (i=x,y,z)
-            i0      - M x 1 numpy arrays specifying all variables of the three ODE's at the current time step
-            f       - function that calculates the derivates of all variables of the ODE
-            h       - step size
+            i0 - M x 1 numpy arrays specifying all variables of the three
+                 ODE's at the current time step
+            f  - function that calculates the derivates of all variables of the ODE
+            h  - step size
             fi_args - dictionary of additional arguments to be passed to the function fi
         Output: (i=x,y,z)
-            ip1     - M x 1 numpy array of variables of the first ODE at time step i0+h '''
+            ip1 - M x 1 numpy array of variables of the first ODE at time step i0+h '''
     k1_x = h*fx(x0, y0, z0, **fx_args)
     k1_y = h*fy(x0, y0, z0, **fy_args)
     k1_z = h*fz(x0, y0, z0, **fz_args)
@@ -41,12 +42,14 @@ def rk4_step(x0, y0, z0, fx, fy, fz, h, fx_args={}, fy_args={}, fz_args={}):
 def rk4(x0, y0, z0, fx, fy, fz, h, n, fx_args={}, fy_args={}, fz_args={}):
     ''' Simple implementation of RK4
         Inputs: (i=x,y,z)
-            i0      - M x 1 numpy arrays specifying all variables of the three ODE's at the current time step
-            f       - function that calculates the derivates of all variables of the ODE
-            h       - step size
+            i0 - M x 1 numpy arrays specifying all variables of the three
+                 ODE's at the current time step
+            f  - function that calculates the derivates of all variables of the ODE
+            h  - step size
             fi_args - dictionary of additional arguments to be passed to the function fi
         Output: (i=x,y,z)
-            in - N+1 x M numpy array with the results of the integration for every time step (includes i0) '''
+            in - N+1 x M numpy array with the results of the integration for
+                 every time step (includes i0) '''
     xn = np.zeros(n+1); yn = np.zeros(n+1); zn = np.zeros(n+1)
     xn[0] = x0; yn[0] = y0; zn[0] = z0
 
@@ -57,7 +60,7 @@ def rk4(x0, y0, z0, fx, fy, fz, h, n, fx_args={}, fy_args={}, fz_args={}):
     return (xn,yn,zn)
 
 
-# set initial condition
+# set initial conditions
 sigma = 10
 b = 8/3
 r = np.array([0.5,1.17,1.3456,25.0,29.0])
@@ -72,12 +75,12 @@ def dz(x,y,z,b):
     return x*y-b*z
 
 N = 10000   # number of steps
-h = 0.001    # step size
+h = 0.001   # step size
 
 for i in range(0,len(r)):
     # choose the initial conditions near one of the fixed points
-    if r[i] < 1: x0 = 2. ; y0 = 2. ; z0 = 2.
-    else: x0 = a0[i-1]+2.; y0 = a0[i-1]+2. ; z0 = (r[i]-1.)+2.
+    if r[i] < 1: x0 = 1. ; y0 = 1. ; z0 = 1.
+    else: x0 = a0[i-1]+1.; y0 = a0[i-1]+1. ; z0 = (r[i]-1.)+1.
 
     # solve numerically the above coupled set of equations (using Runge-Kutta-4)
     xn, yn, zn = rk4(x0=x0, y0=y0, z0=z0, fx=dx, fy=dy, fz=dz, h=h, n=N,
@@ -88,7 +91,7 @@ for i in range(0,len(r)):
     ax.set_title(r'Lorenz Attractor for $r=${}'.format(r[i]))
     ax.scatter(xn,yn,zn, marker='.', s=1, c='blue')
     ax.scatter([x0],[y0],[z0], marker='x', s=25, c='green')
-    ax.scatter([x0-2.],[y0-2.],[z0-2.], marker='x', s=25, c='red')
+    ax.scatter([x0-1.],[y0-1.],[z0-1.], marker='x', s=25, c='red')
     ax.set_xlabel(r'$x$-axis'); ax.set_ylabel(r'$y$-axis'); ax.set_zlabel(r'$z$-axis')
     fig.savefig('figures/3D-Plot_Lorenz-Attractor_r={}.pdf'.format(r[i]), format='pdf')
 
