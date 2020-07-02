@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  2 JUL 2020 18:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.12.11)  2 JUL 2020 21:24
 entering extended mode
 **./CompPhys_Homework10_Gross-Boelting_Vogel_Willenberg.tex
 (CompPhys_Homework10_Gross-Boelting_Vogel_Willenberg.tex
@@ -1414,51 +1414,100 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 60.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <14.4> on input line 75.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 98.
 
+("C:\Users\loren\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Underfull \hbox (badness 10000) in paragraph at lines 97--104
+
+ []
+
+<figures/RN-Rejection-Method_Pi-Determination.pdf, id=8, 462.52798pt x 346.8960
+1pt>
+File: figures/RN-Rejection-Method_Pi-Determination.pdf Graphic file (type pdf)
+<use figures/RN-Rejection-Method_Pi-Determination.pdf>
+Package pdftex.def Info: figures/RN-Rejection-Method_Pi-Determination.pdf  used
+ on input line 124.
+(pdftex.def)             Requested size: 218.51521pt x 163.88805pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 125.
+<figures/RN-Rejection-Method_Accuracy-Analysis.pdf, id=9, 462.52798pt x 346.896
+01pt>
+File: figures/RN-Rejection-Method_Accuracy-Analysis.pdf Graphic file (type pdf)
+
+<use figures/RN-Rejection-Method_Accuracy-Analysis.pdf>
+Package pdftex.def Info: figures/RN-Rejection-Method_Accuracy-Analysis.pdf  use
+d on input line 130.
+(pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
 [1
 
-{C:/Users/loren/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 113.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 113.
+{C:/Users/loren/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 140.
 
-(CompPhys_Homework10_Gross-Boelting_Vogel_Willenberg.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 113.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 113.
+(Homework10_Random-Numbers_Gross-Boelting_Vogel_Willenberg.py
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 1.
+
+("C:\Users\loren\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmr.fd"
+File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <8> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 1.
+
+[2 <./figures/RN-Rejection-Method_Pi-Determination.pdf> <./figures/RN-Rejection
+-Method_Accuracy-Analysis.pdf
+
+pdfTeX warning: pdflatex.exe (file ./figures/RN-Rejection-Method_Accuracy-Analy
+sis.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+>]) [3]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
+ (CompPhys_Homework10_Gross-Boelting_Vogel_Willenberg.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
 Package rerunfilecheck Info: File `CompPhys_Homework10_Gross-Boelting_Vogel_Wil
 lenberg.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 113.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 141.
  ) 
 Here is how much of TeX's memory you used:
- 35287 strings out of 492970
- 671084 string characters out of 3126593
- 893855 words of memory out of 3000000
- 38639 multiletter control sequences out of 15000+200000
- 610888 words of font info for 84 fonts, out of 3000000 for 9000
+ 35925 strings out of 492970
+ 678322 string characters out of 3126593
+ 932855 words of memory out of 3000000
+ 39179 multiletter control sequences out of 15000+200000
+ 627243 words of font info for 95 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,63p,456b,792s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathe
-x.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-e
-c.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-r
-m.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-m
+ 55i,8n,63p,456b,2462s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
+c}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-maths
+y.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-m
 athit.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
-lm-mathsy.enc}<C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lm-mathex.enc}{C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips
+/lm/lm-rm.enc}<C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
 lic/lm/lmbx10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /public/lm/lmbx12.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/lm/lmex10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/lm/lmmi10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/public/lm/lmmi12.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Users/loren/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/loren/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/loren/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/loren/AppData/Local/Pro
-grams/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Users/loren/AppData/Local/P
-rograms/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/loren/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on CompPhys_Homework10_Gross-Boelting_Vogel_Willenberg.pdf (2 pa
-ges, 204129 bytes).
+ype1/public/lm/lmbx8.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/public/lm/lmex10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/lm/lmmi10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/lm/lmmi12.pfb><C:/Users/loren/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/public/lm/lmmi7.pfb><C:/Users/loren/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/lm/lmmi9.pfb><C:/Users/loren/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/loren/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/loren/AppData/Local/
+Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users/loren/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr7.pfb><C:/Users/loren/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Users/loren/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/loren/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/loren/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/lor
+en/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy8.pfb><C:/Users/
+loren/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb>
+Output written on CompPhys_Homework10_Gross-Boelting_Vogel_Willenberg.pdf (3 pa
+ges, 438467 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 11 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 311 PDF objects out of 1000 (max. 8388607)
+ 87 named destinations out of 1000 (max. 500000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

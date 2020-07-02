@@ -58,19 +58,19 @@
 \begin{document}
 \maketitle
 
-\section*{Probability Distribution Functions}
-Consider a probability distribution function $p(x)$ given in the domain $[0,\,a\rangle$ by
-\begin{equation}
-	p(x) = bx
-	\label{eq:probability-distribution}
-\end{equation}
-Assume that $\{r_i\}$ is a random set of numbers, distributed uniformly between $0$ and $1$.
+%\section*{Probability Distribution Functions}
+%Consider a probability distribution function $p(x)$ given in the domain $[0,\,a\rangle$ by
+%\begin{equation}
+%	p(x) = bx
+%	\label{eq:probability-distribution}
+%\end{equation}
+%Assume that $\{r_i\}$ is a random set of numbers, distributed uniformly between $0$ and $1$.
 
-\begin{description}
-	\item[Task:] Give the proper value of $b$ as a function of $a$ such that the probability distribution function is properly normalized.
-	\item[Task:] Use the rejection method to make a set $\{x_i\}$ that obeys Eq. \eqref{eq:probability-distribution} for $a=0.5$.
-	\item[Task:] Make a histogram of the resulting numbers and check that the histogram indeed follows Eq. \eqref{eq:probability-distribution}, i.e. overplot Eq. \eqref{eq:probability-distribution}. Experiment with the size of the set (the number of random numbers drawn), to find out how large you have to make it to get (by eye) a reasonable fit.
-\end{description}
+%\begin{description}
+%	\item[Task:] Give the proper value of $b$ as a function of $a$ such that the probability distribution function is properly normalized.
+%	\item[Task:] Use the rejection method to make a set $\{x_i\}$ that obeys Eq. \eqref{eq:probability-distribution} for $a=0.5$.
+%	\item[Task:] Make a histogram of the resulting numbers and check that the histogram indeed follows Eq. \eqref{eq:probability-distribution}, i.e. overplot Eq. \eqref{eq:probability-distribution}. Experiment with the size of the set (the number of random numbers drawn), to find out how large you have to make it to get (by eye) a reasonable fit.
+%\end{description}
 
 \section*{Determination of $\pi$ with Random Numbers}
 \begin{description}
@@ -85,9 +85,9 @@ To determine $\pi$ numerically, we first use a so-called \textit{rejection metho
 	\frac{A_\mathrm{c}}{A_\mathrm{s}} = \frac{\pi r^2}{4r^2} = \frac{\pi}{4}
 \end{equation}
 The goal is now to estimate the ratio of the areas in order to calculate $\pi$.
-We can devise an algorithm that generates two random numbers $x_i,\,y_i\in [0,\,1]$ (random coordinates from the square) and checks whether the coordinate fell into the quarter circle or not (rejection method): 
+We can devise an algorithm that generates two random numbers $x_i,\,y_i\in [0,\,1)$ with $i=1,\,\dots,\,N$ (random coordinates from the square) and checks whether the coordinate fell into the quarter circle or not (rejection method): 
 \begin{equation}
-	\Bigl[\:\text{if}\quad y_i\leq\sqrt{1-x_i^2}\quad\Rightarrow\quad\text{``take''}\:\Bigr]
+	\Bigl[\:\text{if}\quad y_i<\sqrt{1-x_i^2}\quad\Rightarrow\quad\text{``take''}\:\Bigr]
 	\qquad\dot\lor\qquad
 	\Bigl[\:\text{if}\quad y_i>\sqrt{1-x_i^2}\quad\Rightarrow\quad\text{``reject''}\:\Bigr]
 \end{equation}
@@ -95,7 +95,9 @@ The value of $\pi$ is then approximately given by the ratio of the number $N_\ma
 \begin{equation}
 	\pi\approx 4\:\frac{N_\mathrm{take}}{N_\mathrm{total}}
 \end{equation}
-
+To generate the random numbers, we use the function \texttt{numpy.random.rand}, which creates an array of the given shape and populates it with random samples from a uniform distribution over $[0,\,1)$.
+Fig. \ref{fig:pi-determination} shows the idea/principle of the rejection method.
+The accuracy (relative error compared to the ``true'' value of $\pi$) of the rejection method is shown in Fig. \ref{fig:accuracy}.\\\\
 Another possibility for the numerical determination of $\pi$ is the so-called \textit{Monte Carlo integration}:
 Monte Carlo integration is a technique for numerical integration using random numbers.
 We want to integrate the function $f(x)$ on the interval $[a,\,b]$. The idea with Monte Carlo integration is to evaluate the function $f(x)$ on $N$ randomly selected points $x_i$ ($i=1,\,\dots,\,N$) (random sampling) in the interval $[a,\,b]$. In the case of equally distributed random numbers $x_i$, the value of the integral is simply the average of the function values $f(x_i)$:
@@ -103,11 +105,37 @@ We want to integrate the function $f(x)$ on the interval $[a,\,b]$. The idea wit
 	\int_{a}^{b}f(x)\,\mathrm{d}x \approx \frac{b-a}{N}\sum_{i=1}^{N}f(x_i) 
 \end{equation}
 The fact that this method works is due to the law of large numbers, i.e. $N\rightarrow\infty$.
-We know that the integral of $f(x)=\sqrt{1-x^2}$ on the interval $0\leq x\leq 1$ gives a quarter of the area of the unit circle. The area of the unit circle (radius $r=1$) is $A_\mathrm{c}=\pi r^2=\pi$. With $N$ randomly selected values $x_i\in [0,\,1]$, we obtain the following approximation formula for $\pi$ using Monte Carlo integration:
+We know that the integral of $f(x)=\sqrt{1-x^2}$ on the interval $0\leq x\leq 1$ gives a quarter of the area of the unit circle. The area of the unit circle (radius $r=1$) is $A_\mathrm{c}=\pi r^2=\pi$. With $N$ randomly selected values $x_i\in [0,\,1)$, we obtain the following approximation formula for $\pi$ using Monte Carlo integration:
 \begin{equation}
 	\frac{\pi}{4} = \int_{0}^{1}\sqrt{1-x^2}\,\mathrm{d}x \approx \frac{1}{N}\sum_{i=1}^{N}\sqrt{1-x_i^2}
 	\qquad\Longrightarrow\qquad
 	\pi\approx\frac{4}{N}\sum_{i=1}^{N}\sqrt{1-x_i^2}
 \end{equation}
+Using Monte Carlo integration, we get the following value for $\pi$:
+\begin{equation}
+\boxed{\:\text{Monte Carlo integration with $N=6\cdot 10^7$:}\qquad\quad
+	\pi\approx\num{3.141557094}\:}
+\end{equation}
 
+\begin{figure}[t!]
+	\centering
+	\begin{subfigure}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/RN-Rejection-Method_Pi-Determination.pdf}
+		\caption{Illustration of the determination of $\pi$ using a\\rejection method with randomly selected points}
+		\label{fig:pi-determination}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.50\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figures/RN-Rejection-Method_Accuracy-Analysis.pdf}
+		\caption{Accuracy analysis of the determination of $\pi$ using a rejection method with randomly selected points}
+		\label{fig:accuracy}
+	\end{subfigure}
+	\caption{Determination of $\pi$ with random numbers (rejection method)}
+	\label{fig:rejection-method}
+\end{figure}
+
+\vspace{1cm}
+\lstinputlisting[caption={Determination of $\pi$ using a rejection method and Monte Carlo integration},
+label={py:code}]{Homework10_Random-Numbers_Gross-Boelting_Vogel_Willenberg.py}
 \end{document}
