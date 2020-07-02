@@ -10,7 +10,7 @@ import numpy.linalg as linalg
 
 def initial_state(coeff,ev):
     ''' Function to set the initial state for given coefficients
-        Input:  coefficients (coeff), eigenvalues (ew) and eigenvectors (ev)'''
+        Input:  coefficients (coeff) and eigenvectors (ev)'''
     n = np.zeros(len(ev[:,0]))
     for i in range(0,len(n)): n = n+coeff[i]*ev[:,i]
 
@@ -74,5 +74,5 @@ for ax in [ax1,ax2,ax3]:
     ax.grid(); ax.legend(loc='upper right')
 fig1.savefig('figures/Population-Time-Evolution-01.pdf', format='pdf')
 fig2.savefig('figures/Population-Time-Evolution-02.pdf', format='pdf')
-fig3.savefig('figures/Population-Time-Evolution-02.pdf', format='pdf')
+fig3.savefig('figures/Population-Time-Evolution-03.pdf', format='pdf')
 plt.show(); plt.clf(); plt.close()
