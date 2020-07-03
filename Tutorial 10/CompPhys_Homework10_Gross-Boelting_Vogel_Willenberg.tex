@@ -97,7 +97,15 @@ The value of $\pi$ is then approximately given by the ratio of the number $N_\ma
 \end{equation}
 To generate the random numbers, we use the function \texttt{numpy.random.rand}, which creates an array of the given shape and populates it with random samples from a uniform distribution over $[0,\,1)$.
 Fig. \ref{fig:pi-determination} shows the idea/principle of the rejection method.
-The accuracy (relative error compared to the ``true'' value of $\pi$) of the rejection method is shown in Fig. \ref{fig:accuracy}.\\\\
+The accuracy (relative error compared to the ``true'' value of $\pi$) of the rejection method is shown in Fig. \ref{fig:accuracy}. 
+Because we work with random numbers, the accuracy can sometimes be better for a smaller $N$ than for a large $N$ for statistical reasons: Therefore, in Python-Code \ref{py:code} we used the mean of ten $\pi$ calculations to determine the accuracy for a given $N$.
+Regardless of the statistical fluctuations, the relative error in the $\log$-$\log$-plot decreases linearly (see Fig. \ref{fig:accuracy}).\\
+Using the rejection method, we get (for example) the following value for $\pi$:
+\begin{equation}
+	\boxed{\:\text{Rejection Method with $N=6\cdot 10^7$:}\qquad\quad
+		\pi\approx\num{3.141445}\:}
+\end{equation}
+
 Another possibility for the numerical determination of $\pi$ is the so-called \textit{Monte Carlo integration}:
 Monte Carlo integration is a technique for numerical integration using random numbers.
 We want to integrate the function $f(x)$ on the interval $[a,\,b]$. The idea with Monte Carlo integration is to evaluate the function $f(x)$ on $N$ randomly selected points $x_i$ ($i=1,\,\dots,\,N$) (random sampling) in the interval $[a,\,b]$. In the case of equally distributed random numbers $x_i$, the value of the integral is simply the average of the function values $f(x_i)$:
@@ -105,17 +113,20 @@ We want to integrate the function $f(x)$ on the interval $[a,\,b]$. The idea wit
 	\int_{a}^{b}f(x)\,\mathrm{d}x \approx \frac{b-a}{N}\sum_{i=1}^{N}f(x_i) 
 \end{equation}
 The fact that this method works is due to the law of large numbers, i.e. $N\rightarrow\infty$.
-We know that the integral of $f(x)=\sqrt{1-x^2}$ on the interval $0\leq x\leq 1$ gives a quarter of the area of the unit circle. The area of the unit circle (radius $r=1$) is $A_\mathrm{c}=\pi r^2=\pi$. With $N$ randomly selected values $x_i\in [0,\,1)$, we obtain the following approximation formula for $\pi$ using Monte Carlo integration:
+We know that the integral of $f(x)=\sqrt{1-x^2}$ on the interval $0\leq x\leq 1$ gives a quarter of the area of the unit circle.\\
+The area of the unit circle (radius $r=1$) is $A_\mathrm{c}=\pi r^2=\pi$. With $N$ randomly selected values $x_i\in [0,\,1)$, we obtain the following approximation formula for $\pi$ using Monte Carlo integration:
 \begin{equation}
 	\frac{\pi}{4} = \int_{0}^{1}\sqrt{1-x^2}\,\mathrm{d}x \approx \frac{1}{N}\sum_{i=1}^{N}\sqrt{1-x_i^2}
 	\qquad\Longrightarrow\qquad
 	\pi\approx\frac{4}{N}\sum_{i=1}^{N}\sqrt{1-x_i^2}
 \end{equation}
-Using Monte Carlo integration, we get the following value for $\pi$:
+Using Monte Carlo integration, we get (for example) the following value for $\pi$:
 \begin{equation}
-\boxed{\:\text{Monte Carlo integration with $N=6\cdot 10^7$:}\qquad\quad
+\boxed{\:\text{Monte Carlo Integration with $N=6\cdot 10^7$:}\qquad\quad
 	\pi\approx\num{3.141557094}\:}
 \end{equation}
+It should be noted that the rejection method takes much more time than the Monte Carlo integration.
+
 
 \begin{figure}[t!]
 	\centering
@@ -135,7 +146,7 @@ Using Monte Carlo integration, we get the following value for $\pi$:
 	\label{fig:rejection-method}
 \end{figure}
 
-\vspace{1cm}
+\vspace{1.25cm}
 \lstinputlisting[caption={Determination of $\pi$ using a rejection method and Monte Carlo integration},
 label={py:code}]{Homework10_Random-Numbers_Gross-Boelting_Vogel_Willenberg.py}
 \end{document}

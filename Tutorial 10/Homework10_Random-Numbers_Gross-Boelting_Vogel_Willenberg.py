@@ -40,6 +40,7 @@ print('Monte Carlo Integration: {}'.format(pi_Monte_Carlo(N,quadrant_function)))
 ## Determination of Pi using a Rejection Method
 N = int(3e3) # number of randomly selected points
 out = pi_rejection_method(N,quadrant_function)
+print('Rejection Method: {}'.format(out[0]))
 
 fig, ax = plt.subplots() # plot to illustrate the rejection method
 ax.set_title(r'Determination of $\pi$ using a Rejection Method'+'\n'
@@ -56,19 +57,20 @@ ax.set(xlim=(-0.05,1.05), ylim=(-0.05,1.05)); ax.set_aspect('equal', 'box')
 fig.savefig('figures/RN-Rejection-Method_Pi-Determination.pdf', format='pdf')
 
 # accuracy of the result as a function of the number of randomly selected points
-N = np.linspace(10,int(1e4),1000)   # number of randomly selected points
+N = np.linspace(10,int(1e5),1000)   # number of randomly selected points
 rel_error = np.zeros(len(N))        # array for the accuracy of the result
 
 for i in range(0,len(N)):
-    N[i] = int(N[i]); pi = pi_rejection_method(int(N[i]),quadrant_function)[0]
-    rel_error[i] = abs(pi-const.pi)/abs(const.pi)
+    N[i] = int(N[i]); pi = 0.
+    for _ in range(0,10):
+        pi += pi_rejection_method(int(N[i]),quadrant_function)[0]
+    rel_error[i] = abs((pi/10.)-const.pi)/abs(const.pi)
 
 fig, ax = plt.subplots()
 ax.set_title(r'Rejection Method: Accuracy of the Determination of $\pi$')
 ax.set_xlabel(r'number $N$ of randomly selected points')
 ax.set_ylabel(r'relative error [$\%$]')
-ax.plot(N, 100*rel_error, 'b.', markersize=1.5)
+ax.plot(N, 100*rel_error, 'b.', markersize=2)
 ax.grid(); ax.set_xscale('log'); ax.set_yscale('log')
-#ax.set(xlim=(-0.05,1.05), ylim=(-0.05,1.05))
 fig.savefig('figures/RN-Rejection-Method_Accuracy-Analysis.pdf', format='pdf')
 plt.show(); plt.clf(); plt.close()
