@@ -58,81 +58,39 @@
 \begin{document}
 \maketitle
 
-\section*{Determination of $\pi$ with Random Numbers}
+\section*{Importance Sampling}
 \begin{description}
-	\item[Task:] Compute the number $\pi$ using a rejection method with the function $f(x)=\sqrt{1-x^2}$, for $0\leq x\leq 1$. 
-	\textit{Hint:} It is enough to use only one quadrant $x,\,f(x)>0$. Vary the number of
-	random numbers (RNs) widely (orders of magnitude) and plot the accuracy of the result as a function of the
-	number of RNs. Use logarithmic variables for the plot.
+	\item[Task:] Compute the integral
+	\begin{equation}
+		I = \frac{1}{\pi}\int_{-\infty}^{+\infty}\exp(-y_1^2-y_2^2)\mathrm{d}y_1\mathrm{d}y_2
+	\end{equation}
+	numerically with Monte Carlo methods; compare equally distributed random numbers (RN's) again with an appropriate importance sampling. \textit{Hints:}
+	\begin{itemize}
+		\item First use equally distributed RN's in $[-5,\,+5]$.
+		\item Second use importance sampling with a suitable function. \textit{Hint:} Use the function
+		provided in the Box Muller algorithm as given in the lecture:
+		\begin{equation}
+			y_1 = \sqrt{-2\ln(x_1)}\cos(2\pi x_2)
+			\qquad
+			y_2 = \sqrt{-2\ln(x_1)}\sin(2\pi x_2)
+			\qquad\text{with $x_1,\,x_2\in [0,\,1]$}
+		\end{equation}
+	\end{itemize}
 \end{description}
 
-To determine $\pi$ numerically, we first use a so-called \textit{rejection method}: To do this, consider a quadrant $f(x)=\sqrt{1-x^2}$ ($0\leq x\leq 1$) with radius $r=1$ that lies within a square with the side lengths $r=1$. The following applies to the ratio of the areas of the quadrant and the square:
-\begin{equation}
-	\frac{A_\mathrm{c}}{A_\mathrm{s}} = \frac{\pi r^2}{4r^2} = \frac{\pi}{4}
-\end{equation}
-The goal is now to estimate the ratio of the areas in order to calculate $\pi$.
-We can devise an algorithm that generates two random numbers $x_i,\,y_i\in [0,\,1)$ with $i=1,\,\dots,\,N$ (random coordinates from the square) and checks whether the coordinate fell into the quarter circle or not (rejection method): 
-\begin{equation}
-	\Bigl[\:\text{if}\quad y_i<\sqrt{1-x_i^2}\quad\Rightarrow\quad\text{``take''}\:\Bigr]
-	\qquad\dot\lor\qquad
-	\Bigl[\:\text{if}\quad y_i>\sqrt{1-x_i^2}\quad\Rightarrow\quad\text{``reject''}\:\Bigr]
-\end{equation}
-The value of $\pi$ is then approximately given by the ratio of the number $N_\mathrm{take}$ of points within the quadrant to the total number $N_\mathrm{total}$ of points:
-\begin{equation}
-	\pi\approx 4\:\frac{N_\mathrm{take}}{N_\mathrm{total}}
-\end{equation}
-To generate the random numbers, we use the function \texttt{numpy.random.rand}, which creates an array of the given shape and populates it with random samples from a uniform distribution over $[0,\,1)$.
-Fig. \ref{fig:pi-determination} shows the idea/principle of the rejection method.
-The accuracy (relative error compared to the ``true'' value of $\pi$) of the rejection method is shown in Fig. \ref{fig:accuracy}. 
-Because we work with random numbers, the accuracy can sometimes be better for a smaller $N$ than for a large $N$ for statistical reasons: Therefore, in Python-Code \ref{py:code} we used the mean of ten $\pi$ calculations to determine the accuracy for a given $N$.
-Regardless of the statistical fluctuations, the relative error in the $\log$-$\log$-plot decreases linearly (see Fig. \ref{fig:accuracy}).\\
-Using the rejection method, we get (for example) the following value for $\pi$:
-\begin{equation}
-	\boxed{\:\text{Rejection Method with $N=6\cdot 10^7$:}\qquad\quad
-		\pi\approx\num{3.141445}\:}
-\end{equation}
 
-Another possibility for the numerical determination of $\pi$ is the so-called \textit{Monte Carlo integration}:
-Monte Carlo integration is a technique for numerical integration using random numbers.
-We want to integrate the function $f(x)$ on the interval $[a,\,b]$. The idea with Monte Carlo integration is to evaluate the function $f(x)$ on $N$ randomly selected points $x_i$ ($i=1,\,\dots,\,N$) (random sampling) in the interval $[a,\,b]$. In the case of equally distributed random numbers $x_i$, the value of the integral is simply the average of the function values $f(x_i)$:
-\begin{equation}
-	\int_{a}^{b}f(x)\,\mathrm{d}x \approx \frac{b-a}{N}\sum_{i=1}^{N}f(x_i) 
-\end{equation}
-The fact that this method works is due to the law of large numbers, i.e. $N\rightarrow\infty$.
-We know that the integral of $f(x)=\sqrt{1-x^2}$ on the interval $0\leq x\leq 1$ gives a quarter of the area of the unit circle.\\
-The area of the unit circle (radius $r=1$) is $A_\mathrm{c}=\pi r^2=\pi$. With $N$ randomly selected values $x_i\in [0,\,1)$, we obtain the following approximation formula for $\pi$ using Monte Carlo integration:
-\begin{equation}
-	\frac{\pi}{4} = \int_{0}^{1}\sqrt{1-x^2}\,\mathrm{d}x \approx \frac{1}{N}\sum_{i=1}^{N}\sqrt{1-x_i^2}
-	\qquad\Longrightarrow\qquad
-	\pi\approx\frac{4}{N}\sum_{i=1}^{N}\sqrt{1-x_i^2}
-\end{equation}
-Using Monte Carlo integration, we get (for example) the following value for $\pi$:
-\begin{equation}
-\boxed{\:\text{Monte Carlo Integration with $N=6\cdot 10^7$:}\qquad\quad
-	\pi\approx\num{3.141557094}\:}
-\end{equation}
-It should be noted that the rejection method takes much more time than the Monte Carlo integration.
+\section*{Random Walk}
+\begin{description}
+	\item[Task:] Construct a stochastic process, which has the probability density function
+	\begin{equation}
+		g(y_1,\,y_2) = \frac{1}{2\pi}\exp\Bigl\{-\frac{y_1^2}{2}-\frac{y_2^2}{2}\Bigr\}
+	\end{equation}
+	as an equilibrium distribution (Metropolis method). After an initial phase of $i$ random walk steps store the sequence of $k$ pairs of numbers $y_1,\,y_2$; the sequence $y_1,\,y_2$ is a stochastic representation of the underlying equilibrium distribution. 
+	For each sequence a ``measurement'' of the value of the integral is obtained, and the expectation value is the average of many such measurements.\\
+	Create $N\in\{100,\,1000,\,10000\}$ of such sequences $y_1,\,y_2$ and determine the integral as average of all measurements, and plot the error as function of $N$. What is a good choice for the number of initial steps $i$? Just check for convergence of the result.
+\end{description}
 
-
-\begin{figure}[t!]
-	\centering
-	\begin{subfigure}[t]{0.48\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/RN-Rejection-Method_Pi-Determination.pdf}
-		\caption{Illustration of the determination of $\pi$ using a\\rejection method with randomly selected points}
-		\label{fig:pi-determination}
-	\end{subfigure}
-	\begin{subfigure}[t]{0.50\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figures/RN-Rejection-Method_Accuracy-Analysis.pdf}
-		\caption{Accuracy analysis of the determination of $\pi$ using a rejection method with randomly selected points}
-		\label{fig:accuracy}
-	\end{subfigure}
-	\caption{Determination of $\pi$ with random numbers (rejection method)}
-	\label{fig:rejection-method}
-\end{figure}
-
-\vspace{1.25cm}
-\lstinputlisting[caption={Determination of $\pi$ using a rejection method and Monte Carlo integration},
-label={py:code}]{Homework10_Random-Numbers_Gross-Boelting_Vogel_Willenberg.py}
+%\vspace{1.25cm}
+%\lstinputlisting[caption={Determination of $\pi$ using a rejection method and Monte Carlo integration},
+%label={py:code}]{Homework10_Random-Numbers_Gross-Boelting_Vogel_Willenberg.py}
 \end{document}
